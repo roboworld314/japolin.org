@@ -62,7 +62,7 @@
     var more = document.getElementById('news-more');
     var news = Array.isArray(window.NEWS) ? window.NEWS : [];
     if (!grid || !news.length) return;
-    var VISIBLE = 2;
+    var VISIBLE = 3;
 
     function el(tag, cls, text) {
       var n = document.createElement(tag);
@@ -128,28 +128,70 @@
       return box;
     }
 
+    var TAG_ICON = {
+      Talk: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/>',
+      Teaching: '<path d="M2.5 9L12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v4.5c1.5 1.6 3.5 2.4 5.5 2.4s4-.8 5.5-2.4V11M21.5 9v5"/>',
+      Service: '<circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2A4.5 4.5 0 0 1 21 18.5"/>',
+      Paper: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+      Award: '<circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5L7 21l5-2.5 5 2.5-1.5-7.5"/>'
+    };
+    function icon(tag, cls) {
+      var path = TAG_ICON[tag] || TAG_ICON.Paper;
+      return '<svg class="' + cls + '" viewBox="0 0 24 24" aria-hidden="true">' + path + '</svg>';
+    }
+
+    // Items without a photo get a drawn cover in the site's colours.
+    function cover(item) {
+      var box = el('div', 'news-media news-cover');
+      box.setAttribute('aria-hidden', 'true');
+      box.innerHTML = icon(item.tag, 'cover-icon');
+      box.appendChild(el('span', 'cover-title', (item.cover && item.cover.title) || item.tag || ''));
+      if (item.cover && item.cover.sub) box.appendChild(el('span', 'cover-sub', item.cover.sub));
+      return box;
+    }
+
     news.forEach(function (item, i) {
-      var art = el('article', 'news-item');
+      var art = el('article', 'news-card');
       var hasMedia = !!(item.image || item.video);
-      if (hasMedia) art.classList.add('has-media');
-      art.appendChild(el('p', 'news-date', item.date));
+      var top = el('div', 'news-top');
+      if (item.frame === 'browser') top.classList.add('has-bar');
+      top.appendChild(hasMedia ? media(item) : cover(item));
+      top.appendChild(el('span', 'news-date', item.date));
+      art.appendChild(top);
 
       var body = el('div', 'news-body');
+      if (item.tag) {
+        var tag = el('span', 'news-tag');
+        tag.innerHTML = icon(item.tag, 'tag-icon');
+        tag.appendChild(document.createTextNode(item.tag));
+        body.appendChild(tag);
+      }
       body.appendChild(el('h3', 'news-title', item.title));
       if (item.text) body.appendChild(el('p', 'news-text', item.text));
       if (item.link && item.link.href) {
         var p = el('p', 'news-link');
         var a = el('a', null, item.link.label || 'Read more');
         a.href = item.link.href;
+        if (/^https?:/.test(item.link.href)) { a.target = '_blank'; a.rel = 'noopener'; }
         p.appendChild(a);
         body.appendChild(p);
       }
       art.appendChild(body);
-      if (hasMedia) art.appendChild(media(item));
+      art.style.setProperty('--i', String(i % VISIBLE));
 
       if (i >= VISIBLE) { art.hidden = true; art.classList.add('is-extra'); }
       grid.appendChild(art);
     });
+
+    // Cards rise in, one after another, the first time the grid scrolls into view.
+    if (!reduceMotion && hasIO) {
+      grid.classList.add('will-reveal');
+      new IntersectionObserver(function (entries, obs) {
+        if (!entries[0].isIntersecting) return;
+        grid.classList.add('is-revealed');
+        obs.disconnect();
+      }, { rootMargin: '0px 0px -12% 0px' }).observe(grid);
+    }
 
     if (more && news.length > VISIBLE) {
       var showAll = 'Show all news (' + news.length + ')';

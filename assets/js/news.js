@@ -1,7 +1,7 @@
 /* =============================================================
    RECENT NEWS
    Edit this list to update the News section. Newest item first.
-   The first 2 items show; the rest appear under "Show all news".
+   The first 3 items show as cards; the rest appear under "Show all news".
 
    Each item can have:
      date     text shown on the left, e.g. "Nov 2026"            (required)
@@ -19,6 +19,10 @@
               browser-window frame                               (optional)
      frameLabel  text in that frame's address bar                (optional)
      link     { href: "https://...", label: "Read more" }        (optional)
+     tag      "Talk", "Teaching", "Service", "Paper", or "Award";
+              shown as a small label on the card                 (optional)
+     cover    for items without a photo: { title: "SEC'25",
+              sub: "one short line" } draws a styled cover        (optional)
 
    Put photos and videos in the assets/news/ folder. Keep each video
    file under about 25 MB, or upload it to YouTube and paste the link.
@@ -27,6 +31,7 @@
 window.NEWS = [
   {
     date: "Nov 2026",
+    tag: "Talk",
     title: "Student panelist at the W&M Computer Science Symposium for Graduate Studies",
     text: "Joined fellow Ph.D. students on the student and alumni panel at William & Mary to talk about my research in autonomous driving.",
     image: "assets/news/2026-11-cs-symposium-panel.jpg",
@@ -35,6 +40,7 @@ window.NEWS = [
   },
   {
     date: "Fall 2026",
+    tag: "Teaching",
     title: "Assistant instructor\nCOLL/CSCI 100: Physical Intelligence: Robots",
     text: "Helping students program 5G-connected robotic vehicles on a smart-city roadway. I built and maintain the course website.",
     image: "assets/news/2026-fall-course-website.jpg",
@@ -46,11 +52,14 @@ window.NEWS = [
   },
   {
     date: "2026",
+    tag: "Service",
     title: "Session chair for EdgeCAV'26 at SEC'26",
+    cover: { title: "EdgeCAV'26", sub: "Workshop at ACM/IEEE SEC'26" },
     text: "Chairing a session at the 1st International Workshop on Edge Computing for Connected and Autonomous Vehicles, and reviewing for SEC'26."
   },
   {
     date: "May 2026",
+    tag: "Paper",
     title: "“Log What Matters” published at IEEE MOST 2026 in Detroit",
     text: "Our safety-aware adaptive logging framework for connected and autonomous vehicles. I also received a student travel grant, and our TinyLite paper appeared at the PISA workshop.",
     image: "assets/img/research/caal-pipeline.png",
@@ -60,8 +69,10 @@ window.NEWS = [
   },
   {
     date: "2025",
+    tag: "Paper",
     title: "“Context-Aware Perception” published at ACM/IEEE SEC'25",
     text: "Vision-language models for all-weather object detection in autonomous driving, presented in Arlington, VA, with a student travel grant.",
+    cover: { title: "SEC'25", sub: "ACM/IEEE Symposium on Edge Computing" },
     link: { href: "https://doi.org/10.1145/3769102.3774638", label: "Read the paper" }
   }
 ];
