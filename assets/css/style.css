@@ -20,7 +20,7 @@
   --serif: "Spectral", Georgia, "Times New Roman", serif;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --wrap: 1140px;
+  --wrap: 1240px;
   --gutter: clamp(16px, 4vw, 40px);
   --radius: 8px;
 }
@@ -110,7 +110,7 @@ button { font: inherit; color: inherit; }
   padding: 4px 0;
   border-bottom: 2px solid transparent;
 }
-.site-nav a:hover { color: var(--blue); text-decoration: none; }
+.site-nav a:hover { color: var(--blue); text-decoration: none; border-bottom-color: var(--blue); }
 .site-nav a.is-current { color: var(--blue-deep); border-bottom-color: var(--blue); }
 .site-nav a.nav-cv {
   padding: 3px 12px;
@@ -137,7 +137,7 @@ button { font: inherit; color: inherit; }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
   align-content: center;
@@ -166,13 +166,17 @@ button { font: inherit; color: inherit; }
 .hero-lede {
   font-size: 1.1rem;
   line-height: 1.65;
-  max-width: 36em;
+  max-width: 40em;
   margin-bottom: clamp(18px, 3.4vh, 32px);
   text-align: justify;
   -webkit-hyphens: auto;
   hyphens: auto;
   hyphenate-limit-chars: 10 4 4;
 }
+
+/* Key phrases in the summary. */
+.hero-lede strong { font-weight: 600; color: var(--blue-deep); }
+.hero-lede em { font-style: italic; }
 
 .hero-links {
   list-style: none;
@@ -181,9 +185,21 @@ button { font: inherit; color: inherit; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: 22px;
 }
 
+/* Email, Google Scholar, and LinkedIn as their own logos; name shows on hover. */
+.hero-logo {
+  position: relative;
+  display: block;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  transition: transform 0.18s ease;
+}
+.hero-logo svg { display: block; width: 100%; height: 100%; }
+.hero-logo:hover { transform: translateY(-3px); }
+.hero-logo:focus-visible { outline-offset: 4px; }
 .hero-btn {
   display: flex;
   align-items: center;
@@ -211,18 +227,7 @@ button { font: inherit; color: inherit; }
 .hero-btn:focus-visible { outline-offset: 3px; border-radius: 8px; }
 .btn-icon { width: 18px; height: 18px; flex: none; fill: currentColor; }
 
-/* View CV keeps its label; Email, Scholar, and LinkedIn are round logo buttons
-   that show their name on hover or keyboard focus. */
-.hero-btn-cv { padding: 0 26px; }
-.hero-icon {
-  position: relative;
-  width: 48px;
-  padding: 0;
-  border-radius: 50%;
-}
-.hero-icon:focus-visible { border-radius: 50%; }
-.hero-icon .btn-icon { width: 20px; height: 20px; }
-.hero-icon::after {
+.hero-logo::after {
   content: attr(data-tip);
   position: absolute;
   left: 50%;
@@ -239,8 +244,8 @@ button { font: inherit; color: inherit; }
   pointer-events: none;
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
-.hero-icon:hover::after,
-.hero-icon:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+.hero-logo:hover::after,
+.hero-logo:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
 
 .btn {
   display: inline-block;
@@ -375,7 +380,11 @@ button { font: inherit; color: inherit; }
   }
   .js .hero-role { animation-delay: 0.08s; }
   .js .hero-lede { animation-delay: 0.16s; }
-  .js .hero-links { animation-delay: 0.24s; }
+  .js /* Key phrases in the summary. */
+.hero-lede strong { font-weight: 600; color: var(--blue-deep); }
+.hero-lede em { font-style: italic; }
+
+.hero-links { animation-delay: 0.24s; }
   .js .portrait-wrap { animation-delay: 0.12s; }
   .js .interests { animation-delay: 0.3s; }
 }
@@ -1167,7 +1176,7 @@ button { font: inherit; color: inherit; }
   .hero-btn,
   .thumb { transition: none; }
   .hero-btn:hover { transform: none; }
-  .hero-icon::after { transition: none; }
+  .hero-logo::after { transition: none; }
   .chart-fill { transition: none; }
   .orbit,
   .sat { animation: none; }
@@ -1179,9 +1188,12 @@ button { font: inherit; color: inherit; }
 @media (min-width: 881px) and (max-height: 760px) {
   .hero-role { font-size: 1.05rem; }
   .hero-lede { font-size: 1rem; line-height: 1.6; }
-  .hero-links { gap: 10px; }
+  /* Key phrases in the summary. */
+.hero-lede strong { font-weight: 600; color: var(--blue-deep); }
+.hero-lede em { font-style: italic; }
+
+.hero-links { gap: 10px; }
   .hero-btn { height: 42px; }
-  .hero-icon { width: 42px; }
   .portrait-wrap { padding: 20px; }
   .portrait { width: clamp(170px, 26vh, 240px); }
   .sat { width: 38px; height: 38px; }
