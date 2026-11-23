@@ -102,7 +102,8 @@
       answer: () => `<ul>
           <li><strong>Ph.D. in Computer Science</strong>, William &amp; Mary (2024&ndash;2029 expected), advised by Dr. Sidi Lu. GPA 3.95/4.00.</li>
           <li><strong>M.Sc. in CSE</strong>, Daffodil International University (2021&ndash;23). GPA 4.00/4.00.</li>
-          <li><strong>B.Sc. in CSE</strong>, Daffodil International University (2015&ndash;20). GPA 3.90/4.00.</li>
+          <li><strong>B.Sc. in CSE</strong>, Daffodil International University (2015&ndash;20), in machine learning and human-computer interaction, advised by Ahmed Al Marouf. GPA 3.90/4.00.</li>
+          <li><strong>Certificate in Social Business</strong>, HEC Montr&eacute;al (2020). Grade A.</li>
         </ul>`,
     },
     {

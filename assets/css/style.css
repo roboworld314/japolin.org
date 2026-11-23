@@ -1275,6 +1275,8 @@ button { font: inherit; color: inherit; }
 .edu-school { margin: 0; font-size: 0.9rem; color: var(--blue-deep); }
 .edu-focus { margin: 6px 0 0; font-size: 0.88rem; color: var(--slate); font-style: italic; }
 .edu-advisor { margin: 0; font-size: 0.88rem; color: var(--slate); }
+.edu-notes { list-style: none; margin: 10px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--mist); display: grid; gap: 6px; font-size: 0.86rem; color: var(--slate); }
+.edu-notes li::before { content: "\2605"; margin-right: 6px; color: #c9a24a; }
 .edu-gpa { margin: auto 0 0; padding-top: 14px; display: flex; align-items: baseline; justify-content: center; gap: 6px; }
 .edu-gpa strong { font-family: var(--serif); font-size: 1.6rem; line-height: 1; color: var(--blue); }
 .edu-gpa span { font-size: 0.8rem; color: var(--slate); }
