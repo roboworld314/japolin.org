@@ -15,6 +15,7 @@
      caption  text under the enlarged photo (defaults to title)   (optional)
      position "top" keeps the top of a tall image (a flyer or poster)
               in view on the card; the full image opens on click  (optional)
+     background  colour behind a "contain" image, e.g. "#f4f3ee"  (optional)
      fit      "contain" for diagrams, so nothing is cropped;
               photos fill the frame by default                   (optional)
      frame    "browser" shows a website screenshot inside a
@@ -46,11 +47,11 @@ window.NEWS = [
     tag: "Teaching",
     title: "Assistant instructor\nCOLL/CSCI 100: Physical Intelligence: Robots",
     text: "Helping students program 5G-connected robotic vehicles on a smart-city roadway. I built and maintain the course website.",
-    image: "assets/news/2026-fall-course-website.jpg",
-    frame: "browser",
-    alt: "Home page of the COLL/CSCI 100 course website, with a photo of students in the Vehicle Computing Lab",
-    frameLabel: "COLL/CSCI 100 course website",
-    caption: "The COLL/CSCI 100: Physical Intelligence: Robots course website",
+    image: "assets/news/2026-fall-coll100-class.jpg",
+    fit: "contain",
+    background: "#f4f3ee",
+    alt: "COLL/CSCI 100: Physical Intelligence: Robots, with students in the Vehicle Computing Lab on the smart-city roadway",
+    caption: "COLL/CSCI 100: Physical Intelligence: Robots, in the Vehicle Computing Lab",
     link: { href: "https://roboworld314.github.io/VC_Lab/", label: "Visit the course website" }
   },
   {

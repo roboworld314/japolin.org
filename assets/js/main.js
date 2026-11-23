@@ -104,6 +104,7 @@
         im.loading = 'lazy';
         im.decoding = 'async';
         if (item.fit === 'contain') box.classList.add('is-contain');
+        if (item.background) { box.style.background = item.background; im.style.background = item.background; im.style.padding = '0'; }
         if (item.position) im.style.objectPosition = item.position === 'top' ? 'center top' : item.position;
         if (item.frame === 'browser') {
           box.classList.add('is-browser');
