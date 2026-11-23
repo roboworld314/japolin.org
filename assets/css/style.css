@@ -106,12 +106,31 @@ button { font: inherit; color: inherit; }
   font-size: 0.95rem;
 }
 .site-nav a {
-  color: var(--slate);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--blue);
+  font-weight: 500;
   padding: 4px 0;
   border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
-.site-nav a:hover { color: var(--blue); text-decoration: none; border-bottom-color: var(--blue); }
-.site-nav a.is-current { color: var(--blue-deep); border-bottom-color: var(--blue); }
+/* An invisible bold copy reserves the bold width, so links don't shift. */
+.site-nav a[data-label]::after {
+  content: attr(data-label);
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 700;
+  pointer-events: none;
+}
+.site-nav a:hover,
+.site-nav a.is-current {
+  color: var(--blue-deep);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom-color: var(--blue);
+}
 .site-nav a.nav-cv {
   padding: 3px 12px;
   border: 1px solid var(--ring);
@@ -119,6 +138,8 @@ button { font: inherit; color: inherit; }
   color: var(--blue-deep);
   font-weight: 500;
 }
+.site-nav a.nav-cv,
+.site-nav a.nav-cv:hover { font-weight: 600; }
 .site-nav a.nav-cv:hover { border-color: var(--blue); background: var(--haze); }
 
 /* ----------------------------- hero ----------------------------- */
