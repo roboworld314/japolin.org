@@ -59,10 +59,8 @@
 
   (function renderNews() {
     var grid = document.getElementById('news-grid');
-    var more = document.getElementById('news-more');
     var news = Array.isArray(window.NEWS) ? window.NEWS : [];
     if (!grid || !news.length) return;
-    var VISIBLE = 3;
 
     function el(tag, cls, text) {
       var n = document.createElement(tag);
@@ -154,20 +152,22 @@
     news.forEach(function (item, i) {
       var art = el('article', 'news-card');
       var hasMedia = !!(item.image || item.video);
-      var top = el('div', 'news-top');
-      if (item.frame === 'browser') top.classList.add('has-bar');
-      if (item.position === 'top') top.classList.add('badge-bottom');
-      top.appendChild(hasMedia ? media(item) : cover(item));
-      top.appendChild(el('span', 'news-date', item.date));
-      art.appendChild(top);
+      art.appendChild(hasMedia ? media(item) : cover(item));
 
+      // Label and date share one row, so dates line up across all cards.
       var body = el('div', 'news-body');
+      var meta = el('div', 'news-meta');
       if (item.tag) {
         var tag = el('span', 'news-tag');
         tag.innerHTML = icon(item.tag, 'tag-icon');
         tag.appendChild(document.createTextNode(item.tag));
-        body.appendChild(tag);
+        meta.appendChild(tag);
       }
+      var date = el('span', 'news-date');
+      date.innerHTML = '<svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>';
+      date.appendChild(document.createTextNode(item.date));
+      meta.appendChild(date);
+      body.appendChild(meta);
       body.appendChild(el('h3', 'news-title', item.title));
       if (item.text) body.appendChild(el('p', 'news-text', item.text));
       if (item.link && item.link.href) {
@@ -179,9 +179,7 @@
         body.appendChild(p);
       }
       art.appendChild(body);
-      art.style.setProperty('--i', String(i % VISIBLE));
-
-      if (i >= VISIBLE) { art.hidden = true; art.classList.add('is-extra'); }
+      art.style.setProperty('--i', String(Math.min(i, 3)));
       grid.appendChild(art);
     });
 
@@ -195,26 +193,54 @@
       }, { rootMargin: '0px 0px -12% 0px' }).observe(grid);
     }
 
-    if (more && news.length > VISIBLE) {
-      var showAll = 'Show all news (' + news.length + ')';
-      more.textContent = showAll;
-      more.hidden = false;
-      more.setAttribute('aria-controls', 'news-grid');
-      more.setAttribute('aria-expanded', 'false');
-      more.addEventListener('click', function () {
-        var open = more.getAttribute('aria-expanded') === 'true';
-        grid.querySelectorAll('.is-extra').forEach(function (n) { n.hidden = open; });
-        more.setAttribute('aria-expanded', String(!open));
-        more.textContent = open ? showAll : 'Show fewer';
-        if (!open) {
-          var first = grid.querySelector('.is-extra .news-title');
-          if (first) {
-            first.setAttribute('tabindex', '-1');
-            first.focus({ preventScroll: true });
-          }
-        }
-      });
+    // Slider: arrows move one card at a time; dots show where you are.
+    var prev = document.querySelector('.news-prev');
+    var next = document.querySelector('.news-next');
+    var dotsBox = document.querySelector('.news-dots');
+    var cards = Array.prototype.slice.call(grid.children);
+    var dots = cards.map(function (card, i) {
+      var d = el('button', 'news-dot');
+      d.type = 'button';
+      d.tabIndex = -1;
+      d.addEventListener('click', function () { go(i); });
+      if (dotsBox) dotsBox.appendChild(d);
+      return d;
+    });
+
+    function step() {
+      var gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
+      return cards[0].getBoundingClientRect().width + gap;
     }
+    function current() { return Math.round(grid.scrollLeft / step()); }
+    function go(i) {
+      grid.scrollTo({ left: i * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+    function update() {
+      var max = grid.scrollWidth - grid.clientWidth;
+      var scrollable = max > 2;
+      if (prev) { prev.disabled = grid.scrollLeft <= 2; prev.hidden = !scrollable; }
+      if (next) { next.disabled = grid.scrollLeft >= max - 2; next.hidden = !scrollable; }
+      if (dotsBox) dotsBox.hidden = !scrollable;
+      var perView = Math.max(1, Math.round(grid.clientWidth / step()));
+      var first = current();
+      dots.forEach(function (d, i) { d.classList.toggle('is-on', i >= first && i < first + perView); });
+      // Centre the arrows on the pictures.
+      var pic = cards[0].firstElementChild;
+      if (pic) grid.parentNode.style.setProperty('--arrow-y', (pic.offsetHeight / 2) + 'px');
+    }
+    if (prev) prev.addEventListener('click', function () { go(Math.max(0, current() - 1)); });
+    if (next) next.addEventListener('click', function () { go(current() + 1); });
+    grid.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(Math.max(0, current() - 1)); }
+    });
+    var ticking = false;
+    grid.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(function () { ticking = false; update(); }); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    window.addEventListener('load', update);
+    update();
   })();
 
   /* ------------------------------- charts ------------------------------- */

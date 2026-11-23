@@ -1,7 +1,7 @@
 /* =============================================================
    RECENT NEWS
    Edit this list to update the News section. Newest item first.
-   The first 3 items show as cards; the rest appear under "Show all news".
+   Items show as cards in a slider; the arrows move through them.
 
    Each item can have:
      date     text shown on the left, e.g. "Nov 2026"            (required)
@@ -14,7 +14,7 @@
      alt      short description of the photo or video            (optional)
      caption  text under the enlarged photo (defaults to title)   (optional)
      position "top" keeps the top of a tall image (a flyer or poster)
-              in view on the card; the full image opens on click   (optional)
+              in view on the card; the full image opens on click  (optional)
      fit      "contain" for diagrams, so nothing is cropped;
               photos fill the frame by default                   (optional)
      frame    "browser" shows a website screenshot inside a
@@ -38,7 +38,8 @@ window.NEWS = [
     text: "Joined fellow Ph.D. students on the student and alumni panel at William & Mary to talk about my research in autonomous driving.",
     image: "assets/news/2026-11-cs-symposium-panel.jpg",
     alt: "Six Ph.D. students seated on stage below a slide titled Student / Alumni Panel, W&M Computer Science Graduate Studies",
-    caption: "Student and alumni panel, W&M Computer Science Symposium for Graduate Studies, November 2026"
+    caption: "Student and alumni panel, W&M Computer Science Symposium for Graduate Studies, November 2026",
+    link: { href: "https://wmcsymp.github.io/", label: "Visit the symposium website" }
   },
   {
     date: "Fall 2026",

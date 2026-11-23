@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=32">
+  <link rel="stylesheet" href="assets/css/style.css?v=33">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -130,7 +130,16 @@
           <p class="section-note">Talks, papers, teaching, and service</p>
         </div>
         <!-- Cards are generated from assets/js/news.js. Add new items there. -->
-        <div class="news-grid" id="news-grid"></div>
+        <div class="news-carousel">
+          <button class="news-arrow news-prev" type="button" aria-label="Previous news" aria-controls="news-grid" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5"/></svg>
+          </button>
+          <div class="news-grid" id="news-grid" role="region" aria-label="Recent news cards" tabindex="0"></div>
+          <button class="news-arrow news-next" type="button" aria-label="Next news" aria-controls="news-grid">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5"/></svg>
+          </button>
+        </div>
+        <div class="news-dots" aria-hidden="true"></div>
         <noscript>
           <ul class="news-fallback">
             <li><b>Nov 2026.</b> Student panelist, W&amp;M CS Symposium for Graduate Studies.</li>
@@ -140,7 +149,6 @@
             <li><b>2025.</b> "Context-Aware Perception" published at ACM/IEEE SEC'25.</li>
           </ul>
         </noscript>
-        <p class="news-more-wrap"><button class="btn" type="button" id="news-more" hidden>Show all news</button></p>
       </div>
     </section>
 
@@ -709,8 +717,8 @@
     </div>
   </dialog>
 
-  <script src="assets/js/news.js?v=31"></script>
-  <script src="assets/js/main.js?v=32"></script>
+  <script src="assets/js/news.js?v=33"></script>
+  <script src="assets/js/main.js?v=33"></script>
   <script src="assets/js/drive.js?v=14"></script>
   <script src="assets/js/chat.js?v=28"></script>
 </body>

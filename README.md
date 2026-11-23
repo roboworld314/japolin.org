@@ -45,7 +45,7 @@ Replace `assets/img/profile.jpg` with a square photo (at least 600 × 600 px).
 },
 ```
 
-The newest three items show as cards; older ones appear under "Show all news".
+News items show as cards in a slider (three across on wide screens); the arrows move through them.
 Optional: `tag: "Talk"` (or Teaching, Service, Paper, Award) adds a label, and
 `cover: { title: "SEC'25", sub: "one short line" }` draws a cover when there is no photo.
 Keep video files under about 25 MB, or upload to YouTube and paste the link.
