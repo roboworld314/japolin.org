@@ -9,10 +9,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=11">
+  <link rel="stylesheet" href="assets/css/style.css?v=12">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17H3.5a1 1 0 0 1-1-1v-3.2a2 2 0 0 1 .6-1.4L5 9.5l1.6-3.2a2 2 0 0 1 1.8-1.1h7.2a2 2 0 0 1 1.8 1.1L19 9.5l1.9 1.9a2 2 0 0 1 .6 1.4V16a1 1 0 0 1-1 1H19M9 17h6M5 9.5h14"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-sensor" viewBox="0 0 24 24"><rect x="2.5" y="7" width="12" height="10" rx="2"/><circle cx="8.5" cy="12" r="2.5"/><path d="M17.5 9a4.5 4.5 0 0 1 0 6M20 6.8a8 8 0 0 1 0 10.4"/></symbol>
+    <symbol id="i-robot" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V5M10 16h4M3 12.5v3M21 12.5v3"/><circle cx="12" cy="4" r="1"/><circle cx="9.5" cy="12.5" r="1"/><circle cx="14.5" cy="12.5" r="1"/></symbol>
+    <symbol id="i-vlm" viewBox="0 0 24 24"><path d="M4 4.5h16A1.5 1.5 0 0 1 21.5 6v9.5A1.5 1.5 0 0 1 20 17h-10l-4.5 3.5V17H4a1.5 1.5 0 0 1-1.5-1.5V6A1.5 1.5 0 0 1 4 4.5z"/><path d="M7 10.8s2-3 5-3 5 3 5 3-2 3-5 3-5-3-5-3z"/><circle cx="12" cy="10.8" r="1.1"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.8l7.5 3v5.6c0 4.6-3.1 8.4-7.5 9.8-4.4-1.4-7.5-5.2-7.5-9.8V5.8z"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8"/></symbol>
+  </svg>
+
 
   <header class="site-header">
     <div class="wrap header-inner">
@@ -55,20 +64,53 @@
         <div class="hero-aside">
           <!-- PROFILE PHOTO: replace assets/img/profile.jpg (square) to change it.
                If the file is missing, the initials show instead. -->
-          <div class="portrait">
-            <span class="portrait-initials" aria-hidden="true">JP</span>
-            <img class="portrait-photo" src="assets/img/profile.jpg" alt="Portrait of Johora Akter Polin" onerror="this.hidden=true">
+          <div class="portrait-wrap">
+            <div class="orbit" aria-hidden="true">
+              <span class="sat" style="--x:93.3%;--y:25%"><svg class="ic"><use href="#i-car"/></svg></span>
+              <span class="sat" style="--x:75%;--y:93.3%"><svg class="ic"><use href="#i-sensor"/></svg></span>
+              <span class="sat" style="--x:6.7%;--y:75%"><svg class="ic"><use href="#i-robot"/></svg></span>
+              <span class="sat" style="--x:25%;--y:6.7%"><svg class="ic"><use href="#i-chip"/></svg></span>
+            </div>
+            <div class="portrait">
+              <span class="portrait-initials" aria-hidden="true">JP</span>
+              <img class="portrait-photo" src="assets/img/profile.jpg" alt="Portrait of Johora Akter Polin" onerror="this.hidden=true">
+            </div>
           </div>
           <div class="interests">
             <p class="interests-title">Research interests</p>
-            <ul class="tags interests-tags">
-              <li>Autonomous driving</li>
-              <li>Camera-LiDAR perception</li>
-              <li>Agentic AI</li>
-              <li>Vision-language models</li>
-              <li>Edge AI</li>
-              <li>Safety-critical autonomy</li>
+            <ul class="interest-grid">
+              <li><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg>Autonomous driving</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-sensor"/></svg>Camera-LiDAR perception</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-robot"/></svg>Agentic AI</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-vlm"/></svg>Vision-language models</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg>Edge AI</li>
+              <li><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Safety-critical autonomy</li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated top-down drive (assets/js/drive.js). -->
+      <div class="drive">
+        <canvas class="drive-canvas" role="img" aria-label="Animated top-down view of a self-driving car on a city street. Its camera draws boxes around nearby cars, trucks, cyclists, and pedestrians, its LiDAR marks their edges with points, and it decides when to change lanes or slow down."></canvas>
+        <div class="drive-hud">
+          <div class="wrap drive-hud-inner">
+            <div class="hud-cell">
+              <span class="hud-k">Perceive <span class="hud-key"><i class="key-cam"></i>camera <i class="key-lidar"></i>LiDAR</span></span>
+              <span class="hud-v" data-hud="perceive">Scanning the road ahead</span>
+            </div>
+            <div class="hud-cell">
+              <span class="hud-k">Reason</span>
+              <span class="hud-v" data-hud="reason">Lane ahead is clear</span>
+            </div>
+            <div class="hud-cell">
+              <span class="hud-k">Act</span>
+              <span class="hud-v" data-hud="act">Cruise at the speed limit</span>
+            </div>
+            <button class="drive-toggle" type="button" aria-pressed="false" aria-label="Pause animation">
+              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -660,7 +702,8 @@
     </div>
   </dialog>
 
-  <script src="assets/js/news.js?v=11"></script>
-  <script src="assets/js/main.js?v=11"></script>
+  <script src="assets/js/news.js?v=12"></script>
+  <script src="assets/js/main.js?v=12"></script>
+  <script src="assets/js/drive.js?v=12"></script>
 </body>
 </html>

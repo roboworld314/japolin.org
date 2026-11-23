@@ -10,6 +10,7 @@ index.html                         page content
 assets/css/style.css               styles
 assets/js/news.js                  the Recent news list (edit this to add news)
 assets/js/main.js                  interactions: news, project tabs, charts, figure viewer
+assets/js/drive.js                 the animated self-driving car strip at the bottom of the hero
 assets/img/profile.jpg             round profile photo
 assets/img/research/               figures cropped from the papers
 assets/news/                       photos and videos for news items
@@ -61,7 +62,7 @@ git push
 ```
 
 If a browser keeps showing an old version of the styles or news, raise the `?v=` number
-on the `style.css`, `news.js`, and `main.js` links near the top and bottom of `index.html`.
+on the `style.css`, `news.js`, `main.js`, and `drive.js` links near the top and bottom of `index.html`.
 
 ## Custom domain (japolin.org)
 
