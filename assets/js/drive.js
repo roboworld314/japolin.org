@@ -730,7 +730,7 @@
     const seen = detectables().filter((o) => o.inView).sort((a, b) => a.x - b.x);
     setText(
       hud.perceive,
-      seen.length ? seen.slice(0, 3).map((o) => `${SPEC[o.kind].label} ${o.conf.toFixed(2)}`).join(', ') : 'Scanning the road ahead',
+      seen.length ? seen.slice(0, 2).map((o) => `${SPEC[o.kind].label} ${o.conf.toFixed(2)}`).join(', ') : 'Scanning the road ahead',
       false
     );
     const [reason, act, urgent] = decide(seen);

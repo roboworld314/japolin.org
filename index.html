@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=12">
+  <link rel="stylesheet" href="assets/css/style.css?v=14">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -96,7 +96,7 @@
         <div class="drive-hud">
           <div class="wrap drive-hud-inner">
             <div class="hud-cell">
-              <span class="hud-k">Perceive <span class="hud-key"><i class="key-cam"></i>camera <i class="key-lidar"></i>LiDAR</span></span>
+              <span class="hud-k">Perceive</span>
               <span class="hud-v" data-hud="perceive">Scanning the road ahead</span>
             </div>
             <div class="hud-cell">
@@ -107,10 +107,13 @@
               <span class="hud-k">Act</span>
               <span class="hud-v" data-hud="act">Cruise at the speed limit</span>
             </div>
-            <button class="drive-toggle" type="button" aria-pressed="false" aria-label="Pause animation">
-              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
-              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
-            </button>
+            <div class="hud-end">
+              <span class="hud-key" aria-hidden="true"><i class="key-cam"></i>camera <i class="key-lidar"></i>LiDAR</span>
+              <button class="drive-toggle" type="button" aria-pressed="false" aria-label="Pause animation">
+                <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -704,6 +707,6 @@
 
   <script src="assets/js/news.js?v=12"></script>
   <script src="assets/js/main.js?v=12"></script>
-  <script src="assets/js/drive.js?v=12"></script>
+  <script src="assets/js/drive.js?v=14"></script>
 </body>
 </html>
