@@ -178,10 +178,10 @@ button { font: inherit; color: inherit; }
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
-  max-width: 460px;
 }
 
 .hero-btn {
@@ -210,6 +210,37 @@ button { font: inherit; color: inherit; }
 .hero-btn:active { transform: translateY(0); box-shadow: none; }
 .hero-btn:focus-visible { outline-offset: 3px; border-radius: 8px; }
 .btn-icon { width: 18px; height: 18px; flex: none; fill: currentColor; }
+
+/* View CV keeps its label; Email, Scholar, and LinkedIn are round logo buttons
+   that show their name on hover or keyboard focus. */
+.hero-btn-cv { padding: 0 26px; }
+.hero-icon {
+  position: relative;
+  width: 48px;
+  padding: 0;
+  border-radius: 50%;
+}
+.hero-icon:focus-visible { border-radius: 50%; }
+.hero-icon .btn-icon { width: 20px; height: 20px; }
+.hero-icon::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 9px);
+  transform: translate(-50%, -4px);
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.hero-icon:hover::after,
+.hero-icon:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
 
 .btn {
   display: inline-block;
@@ -1136,6 +1167,7 @@ button { font: inherit; color: inherit; }
   .hero-btn,
   .thumb { transition: none; }
   .hero-btn:hover { transform: none; }
+  .hero-icon::after { transition: none; }
   .chart-fill { transition: none; }
   .orbit,
   .sat { animation: none; }
@@ -1149,6 +1181,7 @@ button { font: inherit; color: inherit; }
   .hero-lede { font-size: 1rem; line-height: 1.6; }
   .hero-links { gap: 10px; }
   .hero-btn { height: 42px; }
+  .hero-icon { width: 42px; }
   .portrait-wrap { padding: 20px; }
   .portrait { width: clamp(170px, 26vh, 240px); }
   .sat { width: 38px; height: 38px; }

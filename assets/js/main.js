@@ -259,23 +259,38 @@
 
   /* ------------------- current section in nav, back to top -------------- */
 
+  // Highlight the section whose top has passed the upper half of the window.
+  // Worked out from the scroll position, so it is right after jumps and reloads.
   var navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
-  if (hasIO && navLinks.length) {
-    var byId = {};
-    navLinks.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
-    var navIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var hit = byId[e.target.id];
-        if (!hit && e.target.id !== 'top') return;
-        navLinks.forEach(function (a) { a.classList.remove('is-current'); });
-        if (hit) hit.classList.add('is-current');
+  var navSections = [];
+  navLinks.forEach(function (a) {
+    var sec = document.getElementById(a.getAttribute('href').slice(1));
+    // Education is a column inside the Teaching section; measure its section.
+    if (sec) navSections.push({ link: a, sec: sec.closest('section') || sec });
+  });
+  if (navSections.length) {
+    var navTicking = false;
+    var updateNav = function () {
+      navTicking = false;
+      // Sections side by side (Teaching and Education) share a top, so both light up.
+      var line = window.innerHeight * 0.45;
+      var best = -Infinity;
+      navSections.forEach(function (n) {
+        n.top = n.sec.getBoundingClientRect().top;
+        if (n.top <= line && n.top > best) best = n.top;
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    ['top'].concat(Object.keys(byId)).forEach(function (id) {
-      var target = document.getElementById(id);
-      if (target) navIO.observe(target);
-    });
+      var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom && window.scrollY > 0) best = navSections[navSections.length - 1].top;
+      navSections.forEach(function (n) {
+        n.link.classList.toggle('is-current', best > -Infinity && Math.abs(n.top - best) < 4);
+      });
+    };
+    var queueNav = function () {
+      if (!navTicking) { navTicking = true; window.requestAnimationFrame(updateNav); }
+    };
+    window.addEventListener('scroll', queueNav, { passive: true });
+    window.addEventListener('resize', queueNav);
+    updateNav();
   }
 
   var toTop = document.querySelector('.to-top');
