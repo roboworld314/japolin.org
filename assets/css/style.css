@@ -1244,6 +1244,7 @@ button { font: inherit; color: inherit; }
 .chat { position: fixed; right: 20px; bottom: 72px; z-index: 20; font-size: 0.95rem; }
 
 .chat-launch {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 9px;
@@ -1267,6 +1268,46 @@ button { font: inherit; color: inherit; }
   .bot-eyes { animation: bot-blink 4.5s infinite; }
 }
 @keyframes bot-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+
+/* Small robot sitting on top of the chat button, waving hello now and then. */
+.bot-mascot {
+  position: absolute;
+  right: 22px;
+  bottom: calc(100% - 7px);
+  width: 40px;
+  height: 47px;
+  pointer-events: none;
+}
+.bot-mascot svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.bot-mascot .bot-eyes { transform-origin: 24px 18px; }
+.bot-wave { transform-box: view-box; transform-origin: 32.5px 33.5px; }
+.bot-hi {
+  position: absolute;
+  right: calc(100% + 4px);
+  top: 2px;
+  padding: 3px 9px;
+  border: 1px solid var(--ring);
+  border-radius: 10px 10px 2px 10px;
+  background: var(--paper);
+  color: var(--blue-deep);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px -6px rgba(23, 32, 46, 0.4);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bot-wave { animation: bot-wave 5s ease-in-out infinite; }
+  .chat-launch:hover .bot-wave { animation-duration: 1.2s; }
+}
+@keyframes bot-wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  66% { transform: rotate(22deg); }
+  72% { transform: rotate(-8deg); }
+  78% { transform: rotate(22deg); }
+  84% { transform: rotate(-8deg); }
+  90% { transform: rotate(0deg); }
+}
 .chat.is-open .chat-launch { display: none; }
 
 .chat-panel {
@@ -1388,7 +1429,8 @@ button { font: inherit; color: inherit; }
 @media (max-width: 640px) {
   .chat { right: 14px; bottom: 16px; }
   .chat-launch { height: 52px; width: 52px; padding: 0; justify-content: center; }
-  .chat-launch span { display: none; }
+  .chat-launch .launch-text { display: none; }
+  .bot-mascot { right: 7px; width: 34px; height: 40px; }
   .chat.is-open { left: 8px; right: 8px; bottom: 8px; }
   .chat-panel { width: auto; left: 0; right: 0; height: min(600px, calc(100vh - 24px)); }
 }
@@ -1397,5 +1439,6 @@ button { font: inherit; color: inherit; }
   .chat-launch { transition: none; }
   .chat-launch:hover { transform: none; }
   .msg-typing span { animation: none; }
-  .bot-eyes { animation: none; }
+  .bot-eyes,
+  .bot-wave { animation: none; }
 }

@@ -174,7 +174,29 @@
         <g class="bot-eyes"><circle cx="12.5" cy="16" r="2" fill="#7cc8ff"/><circle cx="19.5" cy="16" r="2" fill="#7cc8ff"/></g>
         <path d="M12.5 23.3q3.5 1.8 7 0" fill="none" stroke="#163c70" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
-      <span>Chat with me</span>
+      <span class="launch-text">Chat with me</span>
+      <span class="bot-mascot" aria-hidden="true">
+        <span class="bot-hi">Hi!</span>
+        <svg viewBox="0 0 48 56">
+          <line x1="24" y1="3" x2="24" y2="9" stroke="#1e4f91" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="24" cy="3" r="2.6" fill="#7cc8ff"/>
+          <path d="M15 34q-5 3-5 8" fill="none" stroke="#1e4f91" stroke-width="3" stroke-linecap="round"/>
+          <rect x="18" y="43" width="4.5" height="7" rx="2" fill="#1e4f91"/>
+          <rect x="25.5" y="43" width="4.5" height="7" rx="2" fill="#1e4f91"/>
+          <rect x="15" y="29" width="18" height="16" rx="5" fill="#fff" stroke="#1e4f91" stroke-width="1.6"/>
+          <circle cx="24" cy="37" r="2.4" fill="#3ddc97"/>
+          <rect x="9.5" y="8.5" width="29" height="21" rx="7.5" fill="#fff" stroke="#1e4f91" stroke-width="1.6"/>
+          <rect x="13.5" y="12.5" width="21" height="11.5" rx="5.75" fill="#163c70"/>
+          <g class="bot-eyes"><circle cx="19.5" cy="18.2" r="2.3" fill="#7cc8ff"/><circle cx="28.5" cy="18.2" r="2.3" fill="#7cc8ff"/></g>
+          <circle cx="13.6" cy="26" r="1.7" fill="#f4a3b8" opacity="0.8"/>
+          <circle cx="34.4" cy="26" r="1.7" fill="#f4a3b8" opacity="0.8"/>
+          <path d="M20.8 26.6q3.2 1.8 6.4 0" fill="none" stroke="#1e4f91" stroke-width="1.5" stroke-linecap="round"/>
+          <g class="bot-wave">
+            <path d="M32.5 33.5q6-1.5 9.5-8" fill="none" stroke="#1e4f91" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="43" cy="22.5" r="3.4" fill="#fff" stroke="#1e4f91" stroke-width="1.6"/>
+          </g>
+        </svg>
+      </span>
     </button>
     <section class="chat-panel" id="chat-panel" role="dialog" aria-label="Chat with Johora's assistant" hidden>
       <header class="chat-head">
