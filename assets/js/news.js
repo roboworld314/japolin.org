@@ -55,8 +55,8 @@ window.NEWS = [
     tag: "Service",
     title: "Reviewer for EdgeCAV'26 at ACM/IEEE SEC'26",
     cover: { title: "EdgeCAV'26", sub: "Santa Clara University, CA" },
-    text: "Reviewed papers for the ACM/IEEE International Workshop on Edge Computing for Connected and Autonomous Vehicles, held with ACM/IEEE SEC'26 at Santa Clara University on October 16, 2026.",
-    link: { href: "https://edgecav26.hotcrp.com", label: "EdgeCAV'26 on HotCRP" }
+    text: "Reviewed papers for the 2nd ACM/IEEE International Workshop on Edge Computing for Connected and Autonomous Vehicles, held with ACM/IEEE SEC'26 at Santa Clara University on October 16, 2026.",
+    link: { href: "https://sidilu.org/workshop/EdgeCAV_2026.html", label: "Visit the workshop website" }
   },
   {
     date: "May 2026",
