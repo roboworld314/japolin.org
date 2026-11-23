@@ -14,6 +14,7 @@ assets/js/chat.js                  the chat assistant (answers and message-to-em
 assets/js/drive.js                 the animated self-driving car strip at the bottom of the hero
 assets/img/profile.jpg             round profile photo
 assets/img/research/               figures cropped from the papers
+assets/img/logos/                  institution logos (W&M Computer Science, DIU, HEC Montréal)
 assets/news/                       photos and videos for news items
 assets/Johora_Akter_Polin_CV.pdf   CV linked from the page
 .nojekyll                          tells GitHub Pages to serve files as-is

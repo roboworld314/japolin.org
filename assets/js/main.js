@@ -329,7 +329,7 @@
   });
 
   // Experience entries and education cards rise in, in order, on first view.
-  [['.xp-list', '.xp'], ['.edu-grid', '.edu-card']].forEach(function (pair) {
+  [['.xp-list', '.xp'], ['.edu-track', '.ms']].forEach(function (pair) {
     var box = document.querySelector(pair[0]);
     if (!box || reduceMotion || !hasIO) return;
     box.querySelectorAll(pair[1]).forEach(function (n, i) { n.style.setProperty('--i', String(i)); });

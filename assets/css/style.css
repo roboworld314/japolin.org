@@ -1140,65 +1140,161 @@ button { font: inherit; color: inherit; }
 .xp-tags { margin-top: 12px; }
 .xp-tags li { font-size: 0.8rem; }
 
-/* Small monogram badges for each institution. */
+/* Institution logos on the experience cards. */
 .org-logo {
   flex: none;
   width: 46px;
   height: 46px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 0.92rem;
-  letter-spacing: 0.01em;
+  object-fit: contain;
+  border-radius: 8px;
 }
-.org-wm { background: #115740; color: #e5cb8f; }
-.org-diu { background: #1e4f91; color: #fff; }
-.org-hec { background: #0d2b56; color: #fff; }
 
 /* ----------------------------- education ----------------------------- */
 
-.edu-grid {
+/* A horizontal track: year above, logo on the line, details below. */
+.edu-track {
+  --node: 84px;
+  --year-h: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
-.edu-card {
+.edu-track::before,
+.edu-track::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--year-h) + 12px + var(--node) / 2 - 2px);
+  height: 4px;
+  border-radius: 2px;
+}
+/* The road so far, then a dashed stretch to the expected Ph.D. finish. */
+.edu-track::before {
+  left: 0;
+  right: 12.5%;
+  background: linear-gradient(90deg, var(--ring), var(--blue));
+  transform-origin: left center;
+}
+.edu-track::after {
+  left: 87.5%;
+  right: 0;
+  background: repeating-linear-gradient(90deg, var(--blue) 0 8px, transparent 8px 14px);
+}
+
+.ms { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.ms-year {
+  height: var(--year-h);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 15px;
+  background: var(--paper);
+  border: 1px solid var(--ring);
+  color: var(--blue-deep);
+  font-size: 0.86rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.ms-year em { font-style: normal; font-weight: 500; color: var(--slate); margin-left: 4px; }
+.ms-node {
   position: relative;
+  z-index: 1;
+  width: var(--node);
+  height: var(--node);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--ring);
+  box-shadow: 0 0 0 6px var(--haze), 0 10px 22px -12px rgba(23, 32, 46, 0.5);
+}
+.ms-node img { width: 62px; height: 62px; object-fit: contain; border-radius: 50%; }
+/* Square logos sit inside the circle rather than being clipped by it. */
+.ms-node img.is-square { width: 52px; height: 52px; border-radius: 6px; }
+.ms.is-current .ms-node { border-color: var(--blue); }
+.ms.is-current .ms-year { background: var(--blue); border-color: var(--blue); color: #fff; }
+.ms.is-current .ms-year em { color: #d3def0; }
+@media (prefers-reduced-motion: no-preference) {
+  .ms.is-current .ms-node::after {
+    content: "";
+    position: absolute;
+    inset: -9px;
+    border-radius: 50%;
+    border: 2px solid var(--blue);
+    opacity: 0;
+    animation: ms-pulse 2.6s ease-out infinite;
+  }
+}
+@keyframes ms-pulse { 0% { opacity: 0.55; transform: scale(0.92); } 100% { opacity: 0; transform: scale(1.25); } }
+
+.ms-card {
+  position: relative;
+  width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
-  padding: 20px;
+  margin-top: 22px;
+  padding: 20px 18px 18px;
   background: var(--paper);
   border: 1px solid var(--mist);
   border-radius: 12px;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
-.edu-card:hover { transform: translateY(-3px); border-color: var(--ring); box-shadow: 0 16px 32px -20px rgba(23, 32, 46, 0.45); }
-.edu-card.is-current { border-color: var(--blue); box-shadow: inset 0 3px 0 var(--blue); }
-.edu-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
-.edu-years { font-size: 0.85rem; font-weight: 700; color: var(--blue-deep); text-align: right; }
-.edu-years em { display: block; font-style: normal; font-weight: 500; font-size: 0.76rem; color: var(--slate); }
-.edu-degree { margin: 0; font-size: 1.06rem; font-weight: 700; line-height: 1.3; color: var(--ink); }
-.edu-school { margin: 0; font-size: 0.92rem; color: var(--blue-deep); }
-.edu-focus { margin: 6px 0 0; font-size: 0.9rem; color: var(--slate); font-style: italic; }
-.edu-advisor { margin: 0; font-size: 0.9rem; color: var(--slate); }
-.edu-gpa { margin: auto 0 0; padding-top: 14px; display: flex; align-items: baseline; gap: 6px; }
-.edu-gpa strong { font-family: var(--serif); font-size: 1.7rem; line-height: 1; color: var(--blue); }
-.edu-gpa span { font-size: 0.82rem; color: var(--slate); }
+/* A small pointer connects each card to its milestone. */
+.ms-card::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--paper);
+  border-left: 1px solid var(--mist);
+  border-top: 1px solid var(--mist);
+  transform: translateX(-50%) rotate(45deg);
+}
+.ms-card:hover { transform: translateY(-3px); border-color: var(--ring); box-shadow: 0 16px 32px -20px rgba(23, 32, 46, 0.45); }
+.ms.is-current .ms-card { border-color: var(--blue); box-shadow: 0 16px 34px -22px rgba(30, 79, 145, 0.6); }
+.ms.is-current .ms-card::before { border-color: var(--blue); }
+.edu-now {
+  padding: 1px 10px;
+  margin-bottom: 4px;
+  border-radius: 10px;
+  background: var(--green-tint);
+  color: var(--green);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+.edu-degree { margin: 0; font-size: 1.04rem; font-weight: 700; line-height: 1.3; color: var(--ink); }
+.edu-school { margin: 0; font-size: 0.9rem; color: var(--blue-deep); }
+.edu-focus { margin: 6px 0 0; font-size: 0.88rem; color: var(--slate); font-style: italic; }
+.edu-advisor { margin: 0; font-size: 0.88rem; color: var(--slate); }
+.edu-gpa { margin: auto 0 0; padding-top: 14px; display: flex; align-items: baseline; justify-content: center; gap: 6px; }
+.edu-gpa strong { font-family: var(--serif); font-size: 1.6rem; line-height: 1; color: var(--blue); }
+.edu-gpa span { font-size: 0.8rem; color: var(--slate); }
 
 /* Timeline entries and education cards rise in once, in order. */
 @media (prefers-reduced-motion: no-preference) {
   .will-reveal .xp,
-  .will-reveal .edu-card { opacity: 0; transform: translateY(16px); }
+  .will-reveal .ms { opacity: 0; transform: translateY(16px); }
   .will-reveal.is-revealed .xp,
-  .will-reveal.is-revealed .edu-card {
+  .will-reveal.is-revealed .ms {
     opacity: 1;
     transform: none;
     transition: opacity 0.5s ease, transform 0.5s ease;
     transition-delay: calc(var(--i, 0) * 90ms);
   }
+  .will-reveal.is-revealed .ms { transition-delay: calc(var(--i, 0) * 230ms + 200ms); }
+  .edu-track.will-reveal::before { transform: scaleX(0); }
+  .edu-track.will-reveal::after { opacity: 0; }
+  .edu-track.will-reveal.is-revealed::before { transform: scaleX(1); transition: transform 1.1s ease-out; }
+  .edu-track.will-reveal.is-revealed::after { opacity: 1; transition: opacity 0.4s ease 1.1s; }
 }
 
 /* ----------------------------- skills ---------------------------- */
@@ -1363,13 +1459,24 @@ button { font: inherit; color: inherit; }
 /* --------------------------- responsive -------------------------- */
 
 @media (max-width: 960px) {
-  .edu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .panel-grid { grid-template-columns: 1fr; }
   .project-tabs { overflow-x: auto; scrollbar-width: thin; }
   .project-tab { flex: 0 0 auto; }
 }
 
 @media (max-width: 880px) {
+  /* On narrow screens the track turns vertical: logo on a line at the left. */
+  .edu-track { grid-template-columns: 1fr; gap: 18px; --node: 64px; }
+  .edu-track::before { left: 30px; right: auto; top: 10px; bottom: 40px; width: 4px; height: auto; background: linear-gradient(var(--ring), var(--blue)); transform-origin: top center; }
+  .edu-track::after { left: 30px; right: auto; top: auto; bottom: 0; width: 4px; height: 40px; background: repeating-linear-gradient(180deg, var(--blue) 0 8px, transparent 8px 14px); }
+  .ms { display: grid; grid-template-columns: var(--node) minmax(0, 1fr); column-gap: 16px; align-items: start; text-align: left; }
+  .ms-node { grid-column: 1; grid-row: 1 / span 2; }
+  .ms-node img { width: 48px; height: 48px; }
+  .ms-node img.is-square { width: 38px; height: 38px; }
+  .ms-year { grid-column: 2; justify-self: start; margin: 0 0 8px; }
+  .ms-card { grid-column: 2; margin-top: 0; align-items: flex-start; }
+  .ms-card::before { display: none; }
+  .edu-gpa { justify-content: flex-start; }
   .hero-grid { grid-template-columns: 1fr; gap: 28px; }
   .hero-aside { display: contents; }
   .portrait-wrap { order: -1; justify-self: center; padding: 26px; }
@@ -1399,7 +1506,6 @@ button { font: inherit; color: inherit; }
   .xp-head { align-items: flex-start; }
   .xp-type { display: none; }
   .org-logo { width: 40px; height: 40px; font-size: 0.84rem; }
-  .edu-grid { grid-template-columns: 1fr; }
   body { font-size: 16px; }
   .header-inner { flex-direction: column; align-items: flex-start; gap: 2px; padding-top: 10px; padding-bottom: 6px; }
   .site-nav { gap: 18px; overflow-x: auto; max-width: 100%; padding-bottom: 2px; }
@@ -1453,9 +1559,9 @@ button { font: inherit; color: inherit; }
   .hero-logo::after { transition: none; }
   .chart-fill { transition: none; }
   .xp-card,
-  .edu-card { transition: none; }
+  .ms-card { transition: none; }
   .xp-card:hover,
-  .edu-card:hover { transform: none; }
+  .ms-card:hover { transform: none; }
   .news-card,
   .news-media img,
   .news-arrow,
