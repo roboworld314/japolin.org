@@ -200,7 +200,20 @@
     </button>
     <section class="chat-panel" id="chat-panel" role="dialog" aria-label="Chat with Johora's assistant" hidden>
       <header class="chat-head">
-        <img class="chat-avatar" src="assets/img/profile.jpg" alt="" onerror="this.hidden=true">
+        <span class="chat-avatar" aria-hidden="true">
+          <svg viewBox="0 0 48 40">
+            <line x1="24" y1="3.5" x2="24" y2="9" stroke="#1e4f91" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="3.5" r="2.6" fill="#7cc8ff"/>
+            <rect x="5" y="17" width="4" height="9" rx="2" fill="#1e4f91"/>
+            <rect x="39" y="17" width="4" height="9" rx="2" fill="#1e4f91"/>
+            <rect x="8.5" y="9" width="31" height="25" rx="8.5" fill="#fff" stroke="#1e4f91" stroke-width="1.6"/>
+            <rect x="12.5" y="13.5" width="23" height="12.5" rx="6.25" fill="#163c70"/>
+            <g class="bot-eyes"><circle cx="19" cy="19.8" r="2.5" fill="#7cc8ff"/><circle cx="29" cy="19.8" r="2.5" fill="#7cc8ff"/></g>
+            <circle cx="12.8" cy="28.6" r="1.8" fill="#f4a3b8" opacity="0.8"/>
+            <circle cx="35.2" cy="28.6" r="1.8" fill="#f4a3b8" opacity="0.8"/>
+            <path d="M20.5 29.2q3.5 2 7 0" fill="none" stroke="#1e4f91" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
         <div>
           <p class="chat-title">Johora's assistant</p>
           <p class="chat-sub">Automated replies from this site. Messages go to her email.</p>
