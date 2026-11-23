@@ -1031,7 +1031,7 @@ button { font: inherit; color: inherit; }
 .to-top {
   position: fixed;
   right: 20px;
-  bottom: 84px;
+  bottom: 136px;
   z-index: 9;
   width: 44px;
   height: 44px;
@@ -1164,7 +1164,7 @@ button { font: inherit; color: inherit; }
   .lightbox-inner { padding: 44px 14px 14px; }
   .skill-grid { grid-template-columns: 1fr; }
   .footer-links { flex-direction: column; gap: 8px; }
-  .to-top { right: 14px; bottom: 76px; }
+  .to-top { right: 16px; bottom: 76px; }
   .interest-grid { grid-template-columns: 1fr; gap: 6px; }
   .interest-grid li { padding: 7px 12px; }
   .drive-canvas { height: 136px; }
@@ -1219,7 +1219,8 @@ button { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 
-.chat { position: fixed; right: 20px; bottom: var(--chat-bottom, 20px); z-index: 20; font-size: 0.95rem; }
+/* Fixed in one place, high enough to clear the drive strip's caption bar. */
+.chat { position: fixed; right: 20px; bottom: 72px; z-index: 20; font-size: 0.95rem; }
 
 .chat-launch {
   display: flex;
@@ -1239,9 +1240,12 @@ button { font: inherit; color: inherit; }
 }
 .chat-launch:hover { background: var(--green); transform: translateY(-2px); }
 .chat-launch:focus-visible { outline: 2px solid var(--blue-deep); outline-offset: 3px; }
-.chat-launch svg { width: 22px; height: 22px; fill: currentColor; }
-.chat-launch svg circle { fill: var(--blue); }
-.chat-launch:hover svg circle { fill: var(--green); }
+.chat-launch .bot-face { width: 30px; height: 30px; flex: none; overflow: visible; }
+.bot-eyes { transform-origin: 16px 16px; }
+@media (prefers-reduced-motion: no-preference) {
+  .bot-eyes { animation: bot-blink 4.5s infinite; }
+}
+@keyframes bot-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
 .chat.is-open .chat-launch { display: none; }
 
 .chat-panel {
@@ -1361,8 +1365,8 @@ button { font: inherit; color: inherit; }
 .chat-send svg { width: 18px; height: 18px; fill: currentColor; }
 
 @media (max-width: 640px) {
-  .chat { right: 14px; }
-  .chat-launch { height: 48px; padding: 0 14px; }
+  .chat { right: 14px; bottom: 16px; }
+  .chat-launch { height: 52px; width: 52px; padding: 0; justify-content: center; }
   .chat-launch span { display: none; }
   .chat.is-open { left: 8px; right: 8px; bottom: 8px; }
   .chat-panel { width: auto; left: 0; right: 0; height: min(600px, calc(100vh - 24px)); }
@@ -1372,4 +1376,5 @@ button { font: inherit; color: inherit; }
   .chat-launch { transition: none; }
   .chat-launch:hover { transform: none; }
   .msg-typing span { animation: none; }
+  .bot-eyes { animation: none; }
 }

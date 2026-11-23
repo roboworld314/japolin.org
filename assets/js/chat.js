@@ -164,7 +164,16 @@
   root.className = 'chat';
   root.innerHTML = `
     <button class="chat-launch" type="button" aria-expanded="false" aria-controls="chat-panel">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r="1.2"/><circle cx="12" cy="11" r="1.2"/><circle cx="16" cy="11" r="1.2"/></svg>
+      <svg class="bot-face" viewBox="0 0 32 32" aria-hidden="true">
+        <line x1="16" y1="3.5" x2="16" y2="8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="3.2" r="2.1" fill="#7cc8ff"/>
+        <rect x="2" y="14" width="3" height="7" rx="1.5" fill="#fff"/>
+        <rect x="27" y="14" width="3" height="7" rx="1.5" fill="#fff"/>
+        <rect x="5" y="8" width="22" height="19" rx="6" fill="#fff"/>
+        <rect x="8" y="11.5" width="16" height="9" rx="4.5" fill="#163c70"/>
+        <g class="bot-eyes"><circle cx="12.5" cy="16" r="2" fill="#7cc8ff"/><circle cx="19.5" cy="16" r="2" fill="#7cc8ff"/></g>
+        <path d="M12.5 23.3q3.5 1.8 7 0" fill="none" stroke="#163c70" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
       <span>Chat with me</span>
     </button>
     <section class="chat-panel" id="chat-panel" role="dialog" aria-label="Chat with Johora's assistant" hidden>
@@ -385,25 +394,6 @@
     root.classList.remove('is-open');
     launch.focus();
   }
-
-  // Float above the drive strip's caption bar while it is on screen, so the
-  // button never covers the Perceive / Reason / Act text or the pause button.
-  const hud = document.querySelector('.drive-hud');
-  let placing = false;
-  function place() {
-    placing = false;
-    let lift = 20;
-    if (hud) {
-      const r = hud.getBoundingClientRect();
-      const vh = window.innerHeight;
-      if (r.top < vh && r.bottom > vh - 90) lift = Math.max(20, vh - r.top + 14);
-    }
-    root.style.setProperty('--chat-bottom', `${Math.round(lift)}px`);
-  }
-  const queuePlace = () => { if (!placing) { placing = true; window.requestAnimationFrame(place); } };
-  window.addEventListener('scroll', queuePlace, { passive: true });
-  window.addEventListener('resize', queuePlace);
-  place();
 
   launch.addEventListener('click', () => (panel.hidden ? open() : close()));
   closeBtn.addEventListener('click', close);
