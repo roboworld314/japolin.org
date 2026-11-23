@@ -1138,6 +1138,7 @@ button { font: inherit; color: inherit; }
 .xp-points li { padding: 2px 0; }
 .xp-points li::marker { color: var(--blue); }
 .xp-tags { margin-top: 12px; }
+.xp-link { margin: 10px 0 0; font-size: 0.93rem; font-weight: 600; }
 .xp-tags li { font-size: 0.8rem; }
 
 /* Institution logos on the experience cards. */
