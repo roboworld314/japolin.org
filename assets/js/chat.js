@@ -115,7 +115,7 @@
       id: 'awards',
       words: ['award', 'awards', 'grant', 'honor', 'service', 'reviewer', 'review', 'chair', 'volunteer'],
       chips: ['Publications', 'Send a message'],
-      answer: () => `She received Student Travel Grants for IEEE MOST 2026 and ACM/IEEE SEC 2025. She serves as session chair for the EdgeCAV'26 workshop and as a reviewer for ACM/IEEE SEC'25 and SEC'26. ${link('#service', 'See service and awards')}.`,
+      answer: () => `She received Student Travel Grants for IEEE MOST 2026 and ACM/IEEE SEC 2025. She was session chair and reviewer for the EdgeCAV'25 workshop, reviewer for EdgeCAV'26, and a reviewer for ACM/IEEE SEC'25 and SEC'26. ${link('#service', 'See service and awards')}.`,
     },
     {
       id: 'cv',

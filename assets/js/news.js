@@ -51,11 +51,12 @@ window.NEWS = [
     link: { href: "https://roboworld314.github.io/VC_Lab/", label: "Visit the course website" }
   },
   {
-    date: "2026",
+    date: "Oct 2026",
     tag: "Service",
-    title: "Session chair for EdgeCAV'26 at SEC'26",
-    cover: { title: "EdgeCAV'26", sub: "Workshop at ACM/IEEE SEC'26" },
-    text: "Chairing a session at the 1st International Workshop on Edge Computing for Connected and Autonomous Vehicles, and reviewing for SEC'26."
+    title: "Reviewer for EdgeCAV'26 at ACM/IEEE SEC'26",
+    cover: { title: "EdgeCAV'26", sub: "Santa Clara University, CA" },
+    text: "Reviewed papers for the ACM/IEEE International Workshop on Edge Computing for Connected and Autonomous Vehicles, held with ACM/IEEE SEC'26 at Santa Clara University on October 16, 2026.",
+    link: { href: "https://edgecav26.hotcrp.com", label: "EdgeCAV'26 on HotCRP" }
   },
   {
     date: "May 2026",
