@@ -312,6 +312,35 @@
     });
   });
 
+  /* ------------------------- experience filters ------------------------- */
+
+  var xpChips = document.querySelectorAll('.xp-filters .chip');
+  var xpItems = document.querySelectorAll('.xp-list .xp');
+  xpChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var f = chip.getAttribute('data-xp');
+      xpChips.forEach(function (c) {
+        var on = c === chip;
+        c.classList.toggle('is-active', on);
+        c.setAttribute('aria-pressed', String(on));
+      });
+      xpItems.forEach(function (li) { li.hidden = f !== 'all' && li.getAttribute('data-type') !== f; });
+    });
+  });
+
+  // Experience entries and education cards rise in, in order, on first view.
+  [['.xp-list', '.xp'], ['.edu-grid', '.edu-card']].forEach(function (pair) {
+    var box = document.querySelector(pair[0]);
+    if (!box || reduceMotion || !hasIO) return;
+    box.querySelectorAll(pair[1]).forEach(function (n, i) { n.style.setProperty('--i', String(i)); });
+    box.classList.add('will-reveal');
+    new IntersectionObserver(function (entries, obs) {
+      if (!entries[0].isIntersecting) return;
+      box.classList.add('is-revealed');
+      obs.disconnect();
+    }, { rootMargin: '0px 0px -10% 0px' }).observe(box);
+  });
+
   /* ------------------------- publication filters ------------------------ */
 
   var chips = document.querySelectorAll('.pub-filters .chip');

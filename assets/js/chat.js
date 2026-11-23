@@ -91,14 +91,14 @@
     },
     {
       id: 'teaching',
-      words: ['teach', 'teaching', 'course', 'class', 'instructor', 'lecturer', 'ta ', 'assistant', 'students', 'csci 100', 'coll'],
+      words: ['teach', 'teaching', 'course', 'class', 'instructor', 'lecturer', 'ta ', 'assistant', 'students', 'csci 100', 'coll', 'experience', 'job', 'research assistant', 'worked'],
       chips: ['Education', 'Send a message'],
-      answer: () => `In Fall 2026 she is <strong>Assistant Instructor</strong> for COLL/CSCI 100: Physical Intelligence: Robots at William &amp; Mary, where students program 5G-connected robotic vehicles on a smart-city roadway. She was a Graduate Teaching Assistant at W&amp;M (2024&ndash;25), and before that a Senior Lecturer and Lecturer at Daffodil International University (2021&ndash;24). ${link('#teaching', 'See teaching')}.`,
+      answer: () => `She has been a <strong>Graduate Research Assistant</strong> at William &amp; Mary since Fall 2025, advised by Dr. Sidi Lu. In Fall 2026 she is also <strong>Assistant Instructor</strong> for COLL/CSCI 100: Physical Intelligence: Robots at William &amp; Mary, where students program 5G-connected robotic vehicles on a smart-city roadway. She was a Graduate Teaching Assistant at W&amp;M (2024&ndash;25), and before that a Senior Lecturer and Lecturer at Daffodil International University (2021&ndash;24). ${link('#experience', 'See her experience')}.`,
     },
     {
       id: 'education',
       words: ['education', 'degree', 'phd', 'ph.d', 'master', 'msc', 'bachelor', 'bsc', 'university', 'gpa', 'advisor', 'graduate', 'graduation'],
-      chips: ['Research', 'Teaching'],
+      chips: ['Research', 'Experience'],
       answer: () => `<ul>
           <li><strong>Ph.D. in Computer Science</strong>, William &amp; Mary (2024&ndash;2029 expected), advised by Dr. Sidi Lu. GPA 3.95/4.00.</li>
           <li><strong>M.Sc. in CSE</strong>, Daffodil International University (2021&ndash;23). GPA 4.00/4.00.</li>
@@ -138,11 +138,11 @@
   ];
 
   const GREETING = `Hi! I'm Johora's assistant. I can tell you about her research, projects, publications, and teaching, or pass a message to her by email.`;
-  const START_CHIPS = ['Research', 'Projects', 'Publications', 'Teaching', 'Send a message'];
+  const START_CHIPS = ['Research', 'Projects', 'Publications', 'Experience', 'Send a message'];
   const FALLBACK = `I'm not sure about that one. I can answer questions about her research, projects, publications, teaching, education, and skills. Or leave a message and Johora will reply by email.`;
 
   const CHIP_TOPIC = {
-    Research: 'research', Projects: 'projects', Publications: 'publications', Teaching: 'teaching',
+    Research: 'research', Projects: 'projects', Publications: 'publications', Teaching: 'teaching', Experience: 'teaching',
     Education: 'education', CV: 'cv', BlindZoneEye: 'blindzone', SenseGuard: 'senseguard',
     VibraBox: 'vibrabox', 'Log What Matters': 'logging',
   };

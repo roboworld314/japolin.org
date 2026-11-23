@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=33">
+  <link rel="stylesheet" href="assets/css/style.css?v=38">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,7 +30,7 @@
         <a href="#news" data-label="News">News</a>
         <a href="#research" data-label="Research">Research</a>
         <a href="#publications" data-label="Publications">Publications</a>
-        <a href="#teaching" data-label="Teaching">Teaching</a>
+        <a href="#experience" data-label="Experience">Experience</a>
         <a href="#education" data-label="Education">Education</a>
         <a href="#skills" data-label="Skills">Skills</a>
         <a href="#service" data-label="Service">Service</a>
@@ -527,83 +527,166 @@
     </section>
 
     <!-- ===================== TEACHING & EDUCATION ===================== -->
-    <section class="section" id="teaching" aria-labelledby="teaching-title">
-      <div class="wrap cols-teach">
-        <div>
-          <h2 class="section-title" id="teaching-title">Teaching</h2>
-          <ol class="timeline">
-            <li>
-              <p class="tl-when">Fall 2026</p>
-              <h3 class="tl-title">Assistant Instructor</h3>
-              <p class="tl-org">William &amp; Mary</p>
-              <p>Assisted Dr. Sidi Lu in teaching <a href="https://roboworld314.github.io/VC_Lab/">COLL/CSCI 100: Physical Intelligence: Robots</a>, where students program 5G-connected robotic vehicles on a reconfigurable smart-city roadway.</p>
-              <ul class="tl-points">
-                <li>Supervised milestones in CARLA scenario design, camera and LiDAR data collection with YOLO, safety-aware robot responses, and digital-twin HD mapping</li>
-                <li>Gave guest lectures with live robot demonstrations</li>
-                <li>Built and maintain the course website</li>
-              </ul>
-            </li>
-            <li>
-              <p class="tl-when">Fall 2024 &ndash; Spring 2025</p>
-              <h3 class="tl-title">Graduate Teaching Assistant</h3>
-              <p class="tl-org">William &amp; Mary</p>
-              <p>Ran programming lab sessions and advised students on coursework.</p>
-            </li>
-            <li>
-              <p class="tl-when">July 2023 &ndash; August 2024</p>
-              <h3 class="tl-title">Senior Lecturer</h3>
-              <p class="tl-org">Daffodil International University</p>
-              <p>Taught theory and laboratory courses in Computer Science and Engineering and worked with students on research projects.</p>
-            </li>
-            <li>
-              <p class="tl-when">January 2021 &ndash; June 2023</p>
-              <h3 class="tl-title">Lecturer</h3>
-              <p class="tl-org">Daffodil International University</p>
-              <p>Taught theory and lab sessions; evaluated, advised, and tracked students.</p>
-            </li>
-            <li>
-              <p class="tl-when">2021</p>
-              <h3 class="tl-title">Judge and Mentor</h3>
-              <p class="tl-org">Social Business Creation Competition, HEC Montr&eacute;al</p>
-              <p>Evaluated student social-business proposals and mentored teams on business models and scale-up.</p>
-            </li>
-          </ol>
+    <!-- ========================= EXPERIENCE ========================= -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="experience-title">Experience</h2>
+          <p class="section-note">Research, teaching, and mentoring</p>
         </div>
+        <div class="xp-filters" role="group" aria-label="Filter experience">
+          <button class="chip is-active" type="button" data-xp="all" aria-pressed="true">All <span>6</span></button>
+          <button class="chip" type="button" data-xp="research" aria-pressed="false">Research <span>1</span></button>
+          <button class="chip" type="button" data-xp="teaching" aria-pressed="false">Teaching <span>4</span></button>
+          <button class="chip" type="button" data-xp="mentoring" aria-pressed="false">Mentoring <span>1</span></button>
+        </div>
+        <ol class="xp-list">
+            <li class="xp" data-type="teaching">
+              <p class="xp-when">Fall 2026 <span class="xp-now">Current</span></p>
+              <span class="xp-node xp-teaching"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9L12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v4.5c1.5 1.6 3.5 2.4 5.5 2.4s4-.8 5.5-2.4V11M21.5 9v5"/></svg></span>
+              <article class="xp-card">
+                <header class="xp-head">
+                  <span class="org-logo org-wm" aria-hidden="true">W&amp;M</span>
+                  <div class="xp-heading">
+                    <h3 class="xp-title">Assistant Instructor</h3>
+                    <p class="xp-org">William &amp; Mary, with Dr. Sidi Lu</p>
+                  </div>
+                  <span class="xp-type xp-type-teaching">Teaching</span>
+                </header>
+                <p class="xp-desc">Co-teaching <a href="https://roboworld314.github.io/VC_Lab/">COLL/CSCI 100: Physical Intelligence: Robots</a>, where students program 5G-connected robotic vehicles on a reconfigurable smart-city roadway.</p>
+                <ul class="xp-points">
+                  <li>Supervise project milestones in CARLA scenario design, camera and LiDAR data collection with YOLO, safety-aware robot responses, and digital-twin HD mapping</li>
+                  <li>Give guest lectures with live robot demonstrations</li>
+                  <li>Built and maintain the course website</li>
+                </ul>
+              </article>
+            </li>
+            <li class="xp" data-type="research">
+              <p class="xp-when">Fall 2025 &ndash; Present <span class="xp-now">Current</span></p>
+              <span class="xp-node xp-research"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6.2L4.8 18.4A1.7 1.7 0 0 0 6.3 21h11.4a1.7 1.7 0 0 0 1.5-2.6L14 9.2V3"/><path d="M7.3 14.5h9.4"/></svg></span>
+              <article class="xp-card">
+                <header class="xp-head">
+                  <span class="org-logo org-wm" aria-hidden="true">W&amp;M</span>
+                  <div class="xp-heading">
+                    <h3 class="xp-title">Graduate Research Assistant</h3>
+                    <p class="xp-org">William &amp; Mary, advised by Dr. Sidi Lu</p>
+                  </div>
+                  <span class="xp-type xp-type-research">Research</span>
+                </header>
+                <p class="xp-desc">Research on perception, agentic AI, and safety for autonomous vehicles and robots with academic and industry partners.</p>
+                <ul class="xp-points">
+                  <li>Lead the BlindZoneEye, SenseGuard, and VibraBox projects, now under review</li>
+                  <li>Published at IEEE MOST 2026 and ACM/IEEE SEC 2025</li>
+                  <li>Validate systems in CARLA with ROS&nbsp;2 and on physical robotic vehicles: a Jetson Orin NX testbed, a roadside unit, and IEEE 802.11p V2I links</li>
+                </ul>
+                <ul class="tags xp-tags"><li>Camera-LiDAR perception</li><li>VLM agents</li><li>Reinforcement learning</li><li>ROS 2</li><li>CARLA</li><li>Jetson Orin</li></ul>
+              </article>
+            </li>
+            <li class="xp" data-type="teaching">
+              <p class="xp-when">Fall 2024 &ndash; Spring 2025</p>
+              <span class="xp-node xp-teaching"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9L12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v4.5c1.5 1.6 3.5 2.4 5.5 2.4s4-.8 5.5-2.4V11M21.5 9v5"/></svg></span>
+              <article class="xp-card">
+                <header class="xp-head">
+                  <span class="org-logo org-wm" aria-hidden="true">W&amp;M</span>
+                  <div class="xp-heading">
+                    <h3 class="xp-title">Graduate Teaching Assistant</h3>
+                    <p class="xp-org">William &amp; Mary</p>
+                  </div>
+                  <span class="xp-type xp-type-teaching">Teaching</span>
+                </header>
+                <p class="xp-desc">Ran programming lab sessions and advised students on coursework.</p>
+              </article>
+            </li>
+            <li class="xp" data-type="teaching">
+              <p class="xp-when">July 2023 &ndash; August 2024</p>
+              <span class="xp-node xp-teaching"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9L12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v4.5c1.5 1.6 3.5 2.4 5.5 2.4s4-.8 5.5-2.4V11M21.5 9v5"/></svg></span>
+              <article class="xp-card">
+                <header class="xp-head">
+                  <span class="org-logo org-diu" aria-hidden="true">DIU</span>
+                  <div class="xp-heading">
+                    <h3 class="xp-title">Senior Lecturer</h3>
+                    <p class="xp-org">Daffodil International University, Dhaka</p>
+                  </div>
+                  <span class="xp-type xp-type-teaching">Teaching</span>
+                </header>
+                <p class="xp-desc">Taught theory and laboratory courses in Computer Science and Engineering and worked with students on research projects.</p>
+              </article>
+            </li>
+            <li class="xp" data-type="teaching">
+              <p class="xp-when">January 2021 &ndash; June 2023</p>
+              <span class="xp-node xp-teaching"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9L12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v4.5c1.5 1.6 3.5 2.4 5.5 2.4s4-.8 5.5-2.4V11M21.5 9v5"/></svg></span>
+              <article class="xp-card">
+                <header class="xp-head">
+                  <span class="org-logo org-diu" aria-hidden="true">DIU</span>
+                  <div class="xp-heading">
+                    <h3 class="xp-title">Lecturer</h3>
+                    <p class="xp-org">Daffodil International University, Dhaka</p>
+                  </div>
+                  <span class="xp-type xp-type-teaching">Teaching</span>
+                </header>
+                <p class="xp-desc">Taught theory and lab sessions, and evaluated, advised, and tracked students.</p>
+              </article>
+            </li>
+            <li class="xp" data-type="mentoring">
+              <p class="xp-when">2021</p>
+              <span class="xp-node xp-mentoring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></svg></span>
+              <article class="xp-card">
+                <header class="xp-head">
+                  <span class="org-logo org-hec" aria-hidden="true">HEC</span>
+                  <div class="xp-heading">
+                    <h3 class="xp-title">Judge and Mentor</h3>
+                    <p class="xp-org">Social Business Creation Competition, HEC Montr&eacute;al</p>
+                  </div>
+                  <span class="xp-type xp-type-mentoring">Mentoring</span>
+                </header>
+                <p class="xp-desc">Evaluated student social-business proposals and mentored teams on business models and scale-up.</p>
+              </article>
+            </li>
+        </ol>
+      </div>
+    </section>
 
-        <div id="education">
+    <!-- ========================== EDUCATION ========================== -->
+    <section class="section section-tint" id="education" aria-labelledby="education-title">
+      <div class="wrap">
+        <div class="section-head">
           <h2 class="section-title" id="education-title">Education</h2>
-          <ol class="timeline">
-            <li>
-              <p class="tl-when">2024 &ndash; 2029 (expected)</p>
-              <h3 class="tl-title">Ph.D. in Computer Science</h3>
-              <p class="tl-org">William &amp; Mary, Williamsburg, VA</p>
-              <p>Edge and vehicle computing for autonomous driving</p>
-              <p class="tl-meta"><span>Advisor: Dr. Sidi Lu</span><span>GPA 3.95/4.00</span></p>
-            </li>
-            <li>
-              <p class="tl-when">2021 &ndash; 2023</p>
-              <h3 class="tl-title">M.Sc. in Computer Science and Engineering</h3>
-              <p class="tl-org">Daffodil International University, Dhaka</p>
-              <p class="tl-meta"><span>Advisor: Dr. Md. Tarek Habib</span><span>GPA 4.00/4.00</span></p>
-            </li>
-            <li>
-              <p class="tl-when">2015 &ndash; 2020</p>
-              <h3 class="tl-title">B.Sc. in Computer Science and Engineering</h3>
-              <p class="tl-org">Daffodil International University, Dhaka</p>
-              <p class="tl-meta"><span>GPA 3.90/4.00</span></p>
-            </li>
-            <li>
-              <p class="tl-when">2020</p>
-              <h3 class="tl-title">Certificate course in Social Business</h3>
-              <p class="tl-org">HEC Montr&eacute;al, Canada</p>
-            </li>
-          </ol>
+          <p class="section-note">Degrees and certificates</p>
+        </div>
+        <div class="edu-grid">
+          <article class="edu-card is-current">
+            <div class="edu-top"><span class="org-logo org-wm" aria-hidden="true">W&amp;M</span><span class="edu-years">2024 &ndash; 2029 <em>expected</em></span></div>
+            <h3 class="edu-degree">Ph.D. in Computer Science</h3>
+            <p class="edu-school">William &amp; Mary, Williamsburg, VA</p>
+            <p class="edu-focus">Edge and vehicle computing for autonomous driving</p>
+            <p class="edu-advisor">Advisor: Dr. Sidi Lu</p>
+            <p class="edu-gpa"><strong>3.95</strong><span>/ 4.00 GPA</span></p>
+          </article>
+          <article class="edu-card">
+            <div class="edu-top"><span class="org-logo org-diu" aria-hidden="true">DIU</span><span class="edu-years">2021 &ndash; 2023</span></div>
+            <h3 class="edu-degree">M.Sc. in Computer Science and Engineering</h3>
+            <p class="edu-school">Daffodil International University, Dhaka</p>
+            <p class="edu-focus">Machine learning and deep learning</p>
+            <p class="edu-advisor">Advisor: Dr. Md. Tarek Habib</p>
+            <p class="edu-gpa"><strong>4.00</strong><span>/ 4.00 GPA</span></p>
+          </article>
+          <article class="edu-card">
+            <div class="edu-top"><span class="org-logo org-diu" aria-hidden="true">DIU</span><span class="edu-years">2015 &ndash; 2020</span></div>
+            <h3 class="edu-degree">B.Sc. in Computer Science and Engineering</h3>
+            <p class="edu-school">Daffodil International University, Dhaka</p>
+            <p class="edu-gpa"><strong>3.90</strong><span>/ 4.00 GPA</span></p>
+          </article>
+          <article class="edu-card">
+            <div class="edu-top"><span class="org-logo org-hec" aria-hidden="true">HEC</span><span class="edu-years">2020</span></div>
+            <h3 class="edu-degree">Certificate in Social Business</h3>
+            <p class="edu-school">HEC Montr&eacute;al, Canada</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- =========================== SKILLS =========================== -->
-    <section class="section section-tint" id="skills" aria-labelledby="skills-title">
+    <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="wrap">
         <div class="section-head">
           <h2 class="section-title" id="skills-title">Technical skills</h2>
@@ -653,7 +736,7 @@
     </section>
 
     <!-- ====================== SERVICE & AWARDS ====================== -->
-    <section class="section" id="service" aria-labelledby="service-title">
+    <section class="section section-tint" id="service" aria-labelledby="service-title">
       <div class="wrap two-col">
         <div>
           <h2 class="section-title" id="service-title">Service</h2>
@@ -718,8 +801,8 @@
   </dialog>
 
   <script src="assets/js/news.js?v=35"></script>
-  <script src="assets/js/main.js?v=35"></script>
+  <script src="assets/js/main.js?v=36"></script>
   <script src="assets/js/drive.js?v=14"></script>
-  <script src="assets/js/chat.js?v=28"></script>
+  <script src="assets/js/chat.js?v=36"></script>
 </body>
 </html>

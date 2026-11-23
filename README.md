@@ -9,7 +9,7 @@ A single-page static site (plain HTML, CSS, and JavaScript, no build step), host
 index.html                         page content
 assets/css/style.css               styles
 assets/js/news.js                  the Recent news list (edit this to add news)
-assets/js/main.js                  interactions: news, project tabs, charts, figure viewer
+assets/js/main.js                  interactions: news slider, project tabs, charts, experience filters, figure viewer
 assets/js/chat.js                  the chat assistant (answers and message-to-email; Web3Forms key at the top)
 assets/js/drive.js                 the animated self-driving car strip at the bottom of the hero
 assets/img/profile.jpg             round profile photo
