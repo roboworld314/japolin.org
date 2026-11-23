@@ -106,6 +106,7 @@
         im.loading = 'lazy';
         im.decoding = 'async';
         if (item.fit === 'contain') box.classList.add('is-contain');
+        if (item.position) im.style.objectPosition = item.position === 'top' ? 'center top' : item.position;
         if (item.frame === 'browser') {
           box.classList.add('is-browser');
           var bar = el('span', 'browser-bar');
@@ -155,6 +156,7 @@
       var hasMedia = !!(item.image || item.video);
       var top = el('div', 'news-top');
       if (item.frame === 'browser') top.classList.add('has-bar');
+      if (item.position === 'top') top.classList.add('badge-bottom');
       top.appendChild(hasMedia ? media(item) : cover(item));
       top.appendChild(el('span', 'news-date', item.date));
       art.appendChild(top);

@@ -538,6 +538,8 @@ button { font: inherit; color: inherit; }
 
 .news-top { position: relative; }
 .news-top.has-bar .news-date { top: 36px; }
+/* When the top of a flyer is the point of the picture, the date moves down. */
+.news-top.badge-bottom .news-date { top: auto; bottom: 12px; }
 .news-date {
   position: absolute;
   left: 12px;

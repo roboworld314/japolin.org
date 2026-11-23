@@ -13,6 +13,8 @@
      poster   still image shown before a video file plays        (optional)
      alt      short description of the photo or video            (optional)
      caption  text under the enlarged photo (defaults to title)   (optional)
+     position "top" keeps the top of a tall image (a flyer or poster)
+              in view on the card; the full image opens on click   (optional)
      fit      "contain" for diagrams, so nothing is cropped;
               photos fill the frame by default                   (optional)
      frame    "browser" shows a website screenshot inside a
@@ -54,7 +56,10 @@ window.NEWS = [
     date: "Oct 2026",
     tag: "Service",
     title: "Reviewer for EdgeCAV'26 at ACM/IEEE SEC'26",
-    cover: { title: "EdgeCAV'26", sub: "Santa Clara University, CA" },
+    image: "assets/news/2026-10-edgecav26-flyer.jpg",
+    position: "top",
+    alt: "EdgeCAV 2026 call-for-papers flyer: ACM/IEEE International Workshop on Edge Computing for Connected and Autonomous Vehicles, Santa Clara University, October 16, 2026",
+    caption: "EdgeCAV 2026 call for papers, ACM/IEEE SEC'26, Santa Clara University",
     text: "Reviewed papers for the 2nd ACM/IEEE International Workshop on Edge Computing for Connected and Autonomous Vehicles, held with ACM/IEEE SEC'26 at Santa Clara University on October 16, 2026.",
     link: { href: "https://sidilu.org/workshop/EdgeCAV_2026.html", label: "Visit the workshop website" }
   },
