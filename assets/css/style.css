@@ -188,6 +188,19 @@ button { font: inherit; color: inherit; }
   gap: 22px;
 }
 
+/* "Connect with me" line and the contact logos sit on one row. */
+.hero-connect { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; }
+.connect-label { margin: 0; font-size: 1rem; font-weight: 600; color: var(--blue-deep); }
+.connect-label::after {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  margin-left: 14px;
+  vertical-align: middle;
+  background: var(--ring);
+}
+
 /* Email, Google Scholar, and LinkedIn as their own logos; name shows on hover. */
 .hero-logo {
   position: relative;
