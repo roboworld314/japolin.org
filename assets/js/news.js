@@ -46,7 +46,7 @@ window.NEWS = [
     date: "Fall 2026",
     tag: "Teaching",
     title: "Assistant instructor\nCOLL/CSCI 100: Physical Intelligence: Robots",
-    text: "Helping students program 5G-connected robotic vehicles on a smart-city roadway. I built and maintain the course website.",
+    text: "Helping students program 5G-connected robotic vehicles on a smart-city roadway. I also designed the course website, which brings together its platform guides, lab experiments, and robot demos.",
     image: "assets/news/2026-fall-coll100-class.jpg",
     fit: "contain",
     background: "#f4f3ee",
