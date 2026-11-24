@@ -247,13 +247,43 @@
   /* ------------------------------- charts ------------------------------- */
 
   var charts = document.querySelectorAll('.chart');
+
+  // Numbers next to the bars count up as the bars grow.
+  function countUp(chart) {
+    chart.querySelectorAll('.chart-value').forEach(function (el) {
+      var target = el.getAttribute('data-v') || el.textContent.trim();
+      el.setAttribute('data-v', target);
+      var num = parseFloat(target);
+      if (isNaN(num) || reduceMotion) { el.textContent = target; return; }
+      var decimals = (target.split('.')[1] || '').length;
+      var start = null;
+      function tick(t) {
+        if (start === null) start = t;
+        var p = Math.min(1, (t - start) / 900);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (num * e).toFixed(decimals);
+        if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  function drawChart(c) { c.classList.add('is-drawn'); countUp(c); }
+  function redrawCharts(panel) {
+    if (reduceMotion) return;
+    panel.querySelectorAll('.chart').forEach(function (c) {
+      c.classList.remove('is-drawn');
+      void c.offsetWidth;
+      requestAnimationFrame(function () { drawChart(c); });
+    });
+  }
+
   if (reduceMotion || !hasIO) {
     charts.forEach(function (c) { c.classList.add('is-drawn'); });
   } else {
     var chartIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
-          e.target.classList.add('is-drawn');
+          drawChart(e.target);
           chartIO.unobserve(e.target);
         }
       });
@@ -261,11 +291,33 @@
     charts.forEach(function (c) { chartIO.observe(c); });
   }
 
+  // "How it works" steps appear one by one while the connecting line draws.
+  var stepLists = document.querySelectorAll('.steps');
+  function drawSteps(list) { list.classList.remove('is-drawn'); void list.offsetWidth; list.classList.add('is-drawn'); }
+  if (!reduceMotion && hasIO) {
+    stepLists.forEach(function (l) { l.classList.add('will-draw'); });
+    var stepIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { drawSteps(e.target); stepIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.25 });
+    stepLists.forEach(function (l) { stepIO.observe(l); });
+  }
+
   /* --------------------------- project explorer -------------------------- */
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.project-tab'));
 
+  var ink = document.querySelector('.tab-ink');
+  function moveInk() {
+    var sel = document.querySelector('.project-tab[aria-selected="true"]');
+    if (!ink || !sel) return;
+    ink.style.setProperty('--ink-x', sel.offsetLeft + 'px');
+    ink.style.setProperty('--ink-w', sel.offsetWidth + 'px');
+  }
+
   function activate(tab, focus) {
+    var changed = tab.getAttribute('aria-selected') !== 'true';
     tabs.forEach(function (t) {
       var on = t === tab;
       t.setAttribute('aria-selected', String(on));
@@ -273,8 +325,40 @@
       var panel = document.getElementById(t.getAttribute('aria-controls'));
       if (panel) panel.classList.toggle('is-active', on);
     });
+    moveInk();
+    var active = document.getElementById(tab.getAttribute('aria-controls'));
+    if (changed && active && !reduceMotion) {
+      // The new project fades in, its charts redraw, and its steps replay.
+      active.classList.remove('is-entering'); void active.offsetWidth; active.classList.add('is-entering');
+      redrawCharts(active);
+      active.querySelectorAll('.steps').forEach(drawSteps);
+    }
     if (focus) tab.focus();
     tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  window.addEventListener('resize', moveInk);
+  window.addEventListener('load', moveInk);
+  moveInk();
+
+  // Research theme cards: pointer glow, and icons play once when the cards appear.
+  var themeCards = document.querySelectorAll('.theme-card');
+  themeCards.forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+  var themeGrid = document.querySelector('.theme-grid');
+  if (themeGrid && !reduceMotion && hasIO) {
+    themeGrid.classList.add('will-reveal');
+    new IntersectionObserver(function (entries, obs) {
+      if (!entries[0].isIntersecting) return;
+      themeGrid.classList.add('is-revealed');
+      themeCards.forEach(function (c) { c.classList.add('is-live'); });
+      setTimeout(function () { themeCards.forEach(function (c) { c.classList.remove('is-live'); }); }, 4500);
+      obs.disconnect();
+    }, { rootMargin: '0px 0px -12% 0px' }).observe(themeGrid);
   }
 
   tabs.forEach(function (tab, i) {
