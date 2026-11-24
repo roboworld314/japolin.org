@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Polin;Johora Akter;;;
+FN:Johora Akter Polin
+ORG:William & Mary;Department of Computer Science
+TITLE:Ph.D. Student in Computer Science
+EMAIL;TYPE=INTERNET,WORK:japolin@wm.edu
+item1.URL:https://roboworld314.github.io/japolin.org/
+item1.X-ABLabel:Website
+item2.URL:https://www.linkedin.com/in/johora-akter-polin-577759232/
+item2.X-ABLabel:LinkedIn
+item3.URL:https://scholar.google.com/citations?user=50AFRskAAAAJ
+item3.X-ABLabel:Google Scholar
+ADR;TYPE=WORK:;;Department of Computer Science, William & Mary;Williamsburg;VA;;USA
+END:VCARD

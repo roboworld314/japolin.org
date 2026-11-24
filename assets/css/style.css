@@ -2220,6 +2220,38 @@ button { font: inherit; color: inherit; }
 .footer-name { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; color: #fff; margin-bottom: 6px !important; }
 .footer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 28px; }
 .footer-links a { font-weight: 500; }
+/* Contact area: QR card beside the contact button. */
+.footer-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; }
+.site-footer a.footer-qr {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 330px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #c9d6ea;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.footer-qr img {
+  flex: none;
+  width: 132px;
+  height: 132px;
+  padding: 6px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease;
+}
+.fq-text b { display: block; color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.fq-text span { display: block; font-size: 0.84rem; line-height: 1.45; }
+.site-footer a.footer-qr:hover,
+.site-footer a.footer-qr:focus-visible { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
+.footer-qr:hover img { transform: scale(1.04); }
+.footer-qr:focus-visible { outline: 3px solid #9cc0ff; outline-offset: 3px; }
+
 /* Contact button: a bright pill that invites a click. */
 .footer-links { align-self: center; }
 .site-footer a.footer-cta {
