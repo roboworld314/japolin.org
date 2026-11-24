@@ -2065,8 +2065,8 @@ button { font: inherit; color: inherit; }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: 230px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 200px;
   grid-auto-flow: dense;
   gap: 14px;
 }
