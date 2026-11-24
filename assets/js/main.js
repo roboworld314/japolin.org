@@ -407,7 +407,11 @@
   // Paper figures open full size in the figure viewer.
   document.querySelectorAll('.pub-fig-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      if (lightbox) lightbox.open([{ src: btn.getAttribute('data-full'), alt: btn.querySelector('img').alt, caption: btn.getAttribute('data-cap') }], 0, btn);
+      if (!lightbox) return;
+      var gallery = btn.getAttribute('data-gallery');
+      var items = gallery ? JSON.parse(gallery).map(function (g) { return { src: g.src, alt: g.caption, caption: g.caption }; })
+        : [{ src: btn.getAttribute('data-full'), alt: btn.querySelector('img').alt, caption: btn.getAttribute('data-cap') }];
+      lightbox.open(items, 0, btn);
     });
   });
 
