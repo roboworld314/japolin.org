@@ -1180,7 +1180,6 @@ button { font: inherit; color: inherit; }
   transition: transform 0.25s ease;
 }
 /* Magnifier: the figure enlarges around the pointer. */
-.fs-frame.is-zooming .fs-slide.is-active img { transform: scale(2.1); }
 .fs-arrow {
   position: absolute;
   top: 50%;
@@ -2794,3 +2793,26 @@ button { font: inherit; color: inherit; }
   .bot-eyes,
   .bot-wave { animation: none; }
 }
+
+/* ------------------------- hover photo preview ------------------------- */
+
+.peek {
+  position: fixed;
+  z-index: 1200;
+  left: 0;
+  top: 0;
+  padding: 8px;
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow: 0 34px 70px -24px rgba(10, 22, 42, 0.6), 0 0 0 1px rgba(23, 32, 46, 0.08);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.85);
+  transition: opacity 0.18s ease, transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.24s;
+}
+.peek.is-on { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.peek img { display: block; width: var(--pw); height: var(--ph); object-fit: contain; border-radius: 8px; background: var(--haze); }
+.peek-cap { margin: 8px 4px 2px; max-width: var(--pw); font-size: 0.84rem; line-height: 1.4; color: var(--slate); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.peek-cap:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .peek { transition: none; transform: none; } }

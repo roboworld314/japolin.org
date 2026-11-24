@@ -425,15 +425,6 @@
       if (e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1); }
       if (e.key === 'Enter') openViewer();
     });
-    // Hover magnifier follows the pointer (mouse only).
-    frame.addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse' || e.target.closest('.fs-arrow')) { frame.classList.remove('is-zooming'); return; }
-      var r = frame.getBoundingClientRect();
-      frame.style.setProperty('--zx', ((e.clientX - r.left) / r.width * 100) + '%');
-      frame.style.setProperty('--zy', ((e.clientY - r.top) / r.height * 100) + '%');
-      frame.classList.add('is-zooming');
-    });
-    frame.addEventListener('pointerleave', function () { frame.classList.remove('is-zooming'); });
     function openViewer() {
       if (!lightbox) return;
       var items = slides.map(function (s) { return { src: s.getAttribute('data-full'), alt: s.querySelector('img').alt, caption: s.getAttribute('data-caption') }; });
@@ -497,6 +488,110 @@
         obs.disconnect();
       }, { rootMargin: '0px 0px -12% 0px' }).observe(skillGrid);
     }
+  }
+
+  /* --------------------------- hover photo preview --------------------------- */
+
+  // Resting the mouse on a photo or figure pops up a larger copy beside it.
+  // Clicking still opens the full viewer. Mouse only, so touch screens are unaffected.
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var PEEK = '.mo-btn, .news-media-btn, .pub-fig-btn, .award-photo, .fs-frame';
+    var peek = document.createElement('div');
+    peek.className = 'peek';
+    peek.setAttribute('aria-hidden', 'true');
+    var peekImg = document.createElement('img');
+    peekImg.alt = '';
+    var peekCap = document.createElement('p');
+    peekCap.className = 'peek-cap';
+    peek.appendChild(peekImg);
+    peek.appendChild(peekCap);
+    document.body.appendChild(peek);
+    var peekTimer = null;
+    var peekOn = null;
+
+    var peekData = function (t) {
+      if (t.matches('.fs-frame')) {
+        var sl = t.querySelector('.fs-slide.is-active');
+        return sl ? { src: sl.getAttribute('data-full') || sl.querySelector('img').src, cap: sl.getAttribute('data-caption') } : null;
+      }
+      if (t.getAttribute('data-full')) return { src: t.getAttribute('data-full'), cap: t.getAttribute('data-cap') };
+      if (t.getAttribute('data-src')) return { src: t.getAttribute('data-src'), cap: t.getAttribute('data-caption') };
+      var im = t.querySelector('img');
+      if (!im) return null;
+      var title = t.querySelector('.mo-cap b');
+      return { src: im.currentSrc || im.src, cap: title ? title.textContent : '' };
+    };
+
+    var placePeek = function (t) {
+      var r = t.getBoundingClientRect();
+      var vw = window.innerWidth, vh = window.innerHeight, m = 16;
+      var iw = peekImg.naturalWidth || 4, ih = peekImg.naturalHeight || 3;
+      var capH = peekCap.textContent ? 44 : 0;
+      var maxW = 760, maxH = Math.min(vh * 0.82, 620);
+      var fit = function (w, h) {
+        w = Math.min(w, maxW) - 16; h = Math.min(h, maxH) - 16 - capH;
+        if (w <= 0 || h <= 0) return null;
+        var k = Math.min(w / iw, h / ih, 2.5);
+        return { w: iw * k, h: ih * k };
+      };
+      // Try the roomier side of the photo first; fall back to the middle of the screen.
+      var sides = [
+        { side: 'right', box: fit(vw - r.right - 2 * m, vh - 2 * m) },
+        { side: 'left', box: fit(r.left - 2 * m, vh - 2 * m) }
+      ].filter(function (o) { return o.box && o.box.w >= 300; });
+      sides.sort(function (a, b) { return b.box.w * b.box.h - a.box.w * a.box.h; });
+      var pick = sides[0];
+      var box = pick ? pick.box : fit(vw * 0.72, vh * 0.8);
+      var W = box.w + 16, H = box.h + 16 + capH;
+      var x, y, ox, oy;
+      if (pick) {
+        x = pick.side === 'right' ? r.right + m : r.left - m - W;
+        y = Math.max(m, Math.min(r.top + r.height / 2 - H / 2, vh - m - H));
+        ox = pick.side === 'right' ? '0%' : '100%';
+        oy = (((r.top + r.height / 2) - y) / H * 100) + '%';
+      } else {
+        x = (vw - W) / 2; y = (vh - H) / 2; ox = '50%'; oy = '50%';
+      }
+      peek.style.left = x + 'px';
+      peek.style.top = y + 'px';
+      peek.style.setProperty('--pw', box.w + 'px');
+      peek.style.setProperty('--ph', box.h + 'px');
+      peek.style.transformOrigin = ox + ' ' + oy;
+    };
+
+    var showPeek = function (t) {
+      var d = peekData(t);
+      if (!d) return;
+      peekOn = t;
+      peekCap.textContent = d.cap || '';
+      var ready = function () { if (peekOn === t) { placePeek(t); peek.classList.add('is-on'); } };
+      if (peekImg.getAttribute('src') === d.src && peekImg.complete) { ready(); return; }
+      peek.classList.remove('is-on');
+      peekImg.onload = ready;
+      peekImg.src = d.src;
+    };
+    var hidePeek = function () {
+      window.clearTimeout(peekTimer);
+      peekOn = null;
+      peek.classList.remove('is-on');
+    };
+
+    document.addEventListener('pointerover', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var t = e.target.closest(PEEK);
+      if (!t || e.target.closest('.fs-arrow')) return;
+      if (t === peekOn) return;
+      window.clearTimeout(peekTimer);
+      peekTimer = window.setTimeout(function () { showPeek(t); }, 160);
+    });
+    document.addEventListener('pointerout', function (e) {
+      var t = e.target.closest(PEEK);
+      if (!t || (e.relatedTarget && t.contains(e.relatedTarget))) return;
+      hidePeek();
+    });
+    window.addEventListener('scroll', hidePeek, { passive: true });
+    document.addEventListener('click', hidePeek, true);
+    document.addEventListener('keydown', hidePeek);
   }
 
   /* ----------------------------- footer note ------------------------------ */
