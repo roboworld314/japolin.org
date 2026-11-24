@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=49">
+  <link rel="stylesheet" href="assets/css/style.css?v=50">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -487,40 +487,246 @@
         </div>
 
         <div class="pub-block" data-type="review">
-          <h3 class="pub-group">Under review</h3>
+          <h3 class="pub-group"><span class="pub-dot"></span>Under review <span class="pub-n">3</span></h3>
           <ol class="pubs">
-            <li><span class="pub-label">U1</span><div><p class="pub-title">BlindZoneEye: See Clearly, React Safely, and Record Reliably in Autonomous Driving</p><p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, Yongtao Yao, Adwait Nadkarni, and Sidi Lu. Under review at an IEEE journal. <a href="#projects" data-open-project="blindzoneeye">Project details</a></p></div></li>
-            <li><span class="pub-label">U2</span><div><p class="pub-title">SenseGuard: Sensor-to-Decision Adaptation and Learning for Reliable Agentic Robots</p><p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, Yongtao Yao, Adwait Nadkarni, and Sidi Lu. Under review at an international robotics conference. <a href="#projects" data-open-project="senseguard">Project details</a></p></div></li>
-            <li><span class="pub-label">U3</span><div><p class="pub-title">VibraBox: A Vibration-Adaptive Black Box for Replay and Learning from Failures in Mobile-Robot Autonomy</p><p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, Yongtao Yao, and Sidi Lu. Under review at an international robotics conference. <a href="#projects" data-open-project="vibrabox">Project details</a></p></div></li>
+            <li class="pub">
+              <span class="pub-label">U1</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">IEEE journal, under review</span><span class="pub-first">First author</span></p>
+                <p class="pub-title">BlindZoneEye: See Clearly, React Safely, and Record Reliably in Autonomous Driving</p>
+                <p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, Yongtao Yao, Adwait Nadkarni, and Sidi Lu. Under review at an IEEE journal.</p>
+                <div class="pub-actions"><a class="pub-btn" href="#projects" data-open-project="blindzoneeye"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>Project</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-U1"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-U1">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Helps vehicles act safely at occluded intersections and crosswalks before hidden road users become visible. LiDAR occupancy, raycasting, and YOLOv11 fuse into a sector-level blind-zone risk score; high risk triggers a V2I warning through a roadside unit and model predictive control replanning, and an event-aware black box records the evidence.</p>
+                    <ul class="pub-stats"><li><strong>92.3%</strong><span>blind-zone detection accuracy</span></li><li><strong>76.2%</strong><span>collision reduction</span></li><li><strong>41 ms</strong><span>detection latency</span></li><li><strong>58.2%</strong><span>less storage at 96.7% event recall</span></li></ul>
+                    <ul class="tags pub-kw"><li>Blind zones</li><li>Camera-LiDAR fusion</li><li>V2I</li><li>Black box</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">U2</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">Robotics conference, under review</span><span class="pub-first">First author</span></p>
+                <p class="pub-title">SenseGuard: Sensor-to-Decision Adaptation and Learning for Reliable Agentic Robots</p>
+                <p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, Yongtao Yao, Adwait Nadkarni, and Sidi Lu. Under review at an international robotics conference.</p>
+                <div class="pub-actions"><a class="pub-btn" href="#projects" data-open-project="senseguard"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>Project</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-U2"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-U2">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Keeps robot decisions anchored to fresh sensor data instead of stale, queued frames. SigLIP, Qwen2.5-VL chain-of-thought reasoning, and a PPO policy decide how much of each camera frame and LiDAR scan to process, and a confidence monitor captures failures for retraining.</p>
+                    <ul class="pub-stats"><li><strong>84.4%</strong><span>average camera mAP</span></li><li><strong>31%</strong><span>lower inference latency</span></li><li><strong>75%</strong><span>lower LiDAR trajectory error</span></li><li><strong>136 → 63 ms</strong><span>decision age</span></li></ul>
+                    <ul class="tags pub-kw"><li>Agentic AI</li><li>VLM reasoning</li><li>Reinforcement learning</li><li>Edge AI</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">U3</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">Robotics conference, under review</span><span class="pub-first">First author</span></p>
+                <p class="pub-title">VibraBox: A Vibration-Adaptive Black Box for Replay and Learning from Failures in Mobile-Robot Autonomy</p>
+                <p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, Yongtao Yao, and Sidi Lu. Under review at an international robotics conference.</p>
+                <div class="pub-actions"><a class="pub-btn" href="#projects" data-open-project="vibrabox"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>Project</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-U3"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-U3">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">A black box for mobile robots that keeps what the robot sensed before, during, and after a failure. A DQN controller reads vibration and scan-matching stability to tune deduplication, voxel downsampling, and compression for every scan, staying within a replay-error bound.</p>
+                    <ul class="pub-stats"><li><strong>46%</strong><span>storage reduction at low vibration</span></li><li><strong>4.2×10⁻³°</strong><span>rotational replay error per frame</span></li><li><strong>51.7%</strong><span>lower per-frame latency</span></li><li><strong>+12.7%</strong><span>recall after retraining</span></li></ul>
+                    <ul class="tags pub-kw"><li>Black box</li><li>LiDAR compression</li><li>Reinforcement learning</li><li>ROS 2</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ol>
         </div>
 
         <div class="pub-block" data-type="conference">
-          <h3 class="pub-group">Conference papers</h3>
+          <h3 class="pub-group"><span class="pub-dot"></span>Conference papers <span class="pub-n">4</span></h3>
           <ol class="pubs">
-            <li><span class="pub-label">C1</span><div><p class="pub-title">Log What Matters: Safety-Aware Adaptive Logging for CAVs in Dynamic Conditions</p><p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, FNU Sumaiya, Zheng Dong, and Sidi Lu. <i>2026 IEEE 4th International Conference on Mobility, Operations, Services and Technologies (MOST)</i>, Detroit, MI, USA, May 2026. <a href="https://sidilu.org/paper/AdaptiveLogAsInput_MOST26.pdf">Paper</a> <a href="#projects" data-open-project="caalvlm">Project details</a></p></div></li>
-            <li><span class="pub-label">C2</span><div><p class="pub-title">Encryption Process of Blockchain-Based Online Course Curriculum Education System</p><p class="pub-meta">Md Rayhan Ahmmed, Md Mamun Sakib, Maruf Ur Rahman, Rabeya Bibi, Md Maruf Hasan Talukder, and <b>Johora Akter Polin</b>. <i>11th International Symposium on Digital Forensics and Security (ISDFS)</i>, 2023. <a href="https://ieeexplore.ieee.org/abstract/document/10131770">Paper</a></p></div></li>
-            <li><span class="pub-label">C3</span><div><p class="pub-title">Predicting Sugarcane Yields using Supervised Learning: A Comparative Study</p><p class="pub-meta">Parvez Ahmed Papon, Md Mahfuzur Rahman, Shafin Ahmed, Shahriar Mamun, Md Zahirul Islam Mehadi, and <b>Johora Akter Polin</b>. <i>14th International Conference on Computing Communication and Networking Technologies (ICCCNT)</i>, 2023. <a href="https://ieeexplore.ieee.org/abstract/document/10307590">Paper</a></p></div></li>
-            <li><span class="pub-label">C4</span><div><p class="pub-title">Utilizing Smartphone Usage Pattern for Gender Recognition Applying Machine Learning Algorithms</p><p class="pub-meta"><b>Johora Akter Polin</b>, Omayer Khan, and Ahmed Al Marouf. <i>4th International Conference on Electronics, Communication and Aerospace Technology (ICECA)</i>, 2020. <a href="https://ieeexplore.ieee.org/abstract/document/9297407">Paper</a></p></div></li>
+            <li class="pub">
+              <span class="pub-label">C1</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">IEEE MOST 2026</span><span class="pub-year">2026</span><span class="pub-first">First author</span></p>
+                <p class="pub-title">Log What Matters: Safety-Aware Adaptive Logging for CAVs in Dynamic Conditions</p>
+                <p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, FNU Sumaiya, Zheng Dong, and Sidi Lu. <i>2026 IEEE 4th International Conference on Mobility, Operations, Services and Technologies (MOST)</i>, Detroit, MI, USA, May 2026.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://sidilu.org/paper/AdaptiveLogAsInput_MOST26.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><a class="pub-btn" href="#projects" data-open-project="caalvlm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>Project</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-C1"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-C1">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Decides which camera frames and LiDAR scans a connected vehicle should keep. SigLIP and Qwen-VL score redundancy and safety relevance, reinforcement learning keeps, downsizes, or drops each frame, and GPT-4o reasoning picks the more reliable sensor for the weather.</p>
+                    <ul class="pub-stats"><li><strong>96.4%</strong><span>object recall after logging</span></li><li><strong>23% / 27%</strong><span>less camera / LiDAR storage</span></li><li><strong>16.6 → 9.5 ms</strong><span>mean perception latency</span></li></ul>
+                    <ul class="tags pub-kw"><li>Adaptive logging</li><li>VLMs</li><li>Reinforcement learning</li><li>Connected vehicles</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">C2</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">ISDFS 2023</span><span class="pub-year">2023</span></p>
+                <p class="pub-title">Encryption Process of Blockchain-Based Online Course Curriculum Education System</p>
+                <p class="pub-meta">Md Rayhan Ahmmed, Md Mamun Sakib, Maruf Ur Rahman, Rabeya Bibi, Md Maruf Hasan Talukder, and <b>Johora Akter Polin</b>. <i>11th International Symposium on Digital Forensics and Security (ISDFS)</i>, 2023.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://ieeexplore.ieee.org/abstract/document/10131770" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-C2"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-C2">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Proposes a blockchain-based online course system that protects course content and payments with public and private keys, and uses machine learning models such as linear regression and random forest to detect fraudulent transactions.</p>
+                    <ul class="tags pub-kw"><li>Blockchain</li><li>Security</li><li>Machine learning</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">C3</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">ICCCNT 2023</span><span class="pub-year">2023</span></p>
+                <p class="pub-title">Predicting Sugarcane Yields using Supervised Learning: A Comparative Study</p>
+                <p class="pub-meta">Parvez Ahmed Papon, Md Mahfuzur Rahman, Shafin Ahmed, Shahriar Mamun, Md Zahirul Islam Mehadi, and <b>Johora Akter Polin</b>. <i>14th International Conference on Computing Communication and Networking Technologies (ICCCNT)</i>, 2023.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://ieeexplore.ieee.org/abstract/document/10307590" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-C3"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-C3">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Forecasts sugarcane yield in Bangladesh from weather and production data, comparing linear regression, gradient boosting, decision tree, random forest, and XGBoost regressors; gradient boosting performed best.</p>
+                    <ul class="tags pub-kw"><li>Agriculture</li><li>Regression</li><li>Supervised learning</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">C4</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">ICECA 2020</span><span class="pub-year">2020</span><span class="pub-first">First author</span></p>
+                <p class="pub-title">Utilizing Smartphone Usage Pattern for Gender Recognition Applying Machine Learning Algorithms</p>
+                <p class="pub-meta"><b>Johora Akter Polin</b>, Omayer Khan, and Ahmed Al Marouf. <i>4th International Conference on Electronics, Communication and Aerospace Technology (ICECA)</i>, 2020.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://ieeexplore.ieee.org/abstract/document/9297407" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-C4"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-C4">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Predicts a user's gender from smartphone usage patterns, using a labelled survey dataset of users aged 18 to 30 and comparing ten machine learning algorithms across five classifier families.</p>
+                    <ul class="pub-stats"><li><strong>84.11%</strong><span>accuracy with random forest</span></li><li><strong>1,284</strong><span>survey instances</span></li><li><strong>10</strong><span>algorithms compared</span></li></ul>
+                    <ul class="tags pub-kw"><li>Human-computer interaction</li><li>Classification</li><li>Smartphones</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ol>
         </div>
 
         <div class="pub-block" data-type="workshop">
-          <h3 class="pub-group">Workshop papers</h3>
+          <h3 class="pub-group"><span class="pub-dot"></span>Workshop papers <span class="pub-n">2</span></h3>
           <ol class="pubs">
-            <li><span class="pub-label">W1</span><div><p class="pub-title">Context-Aware Perception: VLM-Augmented All-Weather Detection for Autonomous Driving</p><p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, and Sidi Lu. <i>The Tenth ACM/IEEE Symposium on Edge Computing (SEC'25)</i>, Arlington, VA, USA, 2025. <a href="https://doi.org/10.1145/3769102.3774638">Paper</a> <a href="#projects" data-open-project="context">Project details</a></p></div></li>
-            <li><span class="pub-label">W2</span><div><p class="pub-title">TinyLite: Efficient Edge Intelligence for Real-Time Spam Detection Under Device Constraints</p><p class="pub-meta">Xuanlin Zhu, <b>Johora Akter Polin</b>, and Sidi Lu. <i>IEEE Workshop on Physical Intelligence: Systems and Applications (PISA), at IEEE MOST</i>, May 2026. <a href="https://sidilu.org/paper/PISA_26_SpamDetection.pdf">Paper</a></p></div></li>
+            <li class="pub">
+              <span class="pub-label">W1</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">ACM/IEEE SEC 2025</span><span class="pub-year">2025</span><span class="pub-first">First author</span></p>
+                <p class="pub-title">Context-Aware Perception: VLM-Augmented All-Weather Detection for Autonomous Driving</p>
+                <p class="pub-meta"><b>Johora Akter Polin</b>, Yichen Luo, and Sidi Lu. <i>The Tenth ACM/IEEE Symposium on Edge Computing (SEC'25)</i>, Arlington, VA, USA, 2025.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://doi.org/10.1145/3769102.3774638" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><a class="pub-btn" href="#projects" data-open-project="context"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>Project</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-W1"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-W1">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Camera detectors trained on clear-weather data lose accuracy in rain, fog, and snow. This work uses vision-language models to read weather and visibility context from the scene and adapt object detection to it.</p>
+                    <ul class="tags pub-kw"><li>VLMs</li><li>All-weather detection</li><li>Autonomous driving</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">W2</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">PISA at IEEE MOST 2026</span><span class="pub-year">2026</span></p>
+                <p class="pub-title">TinyLite: Efficient Edge Intelligence for Real-Time Spam Detection Under Device Constraints</p>
+                <p class="pub-meta">Xuanlin Zhu, <b>Johora Akter Polin</b>, and Sidi Lu. <i>IEEE Workshop on Physical Intelligence: Systems and Applications (PISA), at IEEE MOST</i>, May 2026.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://sidilu.org/paper/PISA_26_SpamDetection.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-W2"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-W2">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">A compressed BERT-Tiny Transformer for real-time spam detection on resource-limited devices.</p>
+                    <ul class="pub-stats"><li><strong>81.6%</strong><span>fewer FLOPs</span></li><li><strong>< 1.1</strong><span>points of F1 lost</span></li></ul>
+                    <ul class="tags pub-kw"><li>Edge AI</li><li>Model compression</li><li>Transformers</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ol>
         </div>
 
         <div class="pub-block" data-type="journal">
-          <h3 class="pub-group">Journal articles</h3>
+          <h3 class="pub-group"><span class="pub-dot"></span>Journal articles <span class="pub-n">5</span></h3>
           <ol class="pubs">
-            <li><span class="pub-label">J1</span><div><p class="pub-title">A Novel Approach to Analyzing the Impact of AI, ChatGPT, and Chatbot on Education Using Machine Learning Algorithms</p><p class="pub-meta">Nahid Hasan, <b>Johora Akter Polin</b>, Md. Rayhan Ahmmed, Md. Mamun Sakib, Md. Farhan Jahin, and Md. Mahfuzur Rahman. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 13, no. 4, pp. 2951&ndash;2958, 2024. <a href="https://doi.org/10.11591/eei.v13i4.7158">Paper</a></p></div></li>
-            <li><span class="pub-label">J2</span><div><p class="pub-title">Predicting the Effects of Microcredit on Women's Empowerment in Rural Bangladesh: Using Machine Learning Algorithms</p><p class="pub-meta"><b>Johora Akter Polin</b>, Md. Fouad Hossain Sarker, MST Dilruba Khanom Dolon, Nahid Hasan, Md. Mahfuzur Rahman, and Zannatun Nayem Vasha. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 13, no. 4, pp. 2699&ndash;2706, 2024. <a href="https://doi.org/10.11591/eei.v13i4.7169">Paper</a></p></div></li>
-            <li><span class="pub-label">J3</span><div><p class="pub-title">Tomato Pest Recognition Using Convolutional Neural Network in Bangladesh</p><p class="pub-meta"><b>Johora Akter Polin</b>, Nahid Hasan, Md. Tarek Habib, Atiqur Rahman, Zannatun Nayem Vasha, and Bidyut Sharma. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 13, no. 1, pp. 619&ndash;627, 2024. <a href="https://doi.org/10.11591/eei.v13i1.6073">Paper</a></p></div></li>
-            <li><span class="pub-label">J4</span><div><p class="pub-title">Bengali Slang Detection Using State-of-the-Art Supervised Models from a Given Text</p><p class="pub-meta">Md Abdul Hamid, Eteka Sultana Tumpa, <b>Johora Akter Polin</b>, Jabir Al Nahian, Atiqur Rahman, and Nurjahan Akther Mim. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 12, no. 4, pp. 2381&ndash;2387, 2023. <a href="https://doi.org/10.11591/eei.v12i4.4743">Paper</a></p></div></li>
-            <li><span class="pub-label">J5</span><div><p class="pub-title">Depression Detection in Social Media Comments Data Using Machine Learning Algorithms</p><p class="pub-meta">Zannatun Nayem Vasha, Bidyut Sharma, Israt Jahan Esha, Jabir Al Nahian, and <b>Johora Akter Polin</b>. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 12, no. 2, pp. 987&ndash;996, 2023. <a href="https://doi.org/10.11591/eei.v12i2.4182">Paper</a></p></div></li>
+            <li class="pub">
+              <span class="pub-label">J1</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">BEEI 2024</span><span class="pub-year">2024</span></p>
+                <p class="pub-title">A Novel Approach to Analyzing the Impact of AI, ChatGPT, and Chatbot on Education Using Machine Learning Algorithms</p>
+                <p class="pub-meta">Nahid Hasan, <b>Johora Akter Polin</b>, Md. Rayhan Ahmmed, Md. Mamun Sakib, Md. Farhan Jahin, and Md. Mahfuzur Rahman. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 13, no. 4, pp. 2951&ndash;2958, 2024.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://doi.org/10.11591/eei.v13i4.7158" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-J1"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-J1">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Weighs the benefits and risks of AI tools such as ChatGPT in education, analysing survey data with k-NN, SVM, naive Bayes, decision tree, and random forest; SVM performed best.</p>
+                    <ul class="tags pub-kw"><li>AI in education</li><li>ChatGPT</li><li>Machine learning</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">J2</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">BEEI 2024</span><span class="pub-year">2024</span><span class="pub-first">First author</span></p>
+                <p class="pub-title">Predicting the Effects of Microcredit on Women's Empowerment in Rural Bangladesh: Using Machine Learning Algorithms</p>
+                <p class="pub-meta"><b>Johora Akter Polin</b>, Md. Fouad Hossain Sarker, MST Dilruba Khanom Dolon, Nahid Hasan, Md. Mahfuzur Rahman, and Zannatun Nayem Vasha. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 13, no. 4, pp. 2699&ndash;2706, 2024.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://doi.org/10.11591/eei.v13i4.7169" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-J2"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-J2">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Predicts how microcredit affects women's empowerment in rural Bangladesh from survey data on socioeconomic and demographic indicators, helping programs focus on the women most likely to benefit.</p>
+                    <ul class="pub-stats"><li><strong>83.72%</strong><span>accuracy with a decision tree</span></li><li><strong>5</strong><span>algorithms compared</span></li></ul>
+                    <ul class="tags pub-kw"><li>Social good</li><li>Survey data</li><li>Classification</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">J3</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">BEEI 2024</span><span class="pub-year">2024</span><span class="pub-first">First author</span></p>
+                <p class="pub-title">Tomato Pest Recognition Using Convolutional Neural Network in Bangladesh</p>
+                <p class="pub-meta"><b>Johora Akter Polin</b>, Nahid Hasan, Md. Tarek Habib, Atiqur Rahman, Zannatun Nayem Vasha, and Bidyut Sharma. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 13, no. 1, pp. 619&ndash;627, 2024.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://doi.org/10.11591/eei.v13i1.6073" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-J3"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-J3">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Recognizes five tomato pests (aphids, red spider mites, whiteflies, looper caterpillars, and thrips) early, using CNN features with random forest, SVM, and k-NN classifiers.</p>
+                    <ul class="pub-stats"><li><strong>95.49%</strong><span>recognition accuracy</span></li><li><strong>5</strong><span>pest types</span></li></ul>
+                    <ul class="tags pub-kw"><li>Computer vision</li><li>CNN</li><li>Agriculture</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">J4</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">BEEI 2023</span><span class="pub-year">2023</span></p>
+                <p class="pub-title">Bengali Slang Detection Using State-of-the-Art Supervised Models from a Given Text</p>
+                <p class="pub-meta">Md Abdul Hamid, Eteka Sultana Tumpa, <b>Johora Akter Polin</b>, Jabir Al Nahian, Atiqur Rahman, and Nurjahan Akther Mim. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 12, no. 4, pp. 2381&ndash;2387, 2023.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://doi.org/10.11591/eei.v12i4.4743" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-J4"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-J4">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Builds a corpus of regional Bengali slang from social media and compares seven supervised models for detecting it, so platforms can flag slang in posts and comments.</p>
+                    <ul class="pub-stats"><li><strong>86%</strong><span>recall</span></li><li><strong>70%</strong><span>accuracy</span></li><li><strong>7</strong><span>models compared</span></li></ul>
+                    <ul class="tags pub-kw"><li>NLP</li><li>Bengali</li><li>Text classification</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="pub-label">J5</span>
+              <div class="pub-body">
+                <p class="pub-top"><span class="pub-venue">BEEI 2023</span><span class="pub-year">2023</span></p>
+                <p class="pub-title">Depression Detection in Social Media Comments Data Using Machine Learning Algorithms</p>
+                <p class="pub-meta">Zannatun Nayem Vasha, Bidyut Sharma, Israt Jahan Esha, Jabir Al Nahian, and <b>Johora Akter Polin</b>. <i>Bulletin of Electrical Engineering and Informatics</i>, vol. 12, no. 2, pp. 987&ndash;996, 2023.</p>
+                <div class="pub-actions"><a class="pub-btn" href="https://doi.org/10.11591/eei.v12i2.4182" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l5 5V20a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 2.5V8h5M8.5 13h7M8.5 16.5h5"/></svg>Paper</a><button class="pub-more" type="button" aria-expanded="false" aria-controls="pd-J5"><span>Show details</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+                <div class="pub-details" id="pd-J5">
+                  <div class="pub-details-inner">
+                    <p class="pub-summary">Detects signs of depression in social media text, using about 10,000 Facebook posts and comments and YouTube comments and six classifiers; SVM performed best.</p>
+                    <ul class="pub-stats"><li><strong>~10,000</strong><span>posts and comments</span></li><li><strong>6</strong><span>classifiers compared</span></li></ul>
+                    <ul class="tags pub-kw"><li>NLP</li><li>Mental health</li><li>Social media</li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ol>
         </div>
       </div>
@@ -863,7 +1069,7 @@
   </dialog>
 
   <script src="assets/js/news.js?v=39"></script>
-  <script src="assets/js/main.js?v=46"></script>
+  <script src="assets/js/main.js?v=50"></script>
   <script src="assets/js/drive.js?v=14"></script>
   <script src="assets/js/chat.js?v=42"></script>
 </body>

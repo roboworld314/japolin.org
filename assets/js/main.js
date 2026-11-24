@@ -382,6 +382,37 @@
         c.setAttribute('aria-pressed', String(on));
       });
       blocks.forEach(function (b) { b.hidden = f !== 'all' && b.getAttribute('data-type') !== f; });
+      animatePubs();
+    });
+  });
+
+  // Paper cards rise in, in order: on first view, and again after filtering.
+  var pubList = document.getElementById('publications');
+  function animatePubs() {
+    if (!pubList || reduceMotion) return;
+    var k = 0;
+    pubList.querySelectorAll('.pub-block:not([hidden]) .pub').forEach(function (p) { p.style.setProperty('--k', String(k++)); });
+    pubList.classList.remove('pubs-anim');
+    void pubList.offsetWidth; // restart the animation
+    pubList.classList.add('pubs-anim');
+  }
+  if (pubList && hasIO && !reduceMotion) {
+    new IntersectionObserver(function (entries, obs) {
+      if (!entries[0].isIntersecting) return;
+      animatePubs();
+      obs.disconnect();
+    }, { rootMargin: '0px 0px -15% 0px' }).observe(pubList.querySelector('.pub-filters') || pubList);
+  }
+
+  // "Show details" opens a summary, key results, and keywords under each paper.
+  document.querySelectorAll('.pub-more').forEach(function (btn) {
+    var card = btn.closest('.pub');
+    var label = btn.querySelector('span');
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+      card.classList.toggle('is-open', open);
+      if (label) label.textContent = open ? 'Hide details' : 'Show details';
     });
   });
 
