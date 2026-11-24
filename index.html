@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=83">
+  <link rel="stylesheet" href="assets/css/style.css?v=84">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1171,6 +1171,16 @@
       <div>
         <p class="footer-name">Johora Akter Polin</p>
         <p>Ph.D. student, Department of Computer Science<br>William &amp; Mary, Williamsburg, Virginia</p>
+        <!-- To have notes emailed directly (no email app needed), paste a free Web3Forms access key into data-key. -->
+        <form class="footer-note" data-key="" novalidate>
+          <label class="fn-label" for="fn-msg">Leave a note <span aria-hidden="true">&#9997;&#65039;</span></label>
+          <textarea id="fn-msg" name="message" rows="3" maxlength="1000" placeholder="Write a comment, suggestion, or question..."></textarea>
+          <div class="fn-row">
+            <input type="email" name="email" placeholder="Your email (optional)" aria-label="Your email, optional, for a reply">
+            <button type="submit">Send note</button>
+          </div>
+          <p class="fn-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
       <div class="footer-contact">
         <ul class="footer-links">
@@ -1208,7 +1218,7 @@
 
   <script src="assets/js/news.js?v=40"></script>
   <script src="assets/js/gallery.js?v=9"></script>
-  <script src="assets/js/main.js?v=66"></script>
+  <script src="assets/js/main.js?v=67"></script>
   <script src="assets/js/drive.js?v=14"></script>
   <script src="assets/js/chat.js?v=42"></script>
 </body>

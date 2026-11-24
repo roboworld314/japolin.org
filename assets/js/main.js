@@ -499,6 +499,43 @@
     }
   }
 
+  /* ----------------------------- footer note ------------------------------ */
+
+  var note = document.querySelector('.footer-note');
+  if (note) {
+    var noteStatus = note.querySelector('.fn-status');
+    var say = function (msg, kind) {
+      noteStatus.textContent = msg;
+      noteStatus.className = 'fn-status' + (kind ? ' is-' + kind : '');
+    };
+    note.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var msg = note.message.value.trim();
+      var from = note.email.value.trim();
+      if (!msg) { say('Write a note first.', 'err'); note.message.focus(); return; }
+      if (from && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(from)) { say('That email address looks incomplete.', 'err'); note.email.focus(); return; }
+      var subject = 'Website note' + (from ? ' from ' + from : '');
+      var body = msg + (from ? '\n\nReply to: ' + from : '') + '\n\nSent from the note box on the website.';
+      var key = note.getAttribute('data-key');
+      if (!key) {
+        window.location.href = 'mailto:japolin@wm.edu?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        say('Your email app opened with the note ready. Press send there.', 'ok');
+        return;
+      }
+      var btn = note.querySelector('button');
+      btn.disabled = true;
+      say('Sending...');
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ access_key: key, subject: subject, from_name: 'Website note', email: from || undefined, replyto: from || undefined, message: msg })
+      }).then(function (r) { return r.json().then(function (d) { if (!r.ok || d.success === false) throw new Error(); }); })
+        .then(function () { note.reset(); say('Thanks! Your note was sent.', 'ok'); })
+        .catch(function () { say('The note could not be sent. Please email japolin@wm.edu instead.', 'err'); })
+        .then(function () { btn.disabled = false; });
+    });
+  }
+
   /* -------------------------------- moments ------------------------------- */
 
   var moGrid = document.querySelector('.mo-grid');
