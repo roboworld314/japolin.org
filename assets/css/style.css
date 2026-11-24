@@ -2221,7 +2221,8 @@ button { font: inherit; color: inherit; }
 .footer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 28px; }
 .footer-links a { font-weight: 500; }
 /* Contact area: QR card beside the contact button. */
-.footer-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; }
+.footer-contact { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+@media (max-width: 640px) { .footer-contact { align-items: flex-start; } }
 .site-footer a.footer-qr {
   display: flex;
   align-items: center;
