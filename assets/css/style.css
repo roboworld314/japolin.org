@@ -2035,6 +2035,107 @@ button { font: inherit; color: inherit; }
   .svc-layout.is-revealed .award:hover::after { transform: scale(1.25); transition-delay: 0s; }
 }
 
+/* ----------------------------- moments ----------------------------- */
+
+.mo-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.mo-filters:empty { display: none; }
+.mo-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 210px;
+  grid-auto-flow: dense;
+  gap: 14px;
+}
+.mo-big { grid-column: span 2; grid-row: span 2; }
+.mo-wide { grid-column: span 2; }
+.mo-grid.is-filtered .mo { grid-column: auto; grid-row: auto; }
+.mo[hidden] { display: none; }
+
+.mo-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--haze);
+  cursor: zoom-in;
+  box-shadow: 0 1px 2px rgba(23, 32, 46, 0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.mo-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s ease;
+}
+.mo-btn:hover,
+.mo-btn:focus-visible { transform: translateY(-3px); box-shadow: 0 22px 40px -22px rgba(22, 60, 112, 0.6); }
+.mo-btn:hover img,
+.mo-btn:focus-visible img { transform: scale(1.06); }
+.mo-btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+/* Caption sits on a dark fade; the title rises a little on hover. */
+.mo-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 44px 16px 14px;
+  text-align: left;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(10, 22, 42, 0.82));
+}
+.mo-cap b { font-size: 0.98rem; font-weight: 600; line-height: 1.3; transition: transform 0.3s ease; }
+.mo-big .mo-cap b { font-family: var(--serif); font-size: 1.35rem; }
+.mo-cap time { font-size: 0.8rem; color: #c9d6ea; transition: transform 0.3s ease; }
+.mo-tag {
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.mo[data-tag="Award"] .mo-tag { background: #b7791f; }
+.mo[data-tag="Talk"] .mo-tag { background: #5b5fc7; }
+.mo[data-tag="Teaching"] .mo-tag { background: #138a63; }
+.mo[data-tag="Lab"] .mo-tag { background: #1e6fd0; }
+.mo[data-tag="Event"] .mo-tag { background: #be3a6b; }
+.mo-btn:hover .mo-cap b,
+.mo-btn:hover .mo-cap time { transform: translateY(-3px); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .mo-grid.will-reveal .mo { opacity: 0; transform: translateY(22px) scale(0.97); }
+  .mo-grid.will-reveal.is-revealed .mo {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 120ms);
+  }
+  .mo.mo-pop { animation: mo-pop 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 70ms); }
+}
+@keyframes mo-pop { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 880px) {
+  .mo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 180px; }
+}
+@media (max-width: 520px) {
+  .mo-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .mo-big, .mo-wide { grid-column: auto; grid-row: auto; }
+}
+
 /* ----------------------------- footer ---------------------------- */
 
 .site-footer {

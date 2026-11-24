@@ -499,6 +499,90 @@
     }
   }
 
+  /* -------------------------------- moments ------------------------------- */
+
+  var moGrid = document.querySelector('.mo-grid');
+  var moData = window.MOMENTS || [];
+  if (moGrid && moData.length) {
+    var moFilters = document.querySelector('.mo-filters');
+    var moTiles = moData.map(function (m, i) {
+      var li = document.createElement('li');
+      li.className = 'mo' + (m.size === 'big' ? ' mo-big' : m.size === 'wide' ? ' mo-wide' : '');
+      li.dataset.tag = m.tag || '';
+      li.style.setProperty('--i', i);
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'mo-btn';
+      b.setAttribute('aria-label', 'Enlarge photo: ' + m.title);
+      var im = document.createElement('img');
+      im.src = m.src;
+      im.alt = m.alt || m.title;
+      im.loading = 'lazy';
+      im.decoding = 'async';
+      if (m.fit === 'contain') { im.style.objectFit = 'contain'; }
+      if (m.background) b.style.background = m.background;
+      if (m.position) im.style.objectPosition = m.position;
+      b.appendChild(im);
+      var cap = document.createElement('span');
+      cap.className = 'mo-cap';
+      cap.innerHTML = '<span class="mo-tag"></span><b></b><time></time>';
+      cap.querySelector('.mo-tag').textContent = m.tag || '';
+      cap.querySelector('b').textContent = m.title;
+      cap.querySelector('time').textContent = m.date || '';
+      b.appendChild(cap);
+      b.addEventListener('click', function () {
+        if (!lightbox) return;
+        var shown = moTiles.filter(function (t) { return !t.li.hidden; });
+        var items = shown.map(function (t) { return { src: t.m.src, alt: t.m.alt || t.m.title, caption: t.m.title + (t.m.date ? ', ' + t.m.date : '') }; });
+        lightbox.open(items, shown.findIndex(function (t) { return t.li === li; }), b);
+      });
+      li.appendChild(b);
+      moGrid.appendChild(li);
+      return { li: li, m: m };
+    });
+
+    // Filter buttons come from the tags in use, with a count for each.
+    var tags = [];
+    moData.forEach(function (m) { if (m.tag && tags.indexOf(m.tag) < 0) tags.push(m.tag); });
+    if (moFilters && tags.length > 1) {
+      ['All'].concat(tags).forEach(function (t, k) {
+        var c = document.createElement('button');
+        c.type = 'button';
+        c.className = 'chip' + (k === 0 ? ' is-active' : '');
+        c.setAttribute('aria-pressed', k === 0 ? 'true' : 'false');
+        var n = t === 'All' ? moData.length : moData.filter(function (m) { return m.tag === t; }).length;
+        c.innerHTML = t + ' <span>' + n + '</span>';
+        c.addEventListener('click', function () {
+          moFilters.querySelectorAll('.chip').forEach(function (x) {
+            x.classList.toggle('is-active', x === c);
+            x.setAttribute('aria-pressed', x === c ? 'true' : 'false');
+          });
+          var j = 0;
+          moTiles.forEach(function (tile) {
+            var show = t === 'All' || tile.m.tag === t;
+            tile.li.hidden = !show;
+            if (show) {
+              tile.li.style.setProperty('--i', j++);
+              if (!reduceMotion) { tile.li.classList.remove('mo-pop'); void tile.li.offsetWidth; tile.li.classList.add('mo-pop'); }
+            }
+          });
+          // Feature sizes only make sense in the full grid.
+          moGrid.classList.toggle('is-filtered', t !== 'All');
+        });
+        moFilters.appendChild(c);
+      });
+    }
+
+    if (!reduceMotion && hasIO) {
+      moGrid.classList.add('will-reveal');
+      new IntersectionObserver(function (entries, obs) {
+        if (!entries[0].isIntersecting) return;
+        moGrid.classList.add('is-revealed');
+        obs.disconnect();
+      }, { rootMargin: '0px 0px -10% 0px' }).observe(moGrid);
+    }
+  }
+
   /* --------------------------- service & awards --------------------------- */
 
   var svcLayout = document.querySelector('.svc-layout');
