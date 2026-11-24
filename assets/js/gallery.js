@@ -7,13 +7,23 @@
       and change the details.
 
    tag   One of: "Award", "Talk", "Teaching", "Lab", "Event".
-         The filter buttons are made from the tags you use.
    size  "big" spans two columns and two rows (a featured photo),
-         "wide" spans two columns. Leave it out for a normal tile.
+         "wide" spans two columns, "tall" spans two rows (good for
+         portrait photos). Leave it out for a normal tile.
+   position  Which part of the photo to keep in view, e.g. "center 30%".
    fit   "contain" shows the whole image without cropping.
    ============================================================= */
 
 window.MOMENTS = [
+  {
+    src: "assets/moments/2025-12-sec25-travel-grant.jpg",
+    title: "Student Travel Grant, ACM/IEEE SEC 2025",
+    date: "Dec 2025",
+    tag: "Award",
+    size: "tall",
+    position: "center 32%",
+    alt: "Johora Akter Polin holding her Student Travel Grant certificate on stage at ACM/IEEE SEC 2025, in front of the conference banner"
+  },
   {
     src: "assets/news/2026-11-cs-symposium-panel.jpg",
     title: "Student/Alumni Panel, W&M CS Symposium",
@@ -21,29 +31,5 @@ window.MOMENTS = [
     tag: "Talk",
     size: "big",
     alt: "Six Ph.D. students seated on stage below a slide titled Student / Alumni Panel, W&M Computer Science Graduate Studies"
-  },
-  {
-    src: "assets/news/2026-fall-coll100-class.jpg",
-    title: "Teaching COLL/CSCI 100: Physical Intelligence: Robots",
-    date: "Fall 2026",
-    tag: "Teaching",
-    size: "wide",
-    fit: "contain",
-    background: "#f4f3ee",
-    alt: "COLL/CSCI 100 students in the Vehicle Computing Lab on the smart-city roadway"
-  },
-  {
-    src: "assets/moments/2026-07-robot-vehicle.jpg",
-    title: "Our robotic vehicle: camera, LiDAR, and 5G",
-    date: "Jul 2026",
-    tag: "Lab",
-    alt: "A small four-wheeled robotic vehicle with a camera, LiDAR, and onboard computer, next to a 5G antenna"
-  },
-  {
-    src: "assets/moments/2026-06-vc-lab-smart-city-testbed.jpg",
-    title: "Smart-city testbed in the Vehicle Computing Lab",
-    date: "Jun 2026",
-    tag: "Lab",
-    alt: "Miniature smart-city roadway with lanes, crosswalks, and parking spots, with robotic vehicles driving on it"
   }
 ];

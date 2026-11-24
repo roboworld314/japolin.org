@@ -507,7 +507,7 @@
     var moFilters = document.querySelector('.mo-filters');
     var moTiles = moData.map(function (m, i) {
       var li = document.createElement('li');
-      li.className = 'mo' + (m.size === 'big' ? ' mo-big' : m.size === 'wide' ? ' mo-wide' : '');
+      li.className = 'mo' + (m.size === 'big' ? ' mo-big' : m.size === 'wide' ? ' mo-wide' : m.size === 'tall' ? ' mo-tall' : '');
       li.dataset.tag = m.tag || '';
       li.style.setProperty('--i', i);
       var b = document.createElement('button');

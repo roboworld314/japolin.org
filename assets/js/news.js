@@ -76,11 +76,14 @@ window.NEWS = [
     link: { href: "https://sidilu.org/paper/AdaptiveLogAsInput_MOST26.pdf", label: "Read the paper" }
   },
   {
-    date: "2025",
+    date: "Dec 2025",
     tag: "Paper",
     title: "“Context-Aware Perception” published at ACM/IEEE SEC'25",
     text: "Vision-language models for all-weather object detection in autonomous driving, presented in Arlington, VA, with a student travel grant.",
-    cover: { title: "SEC'25", sub: "ACM/IEEE Symposium on Edge Computing" },
+    image: "assets/moments/2025-12-sec25-travel-grant.jpg",
+    position: "center 30%",
+    alt: "Johora Akter Polin holding her Student Travel Grant certificate on stage at ACM/IEEE SEC 2025, in front of the conference banner",
+    caption: "Receiving the Student Travel Grant at ACM/IEEE SEC 2025",
     link: { href: "https://doi.org/10.1145/3769102.3774638", label: "Read the paper" }
   }
 ];
