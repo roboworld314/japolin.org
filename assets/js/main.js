@@ -341,6 +341,34 @@
     }, { rootMargin: '0px 0px -10% 0px' }).observe(box);
   });
 
+  /* -------------------------------- skills -------------------------------- */
+
+  var skillGrid = document.querySelector('.skill-grid');
+  if (skillGrid) {
+    var skillCards = skillGrid.querySelectorAll('.skill-card');
+    // A soft glow follows the pointer across each card.
+    skillCards.forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+    if (!reduceMotion && hasIO) {
+      skillGrid.classList.add('will-reveal');
+      new IntersectionObserver(function (entries, obs) {
+        if (!entries[0].isIntersecting) return;
+        skillGrid.classList.add('is-revealed');
+        // Icons play for a few seconds as the cards arrive, then wait for a hover.
+        skillCards.forEach(function (card) { card.classList.add('is-live'); });
+        window.setTimeout(function () {
+          skillCards.forEach(function (card) { card.classList.remove('is-live'); });
+        }, 4500);
+        obs.disconnect();
+      }, { rootMargin: '0px 0px -12% 0px' }).observe(skillGrid);
+    }
+  }
+
   /* ------------------------- publication filters ------------------------ */
 
   var chips = document.querySelectorAll('.pub-filters .chip');

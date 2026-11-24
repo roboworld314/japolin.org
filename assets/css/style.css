@@ -1318,20 +1318,117 @@ button { font: inherit; color: inherit; }
 
 /* ----------------------------- skills ---------------------------- */
 
+/* Bento grid: each area has its own accent colour and a small animated icon. */
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 .skill-card {
-  background: var(--paper);
+  --accent: var(--blue);
+  --mx: 50%;
+  --my: 0%;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(420px circle at var(--mx) var(--my), color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
+    var(--paper);
   border: 1px solid var(--mist);
-  border-top: 3px solid var(--blue);
-  border-radius: var(--radius);
-  padding: 18px 20px 20px;
+  border-radius: 14px;
+  padding: 20px 22px 22px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
-.skill-card h3 { margin: 0 0 10px; font-size: 1rem; font-weight: 600; color: var(--ink); }
-.skill-lead { margin: -4px 0 8px; font-size: 0.9rem; color: var(--slate); }
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 35%, transparent));
+}
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--mist));
+  box-shadow: 0 20px 40px -24px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+.skill-card.sk-wide { grid-column: span 2; }
+.sk-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.sk-icon {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--paper));
+  color: var(--accent);
+}
+.sk-icon svg { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; overflow: hidden; }
+.sk-icon svg .fill { fill: currentColor; stroke: none; }
+.skill-card h3 { margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.sk-count { margin: 2px 0 0; font-size: 0.86rem; color: var(--slate); }
+.sk-tags li {
+  color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+  background: color-mix(in srgb, var(--accent) 6%, var(--paper));
+  border-color: color-mix(in srgb, var(--accent) 18%, var(--mist));
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.sk-tags li:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Icon animations play while the card is hovered, and once when it first appears. */
+.ani { transform-box: fill-box; transform-origin: center; animation-play-state: paused; }
+.skill-card:hover .ani,
+.skill-card:focus-within .ani,
+.skill-card.is-live .ani { animation-play-state: running; }
+.a-blink { animation: sk-blink 2.4s infinite; }
+.a-glow { fill: currentColor; stroke: none; animation: sk-glow 1.6s ease-in-out infinite; }
+.a-type circle { fill: currentColor; stroke: none; }
+.a-type circle:nth-child(1) { animation: sk-dot 1.2s infinite; }
+.a-type circle:nth-child(2) { animation: sk-dot 1.2s 0.2s infinite; }
+.a-type circle:nth-child(3) { animation: sk-dot 1.2s 0.4s infinite; }
+.a-type circle { animation-play-state: inherit; }
+.a-snap { animation: sk-snap 1.8s ease-in-out infinite; }
+.a-ring { animation: sk-ring 1.8s ease-out infinite; }
+.a-ring.r2 { animation-delay: 0.3s; }
+.a-ring.r3 { animation-delay: 0.6s; }
+.a-road { animation: sk-road 0.9s linear infinite; transform-box: view-box; }
+.a-car { animation: sk-bob 0.9s ease-in-out infinite; }
+.a-led { animation: sk-glow 1s steps(2, jump-none) infinite; }
+.a-cursor { animation: sk-glow 1s steps(2, jump-none) infinite; }
+@keyframes sk-blink { 0%, 88%, 100% { transform: scaleY(1); } 94% { transform: scaleY(0.1); } }
+@keyframes sk-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+@keyframes sk-dot { 0%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+@keyframes sk-snap { 0%, 100% { transform: scale(1.18); opacity: 0.4; } 45%, 70% { transform: scale(1); opacity: 1; } }
+@keyframes sk-ring { 0% { opacity: 0; transform: translateY(4px) scale(0.85); } 35% { opacity: 1; } 100% { opacity: 0; transform: translateY(-2px) scale(1.05); } }
+@keyframes sk-road { from { transform: translateX(0); } to { transform: translateX(-16px); } }
+@keyframes sk-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+
+/* Cards and their tags cascade in the first time the grid scrolls into view. */
+@media (prefers-reduced-motion: no-preference) {
+  .skill-grid.will-reveal .skill-card { opacity: 0; transform: translateY(18px); }
+  .skill-grid.will-reveal .sk-tags li { opacity: 0; transform: translateY(6px) scale(0.96); }
+  .skill-grid.will-reveal.is-revealed .skill-card {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: calc(var(--c, 0) * 110ms);
+  }
+  .skill-grid.will-reveal.is-revealed .sk-tags li {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    transition-delay: calc(var(--c, 0) * 110ms + 250ms + var(--j, 0) * 45ms), calc(var(--c, 0) * 110ms + 250ms + var(--j, 0) * 45ms), 0s, 0s, 0s;
+  }
+  .skill-grid.will-reveal.is-revealed .skill-card:hover { transform: translateY(-4px); transition-delay: 0s; }
+  .skill-grid.will-reveal.is-revealed .sk-tags li:hover { transform: translateY(-2px); transition-delay: 0s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ani { animation: none !important; }
+}
 
 .tags {
   list-style: none;
@@ -1511,6 +1608,8 @@ button { font: inherit; color: inherit; }
   .two-col,
 
   .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skill-card.sk-wide { grid-column: auto; }
+  .skill-card.sk-wide:first-child { grid-column: span 2; }
   .news-grid { --per-view: 2; --gap: 18px; }
 }
 
@@ -1557,6 +1656,7 @@ button { font: inherit; color: inherit; }
   .chart-label { grid-column: 1 / -1; }
   .lightbox-inner { padding: 44px 14px 14px; }
   .skill-grid { grid-template-columns: 1fr; }
+  .skill-card.sk-wide:first-child { grid-column: auto; }
   .footer-links { flex-direction: column; gap: 8px; }
   .to-top { right: 18px; bottom: 132px; }
   .interest-grid { grid-template-columns: 1fr; gap: 6px; }
