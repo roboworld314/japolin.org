@@ -1134,6 +1134,22 @@ button { font: inherit; color: inherit; }
 .xp-type-research { background: var(--green-tint); color: var(--green); }
 .xp-type-mentoring { background: #f7efdc; color: #8a6a1f; }
 .xp-desc { margin: 12px 0 0; color: var(--slate); font-size: 0.97rem; }
+/* Full, even lines in the role descriptions and bullets. */
+.xp-desc,
+.xp-points li { text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
+/* Links inside role cards look clearly clickable. */
+.xp-card a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(30, 79, 145, 0.35);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.xp-card a:hover { color: var(--green); text-decoration-color: currentColor; }
+.xp-link a { display: inline-flex; align-items: center; gap: 6px; }
+.xp-link a::after { content: "\2197"; font-size: 0.9em; text-decoration: none; }
 .xp-points { margin: 8px 0 0; padding-left: 1.15em; color: var(--slate); font-size: 0.95rem; }
 .xp-points li { padding: 2px 0; }
 .xp-points li::marker { color: var(--blue); }
