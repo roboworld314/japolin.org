@@ -527,6 +527,12 @@ button { font: inherit; color: inherit; }
 }
 
 .research-intro { max-width: none !important; text-align: justify; }
+
+/* Research interests: the area in one line, then four topic tiles. */
+.ri { margin: 0 0 36px; }
+.ri-area { margin: 0; font-size: 1.06rem; line-height: 1.65; text-align: justify; }
+.ri-area b { color: var(--blue-deep); font-weight: 600; }
+
 .section-intro {
   font-size: 1.06rem;
   max-width: 44em;
