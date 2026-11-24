@@ -499,6 +499,35 @@
     }
   }
 
+  /* --------------------------- service & awards --------------------------- */
+
+  var svcLayout = document.querySelector('.svc-layout');
+  if (svcLayout) {
+    var svcItems = svcLayout.querySelectorAll('.svc, .award');
+    svcLayout.querySelectorAll('.svc').forEach(function (el, i) { el.style.setProperty('--i', i); });
+    svcLayout.querySelectorAll('.award').forEach(function (el, i) { el.style.setProperty('--i', i); });
+    // The same pointer glow as the skill cards.
+    svcLayout.querySelectorAll('.svc, .award-card').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+    if (!reduceMotion && hasIO) {
+      svcLayout.classList.add('will-reveal');
+      new IntersectionObserver(function (entries, obs) {
+        if (!entries[0].isIntersecting) return;
+        svcLayout.classList.add('is-revealed');
+        svcItems.forEach(function (el) { el.classList.add('is-live'); });
+        window.setTimeout(function () {
+          svcItems.forEach(function (el) { el.classList.remove('is-live'); });
+        }, 4500);
+        obs.disconnect();
+      }, { rootMargin: '0px 0px -12% 0px' }).observe(svcLayout);
+    }
+  }
+
   /* ------------------------- publication filters ------------------------ */
 
   var chips = document.querySelectorAll('.pub-filters .chip');
