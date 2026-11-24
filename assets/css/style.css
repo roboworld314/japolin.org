@@ -2044,6 +2044,32 @@ button { font: inherit; color: inherit; }
   padding: 44px 0 0;
 }
 .site-footer p { margin: 0; }
+/* Closing quote, with a small ship riding the waves. */
+.footer-quote {
+  margin: 0 auto 36px;
+  padding-bottom: 36px;
+  background: linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) bottom center / calc(100% - 2 * var(--gutter)) 1px no-repeat;
+  text-align: center;
+}
+.footer-quote blockquote { margin: 0; }
+.footer-quote blockquote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  line-height: 1.45;
+  color: #fff;
+}
+.footer-quote figcaption { margin-top: 10px; font-size: 0.92rem; font-weight: 500; color: #a9bad6; letter-spacing: 0.02em; }
+.footer-quote figcaption::before { content: "\2014\00a0"; }
+.fq-ship { display: block; width: 72px; height: 45px; margin: 0 auto 12px; overflow: visible; fill: none; stroke: #c9d6ea; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fq-sail { fill: rgba(255, 255, 255, 0.14); }
+.fq-sea { stroke: #7fa3d6; }
+@media (prefers-reduced-motion: no-preference) {
+  .fq-boat { transform-box: fill-box; transform-origin: 50% 100%; animation: fq-rock 3.2s ease-in-out infinite; }
+  .fq-sea { animation: fq-sea 1.6s linear infinite; }
+}
+@keyframes fq-rock { 0%, 100% { transform: rotate(-4deg) translateY(0); } 50% { transform: rotate(4deg) translateY(-1.5px); } }
+@keyframes fq-sea { from { transform: translateX(0); } to { transform: translateX(-16px); } }
 .site-footer a { color: #fff; }
 .footer-grid {
   display: flex;
