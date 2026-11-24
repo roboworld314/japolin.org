@@ -1095,6 +1095,93 @@ button { font: inherit; color: inherit; }
 .thumb:hover { border-color: var(--blue); }
 .thumb:hover span { color: var(--blue-deep); }
 
+/* Figure slider inside each published project: arrows to change, hover to zoom. */
+.fig-slider { margin-top: 26px; }
+.fs-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.fs-head h5 { margin: 0; font-size: 1rem; font-weight: 600; color: var(--blue-deep); }
+.fs-count { font-size: 0.84rem; font-weight: 600; color: var(--slate); font-variant-numeric: tabular-nums; }
+.fs-frame {
+  --zx: 50%;
+  --zy: 50%;
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--mist);
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+  cursor: zoom-in;
+  box-shadow: 0 16px 34px -26px rgba(23, 32, 46, 0.55);
+}
+.fs-frame:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.fs-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 14px;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+.fs-slide.is-active { opacity: 1; transform: none; }
+.fs-slide.is-leaving { opacity: 0; transform: translateX(-24px); }
+.fs-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform-origin: var(--zx) var(--zy);
+  transition: transform 0.25s ease;
+}
+/* Magnifier: the figure enlarges around the pointer. */
+.fs-frame.is-zooming .fs-slide.is-active img { transform: scale(2.1); }
+.fs-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ring);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--blue);
+  cursor: pointer;
+  box-shadow: 0 6px 16px -8px rgba(23, 32, 46, 0.5);
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease, opacity 0.2s ease;
+}
+.fs-arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.fs-arrow:hover { background: var(--blue); color: #fff; transform: scale(1.08); }
+.fs-prev { left: 10px; }
+.fs-next { right: 10px; }
+.fs-frame.is-zooming .fs-arrow,
+.fs-frame.is-zooming .fs-hint { opacity: 0; pointer-events: none; }
+.fs-hint {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(23, 32, 46, 0.72);
+  color: #fff;
+  font-size: 0.74rem;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+.fs-cap { margin: 10px 2px 0; font-size: 0.88rem; line-height: 1.5; color: var(--slate); min-height: 2.6em; }
+.fs-dots { display: flex; justify-content: center; gap: 7px; margin-top: 8px; }
+.fs-dots span { width: 7px; height: 7px; border-radius: 4px; background: var(--ring); cursor: pointer; transition: width 0.25s ease, background-color 0.25s ease; }
+.fs-dots span.is-on { width: 20px; background: var(--blue); }
+@media (prefers-reduced-motion: reduce) {
+  .fs-slide, .fs-slide img, .fs-arrow, .fs-dots span { transition: none; }
+}
+@media (hover: none) {
+  .fs-hint { display: none; }
+}
+
 /* -------------------------- publications ------------------------- */
 
 .pub-filters { display: none; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; }

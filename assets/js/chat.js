@@ -67,7 +67,7 @@
       id: 'weather',
       words: ['weather', 'rain', 'fog', 'snow', 'context-aware', 'context aware', 'sec 2025', 'sec\'25', 'all-weather'],
       chips: ['Publications', 'Send a message'],
-      answer: () => `<strong>Context-Aware Perception</strong> (ACM/IEEE SEC 2025 workshop) uses vision-language models to read weather and visibility in the driving scene and adapt object detection, so perception holds up in rain, fog, and snow. ${link('#research', 'Read more')}.`,
+      answer: () => `<strong>Context-Aware Perception</strong> (ACM/IEEE SEC 2025) uses QwenVL to label weather, guide realistic weather augmentation, and score sensor reliability, with GPT-4o choosing the most reliable sensor. It improves detection mAP by 8&ndash;12% in rain and fog (for example 0.75 to 0.86 in rain) while staying above 80 FPS. ${link('#research', 'Read more')}.`,
     },
     {
       id: 'projects',

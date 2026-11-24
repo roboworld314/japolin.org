@@ -396,6 +396,52 @@
     });
   });
 
+  /* ---------------------------- figure sliders ---------------------------- */
+
+  document.querySelectorAll('.fig-slider').forEach(function (slider) {
+    var frame = slider.querySelector('.fs-frame');
+    var slides = Array.prototype.slice.call(slider.querySelectorAll('.fs-slide'));
+    var dots = Array.prototype.slice.call(slider.querySelectorAll('.fs-dots span'));
+    var count = slider.querySelector('.fs-count');
+    var cap = slider.querySelector('.fs-cap');
+    var idx = 0;
+    function show(n) {
+      n = (n + slides.length) % slides.length;
+      if (n === idx) return;
+      var old = slides[idx];
+      old.classList.remove('is-active'); old.classList.add('is-leaving');
+      setTimeout(function () { old.classList.remove('is-leaving'); }, 400);
+      idx = n;
+      slides[idx].classList.add('is-active');
+      dots.forEach(function (d, i) { d.classList.toggle('is-on', i === idx); });
+      if (count) count.textContent = (idx + 1) + ' / ' + slides.length;
+      if (cap) cap.textContent = slides[idx].getAttribute('data-caption');
+    }
+    slider.querySelector('.fs-prev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+    slider.querySelector('.fs-next').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); }); });
+    frame.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(idx + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1); }
+      if (e.key === 'Enter') openViewer();
+    });
+    // Hover magnifier follows the pointer (mouse only).
+    frame.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse' || e.target.closest('.fs-arrow')) { frame.classList.remove('is-zooming'); return; }
+      var r = frame.getBoundingClientRect();
+      frame.style.setProperty('--zx', ((e.clientX - r.left) / r.width * 100) + '%');
+      frame.style.setProperty('--zy', ((e.clientY - r.top) / r.height * 100) + '%');
+      frame.classList.add('is-zooming');
+    });
+    frame.addEventListener('pointerleave', function () { frame.classList.remove('is-zooming'); });
+    function openViewer() {
+      if (!lightbox) return;
+      var items = slides.map(function (s) { return { src: s.getAttribute('data-full'), alt: s.querySelector('img').alt, caption: s.getAttribute('data-caption') }; });
+      lightbox.open(items, idx, frame);
+    }
+    frame.addEventListener('click', function (e) { if (!e.target.closest('.fs-arrow')) openViewer(); });
+  });
+
   /* ------------------------- experience filters ------------------------- */
 
   var xpChips = document.querySelectorAll('.xp-filters .chip');

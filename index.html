@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=60">
+  <link rel="stylesheet" href="assets/css/style.css?v=62">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -249,21 +249,6 @@
                 </ul>
               </div>
             </div>
-            <div class="gallery" data-gallery="blindzoneeye">
-              <div class="gallery-head"><h5 class="gallery-title">Figures from the paper</h5><p class="gallery-hint">Select a figure to enlarge it</p></div>
-              <button class="thumb" type="button" data-full="assets/img/research/bze-testbed.jpg" data-caption="The same blind-zone risk on the scaled smart-intersection testbed and in CARLA: a stopped vehicle hides the conflict region from the ego vehicle's LiDAR and camera.">
-                <img src="assets/img/research/bze-testbed.jpg" alt="Testbed and CARLA views of an intersection blind zone" loading="lazy"><span>Testbed and CARLA views of a blind zone</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/bze-alert.jpg" data-caption="Blind-zone detection and alerting in CARLA and on the testbed, from terminal warning to structured alert with direction, type, and occluding cause.">
-                <img src="assets/img/research/bze-alert.jpg" alt="Blind-zone detection and alert notifications" loading="lazy"><span>Detection and alerting</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/bze-blackbox.png" data-caption="Event-aware black box: the rolling buffer becomes pre-event evidence when a blind-zone alert and a driving anomaly occur together, then post-event data is recorded until the event stabilizes.">
-                <img src="assets/img/research/bze-blackbox.png" alt="Black box architecture diagram" loading="lazy"><span>Event-aware black box</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/bze-platform.jpg" data-caption="Experimental platforms: the scaled testbed with robotic vehicles and a roadside unit, and the CARLA setup with wheel and pedals for human-in-the-loop trials.">
-                <img src="assets/img/research/bze-platform.jpg" alt="Physical testbed and CARLA driving rig" loading="lazy"><span>Physical testbed and CARLA rig</span>
-              </button>
-            </div>
           </section>
 
           <!-- SenseGuard -->
@@ -305,21 +290,6 @@
                   <li><b>136&nbsp;ms to 63&nbsp;ms</b> decision age with semantic and RL admission</li>
                 </ul>
               </div>
-            </div>
-            <div class="gallery" data-gallery="senseguard">
-              <div class="gallery-head"><h5 class="gallery-title">Figures from the paper</h5><p class="gallery-hint">Select a figure to enlarge it</p></div>
-              <button class="thumb" type="button" data-full="assets/img/research/sg-staleness.jpg" data-caption="Present-world accuracy across 20 detectors: a default full-rate FIFO pipeline trails the scene-current upper bound by 0.44 on average because inference falls behind the scene.">
-                <img src="assets/img/research/sg-staleness.jpg" alt="Chart of present-world accuracy across 20 detectors" loading="lazy"><span>The staleness gap</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/sg-pipeline.png" data-caption="Two-stage sensor-to-decision pipeline: an online data plane removes temporal and spatial redundancy; an offline control plane retrains when performance drops.">
-                <img src="assets/img/research/sg-pipeline.png" alt="SenseGuard pipeline diagram" loading="lazy"><span>Sensor-to-decision pipeline</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/sg-cot.png" data-caption="Structured chain-of-thought from the vision-language model: scene context, risk analysis, and a scene-aware decision that guides frame retention.">
-                <img src="assets/img/research/sg-cot.png" alt="Chain-of-thought reasoning example on a snowy highway" loading="lazy"><span>VLM chain-of-thought</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/sg-rovax.jpg" data-caption="The RovaX robotic vehicle on outdoor routes with uneven surfaces and cluttered roadways.">
-                <img src="assets/img/research/sg-rovax.jpg" alt="RovaX robotic vehicle on outdoor routes" loading="lazy"><span>RovaX robotic vehicle</span>
-              </button>
             </div>
           </section>
 
@@ -374,18 +344,6 @@
                 </ul>
               </div>
             </div>
-            <div class="gallery" data-gallery="vibrabox">
-              <div class="gallery-head"><h5 class="gallery-title">Figures from the paper</h5><p class="gallery-hint">Select a figure to enlarge it</p></div>
-              <button class="thumb" type="button" data-full="assets/img/research/vb-tradeoff.png" data-caption="Vibration shifts the safe storage and replay trade-off: a fixed configuration that works indoors breaks the error bound outdoors, while VibraBox adapts and stays feasible.">
-                <img src="assets/img/research/vb-tradeoff.png" alt="Storage reduction versus replay error under three vibration levels" loading="lazy"><span>Trade-off across vibration levels</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/vb-arch.png" data-caption="VibraBox architecture: an always-on circular buffer, trigger-to-commit persistence, and compressed event packages.">
-                <img src="assets/img/research/vb-arch.png" alt="VibraBox architecture diagram" loading="lazy"><span>Black box architecture</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/vb-downsample.png" data-caption="An original LiDAR scan compared with voxel-grid filtering and farthest point sampling; the voxel grid keeps smoother geometry for replay.">
-                <img src="assets/img/research/vb-downsample.png" alt="Point clouds before and after downsampling" loading="lazy"><span>LiDAR downsampling</span>
-              </button>
-            </div>
           </section>
 
           <!-- Log What Matters / CAAL-VLM -->
@@ -405,6 +363,19 @@
                   <li><b>Log LiDAR scans by geometry.</b> Scans become BEV histograms compared with a dynamic Chi-square threshold, and a DQN agent tunes deduplication using KISS-ICP odometry stability.</li>
                   <li><b>Choose the sensor by context.</b> Qwen-VL extracts weather and visibility, reliability scores rate the camera and LiDAR, and GPT-4o reasoning decides which sensor to trust.</li>
                 </ol>
+                <div class="fig-slider">
+                  <div class="fs-head"><h5>Figures from the paper</h5><span class="fs-count">1 / 3</span></div>
+                  <div class="fs-frame" tabindex="0" aria-label="Figure viewer: hover to zoom, click to enlarge, arrow keys to change">
+                    <figure class="fs-slide is-active" data-full="assets/img/research/caal-pipeline.png" data-caption="CAAL-VLM safety-aware adaptive logging: SigLIP and Qwen-VL score camera frames, while BEV histograms and an RL policy deduplicate LiDAR scans."><img src="assets/img/research/caal-pipeline.png" alt="CAAL-VLM logging pipeline diagram" loading="lazy"></figure>
+                    <figure class="fs-slide" data-full="assets/img/research/caal-dedup.jpg" data-caption="Keep, keep at lower resolution, or drop: content-aware deduplication decisions guided by scene context, critical objects, and road type."><img src="assets/img/research/caal-dedup.jpg" alt="Frame pairs with keep and drop decisions" loading="lazy"></figure>
+                    <figure class="fs-slide" data-full="assets/img/research/caal-context.png" data-caption="VLM-guided context-aware pipeline: scene context extraction, camera and LiDAR reliability scoring, and a GPT-4o sensor decision."><img src="assets/img/research/caal-context.png" alt="VLM-guided context-aware pipeline diagram" loading="lazy"></figure>
+                    <button class="fs-arrow fs-prev" type="button" aria-label="Previous figure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5"/></svg></button>
+                    <button class="fs-arrow fs-next" type="button" aria-label="Next figure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5"/></svg></button>
+                    <span class="fs-hint" aria-hidden="true">Hover to zoom, click to enlarge</span>
+                  </div>
+                  <p class="fs-cap">CAAL-VLM safety-aware adaptive logging: SigLIP and Qwen-VL score camera frames, while BEV histograms and an RL policy deduplicate LiDAR scans.</p>
+                  <div class="fs-dots" aria-hidden="true"><span class="is-on"></span><span></span><span></span></div>
+                </div>
               </div>
               <div class="panel-results">
                 <figure class="chart chart-grouped" style="--max:1">
@@ -432,23 +403,11 @@
                   <div class="chart-row is-ours"><span class="chart-label">CAAL-VLM</span><span class="chart-track"><span class="chart-fill" style="--v:96.4"></span></span><span class="chart-value">96.4</span></div>
                 </figure>
                 <ul class="facts">
-                  <li><b>23%</b> less camera storage and <b>27%</b> less LiDAR storage</li>
+                  <li><b>23% / 27%</b> less camera / LiDAR storage</li>
                   <li><b>16.6&nbsp;ms to 9.5&nbsp;ms</b> mean perception latency</li>
                   <li><b>12.12 to 8.67&nbsp;MB/s</b> camera peak bandwidth</li>
                 </ul>
               </div>
-            </div>
-            <div class="gallery" data-gallery="caalvlm">
-              <div class="gallery-head"><h5 class="gallery-title">Figures from the paper</h5><p class="gallery-hint">Select a figure to enlarge it</p></div>
-              <button class="thumb" type="button" data-full="assets/img/research/caal-pipeline.png" data-caption="CAAL-VLM safety-aware adaptive logging: SigLIP and Qwen-VL score camera frames, while BEV histograms and an RL policy deduplicate LiDAR scans.">
-                <img src="assets/img/research/caal-pipeline.png" alt="CAAL-VLM logging pipeline diagram" loading="lazy"><span>Adaptive logging pipeline</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/caal-dedup.jpg" data-caption="Keep, keep at lower resolution, or drop: content-aware deduplication decisions guided by scene context, critical objects, and road type.">
-                <img src="assets/img/research/caal-dedup.jpg" alt="Frame pairs with keep and drop decisions" loading="lazy"><span>Keep, downsize, or drop</span>
-              </button>
-              <button class="thumb" type="button" data-full="assets/img/research/caal-context.png" data-caption="VLM-guided context-aware pipeline: scene context extraction, camera and LiDAR reliability scoring, and a GPT-4o sensor decision.">
-                <img src="assets/img/research/caal-context.png" alt="VLM-guided context-aware pipeline diagram" loading="lazy"><span>Context-aware sensor choice</span>
-              </button>
             </div>
           </section>
 
@@ -462,9 +421,63 @@
             <div class="panel-grid">
               <div class="panel-story">
                 <h5>The problem</h5>
-                <p>Camera detectors trained on clear-weather data lose accuracy in rain, fog, and snow, exactly when an autonomous vehicle most needs reliable perception.</p>
-                <h5>The approach</h5>
-                <p>This workshop paper uses vision-language models to read weather and visibility context from the driving scene and adapt object detection to it, so the perception stack knows when conditions have changed and responds.</p>
+                <p>Rain, fog, and snow reduce contrast and hide objects, so camera detectors trained on clear-weather data fail exactly when an autonomous vehicle most needs them. Across 11 detectors on BDD100K, fog was the most damaging condition, and RF-DETR and YOLOv10-M were the most robust.</p>
+                <h5>How it works</h5>
+                <ol class="steps">
+                  <li><b>Context-aware annotation.</b> QwenVL labels the weather, estimates visibility, and writes scene descriptions such as &ldquo;dense fog reduces lane visibility&rdquo;.</li>
+                  <li><b>Context-aware augmentation.</b> QwenVL-guided rendering adds realistic rain, fog, and snow while keeping labels consistent, balancing the training data across weather.</li>
+                  <li><b>Reliability scoring and sensor choice.</b> A sensor reliability score combines detection confidence, image quality, and weather; GPT-4o reasons over it to pick the primary sensor and explain why.</li>
+                </ol>
+                <div class="fig-slider">
+                  <div class="fs-head"><h5>Figures from the paper</h5><span class="fs-count">1 / 4</span></div>
+                  <div class="fs-frame" tabindex="0" aria-label="Figure viewer: hover to zoom, click to enlarge, arrow keys to change">
+                    <figure class="fs-slide is-active" data-full="assets/img/research/sec-fig1-overview.png" data-caption="Fig. 1: Heuristic analysis of adverse weather (RQ1) and the VLM-guided pipeline (RQ2); the VLM-enhanced model detects objects the traditional model misses in rain."><img src="assets/img/research/sec-fig1-overview.png" alt="Overview of the framework comparing traditional and VLM-enhanced detection in rain" loading="lazy"></figure>
+                    <figure class="fs-slide" data-full="assets/img/research/sec-fig2-weather.png" data-caption="Fig. 2: Camera frames under sunny, rainy, foggy, and snowy conditions from BDD100K; green boxes mark detected objects."><img src="assets/img/research/sec-fig2-weather.png" alt="Driving frames in sunny, rainy, foggy, and snowy weather" loading="lazy"></figure>
+                    <figure class="fs-slide" data-full="assets/img/research/sec-fig3-pipeline.png" data-caption="Fig. 3: The VLM-guided adaptive weather-aware perception pipeline: context-aware annotation and augmentation, sensor reliability scoring, and GPT-4o dynamic perception."><img src="assets/img/research/sec-fig3-pipeline.png" alt="VLM-guided adaptive weather-aware perception pipeline" loading="lazy"></figure>
+                    <figure class="fs-slide" data-full="assets/img/research/sec-fig4-reasoning.png" data-caption="Fig. 4: Interpretable output: a sunny frame keeps the camera (reliability 0.98), while a rainy frame switches to other sensors (0.63)."><img src="assets/img/research/sec-fig4-reasoning.png" alt="Reasoning output for sunny and rainy frames with reliability scores" loading="lazy"></figure>
+                    <button class="fs-arrow fs-prev" type="button" aria-label="Previous figure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5"/></svg></button>
+                    <button class="fs-arrow fs-next" type="button" aria-label="Next figure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5"/></svg></button>
+                    <span class="fs-hint" aria-hidden="true">Hover to zoom, click to enlarge</span>
+                  </div>
+                  <p class="fs-cap">Fig. 1: Heuristic analysis of adverse weather (RQ1) and the VLM-guided pipeline (RQ2); the VLM-enhanced model detects objects the traditional model misses in rain.</p>
+                  <div class="fs-dots" aria-hidden="true"><span class="is-on"></span><span></span><span></span><span></span></div>
+                </div>
+              </div>
+              <div class="panel-results">
+                <figure class="chart chart-grouped" style="--max:1">
+                  <figcaption>Detection mAP in adverse weather</figcaption>
+                  <p class="chart-legend"><span class="key key-base">Baselines</span><span class="key key-ours">VLM-enhanced</span></p>
+                  <div class="chart-group">
+                    <p class="chart-group-label">Rain</p>
+                    <div class="chart-row"><span class="chart-label">YOLOv10-M</span><span class="chart-track"><span class="chart-fill" style="--v:0.75"></span></span><span class="chart-value">0.75</span></div>
+                    <div class="chart-row"><span class="chart-label">RF-DETR</span><span class="chart-track"><span class="chart-fill" style="--v:0.77"></span></span><span class="chart-value">0.77</span></div>
+                    <div class="chart-row is-ours"><span class="chart-label">VLM-enhanced</span><span class="chart-track"><span class="chart-fill" style="--v:0.86"></span></span><span class="chart-value">0.86</span></div>
+                  </div>
+                  <div class="chart-group">
+                    <p class="chart-group-label">Fog</p>
+                    <div class="chart-row"><span class="chart-label">YOLOv10-M</span><span class="chart-track"><span class="chart-fill" style="--v:0.72"></span></span><span class="chart-value">0.72</span></div>
+                    <div class="chart-row"><span class="chart-label">RF-DETR</span><span class="chart-track"><span class="chart-fill" style="--v:0.69"></span></span><span class="chart-value">0.69</span></div>
+                    <div class="chart-row is-ours"><span class="chart-label">VLM-enhanced</span><span class="chart-track"><span class="chart-fill" style="--v:0.78"></span></span><span class="chart-value">0.78</span></div>
+                  </div>
+                  <div class="chart-group">
+                    <p class="chart-group-label">Snow</p>
+                    <div class="chart-row"><span class="chart-label">YOLOv10-M</span><span class="chart-track"><span class="chart-fill" style="--v:0.69"></span></span><span class="chart-value">0.69</span></div>
+                    <div class="chart-row"><span class="chart-label">RF-DETR</span><span class="chart-track"><span class="chart-fill" style="--v:0.72"></span></span><span class="chart-value">0.72</span></div>
+                    <div class="chart-row is-ours"><span class="chart-label">VLM-enhanced</span><span class="chart-track"><span class="chart-fill" style="--v:0.80"></span></span><span class="chart-value">0.80</span></div>
+                  </div>
+                </figure>
+                <figure class="chart" style="--max:1">
+                  <figcaption>RF-DETR mAP by weather: fog hurts most</figcaption>
+                  <div class="chart-row"><span class="chart-label">Sunny</span><span class="chart-track"><span class="chart-fill" style="--v:0.80"></span></span><span class="chart-value">0.80</span></div>
+                  <div class="chart-row"><span class="chart-label">Rainy</span><span class="chart-track"><span class="chart-fill" style="--v:0.75"></span></span><span class="chart-value">0.75</span></div>
+                  <div class="chart-row"><span class="chart-label">Snowy</span><span class="chart-track"><span class="chart-fill" style="--v:0.72"></span></span><span class="chart-value">0.72</span></div>
+                  <div class="chart-row"><span class="chart-label">Foggy</span><span class="chart-track"><span class="chart-fill" style="--v:0.69"></span></span><span class="chart-value">0.69</span></div>
+                </figure>
+                <ul class="facts">
+                  <li><b>8&ndash;12%</b> mAP gain in rain and fog</li>
+                  <li><b>&gt; 80 FPS</b> real time kept, 12&ndash;15&nbsp;ms latency</li>
+                  <li><b>0.98 / 0.63</b> camera reliability, sunny vs. rainy frame</li>
+                </ul>
               </div>
             </div>
           </section>
@@ -1097,7 +1110,7 @@
   </dialog>
 
   <script src="assets/js/news.js?v=39"></script>
-  <script src="assets/js/main.js?v=60"></script>
+  <script src="assets/js/main.js?v=61"></script>
   <script src="assets/js/drive.js?v=14"></script>
   <script src="assets/js/chat.js?v=42"></script>
 </body>
