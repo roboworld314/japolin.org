@@ -573,6 +573,34 @@
       });
     }
 
+    // Arrows move the photo strip by most of a screen; they dim at either end.
+    var moPrev = document.querySelector('.mo-prev');
+    var moNext = document.querySelector('.mo-next');
+    var moSync = function () {
+      var max = moGrid.scrollWidth - moGrid.clientWidth - 2;
+      if (moPrev) moPrev.disabled = moGrid.scrollLeft <= 2;
+      if (moNext) moNext.disabled = moGrid.scrollLeft >= max;
+      var none = max <= 0;
+      if (moPrev) moPrev.hidden = none;
+      if (moNext) moNext.hidden = none;
+    };
+    var moStep = function (dir) {
+      var col = moGrid.querySelector('.mo');
+      var w = col ? col.getBoundingClientRect().width + 12 : moGrid.clientWidth / 2;
+      var cols = Math.max(1, Math.floor(moGrid.clientWidth / w));
+      moGrid.scrollBy({ left: dir * cols * w, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+    if (moPrev) moPrev.addEventListener('click', function () { moStep(-1); });
+    if (moNext) moNext.addEventListener('click', function () { moStep(1); });
+    moGrid.addEventListener('scroll', moSync, { passive: true });
+    window.addEventListener('resize', moSync);
+    moGrid.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); moStep(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); moStep(-1); }
+    });
+    moSync();
+    window.addEventListener('load', moSync);
+
     if (!reduceMotion && hasIO) {
       moGrid.classList.add('will-reveal');
       new IntersectionObserver(function (entries, obs) {

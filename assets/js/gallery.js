@@ -7,9 +7,8 @@
       and change the details.
 
    tag   One of: "Award", "Talk", "Teaching", "Lab", "Event".
-   size  "big" spans two columns and two rows (a featured photo),
-         "wide" spans two columns, "tall" spans two rows (good for
-         portrait photos). Leave it out for a normal tile.
+   size  "tall" fills both rows (use it for portrait photos).
+         Leave it out for landscape photos.
    position  Which part of the photo to keep in view, e.g. "center 30%".
    fit   "contain" shows the whole image without cropping.
    ============================================================= */
@@ -29,7 +28,6 @@ window.MOMENTS = [
     title: "Presenting Context-Aware Perception at ACM/IEEE SEC'25",
     date: "Dec 2025",
     tag: "Talk",
-    size: "big",
     alt: "Johora Akter Polin presenting a slide titled VLM-Guided Adaptive Weather-Aware Perception Pipeline to an audience"
   },
   {
@@ -46,7 +44,6 @@ window.MOMENTS = [
     title: "Student/Alumni Panel, W&M CS Symposium",
     date: "Nov 2026",
     tag: "Talk",
-    size: "big",
     alt: "Six Ph.D. students seated on stage below a slide titled Student / Alumni Panel, W&M Computer Science Graduate Studies"
   },
   {
@@ -54,7 +51,6 @@ window.MOMENTS = [
     title: "Joining the discussion at IEEE MOST 2026, Detroit",
     date: "May 2026",
     tag: "Event",
-    size: "big",
     position: "center 35%",
     alt: "Johora Akter Polin speaking into a microphone at a round table during IEEE MOST 2026"
   }
