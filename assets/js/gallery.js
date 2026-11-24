@@ -53,5 +53,20 @@ window.MOMENTS = [
     tag: "Event",
     position: "center 35%",
     alt: "Johora Akter Polin speaking into a microphone at a round table during IEEE MOST 2026"
+  },
+  {
+    src: "assets/moments/robot-demo-outdoor.jpg",
+    title: "Live demo of our robotic vehicles at an outdoor showcase",
+    date: "",
+    tag: "Event",
+    position: "70% 34%",
+    alt: "Johora Akter Polin setting up a small robotic vehicle on a road mat for a visitor at an outdoor showcase tent, with a steering wheel, pedals, and traffic light on display"
+  },
+  {
+    src: "assets/moments/class-presentation.jpg",
+    title: "Presenting to students in class",
+    date: "",
+    tag: "Teaching",
+    alt: "Johora Akter Polin presenting a slide to a classroom of students"
   }
 ];
