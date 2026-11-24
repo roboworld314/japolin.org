@@ -68,5 +68,29 @@ window.MOMENTS = [
     date: "",
     tag: "Teaching",
     alt: "Johora Akter Polin presenting a slide to a classroom of students"
+  },
+  {
+    src: "assets/moments/lab-urban-mobility-map.jpg",
+    title: "Walking students through the urban mobility map",
+    date: "",
+    tag: "Teaching",
+    position: "center 40%",
+    alt: "Johora Akter Polin pointing to an urban mobility map on a large screen while students watch in the Vehicle Computing Lab, with robotic vehicles on the smart-city floor"
+  },
+  {
+    src: "assets/moments/lab-coding-session.jpg",
+    title: "Hands-on coding session in the Vehicle Computing Lab",
+    date: "",
+    tag: "Teaching",
+    position: "center 45%",
+    alt: "Students with laptops following code on a large screen as Johora Akter Polin leads a session in the Vehicle Computing Lab"
+  },
+  {
+    src: "assets/moments/lab-building-robot.jpg",
+    title: "Building a robotic vehicle in the lab",
+    date: "",
+    tag: "Lab",
+    position: "center 45%",
+    alt: "Johora Akter Polin assembling a small robotic vehicle with a depth camera and mecanum wheels"
   }
 ];
