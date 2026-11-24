@@ -1,0 +1,422 @@
+%% =============================================================
+%%  Curriculum Vitae -- Johora Akter Polin  (version 2)
+%%  Layout: centered headings, running header, numbered entries,
+%%  and a Research Projects section with "My role" bullets.
+%%  Compile with XeLaTeX/LuaLaTeX (tectonic) or pdfLaTeX.
+%% =============================================================
+\documentclass[11pt,letterpaper]{article}
+
+% ---------- Fonts ----------
+\usepackage{iftex}
+\usepackage[T1]{fontenc}
+\usepackage{tgtermes}               % Times-style serif
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+\usepackage{microtype}
+\usepackage{fontawesome5}
+\ifPDFTeX
+  \newcommand{\scholaricon}{\faGraduationCap}
+\else
+  \usepackage{academicons}
+  \newcommand{\scholaricon}{\aiGoogleScholar}
+\fi
+
+% ---------- Page layout ----------
+\usepackage[letterpaper,left=0.85in,right=0.85in,top=0.85in,bottom=0.8in,
+            headheight=14pt,headsep=14pt,footskip=0.4in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\definecolor{linkblue}{HTML}{0563C1}   % standard hyperlink blue
+\usepackage[colorlinks=true,urlcolor=linkblue,linkcolor=linkblue,citecolor=linkblue]{hyperref}
+\hypersetup{pdftitle={Johora Akter Polin -- Curriculum Vitae},
+            pdfauthor={Johora Akter Polin}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\clubpenalty=10000
+\widowpenalty=10000
+\hyphenation{autonomy autonomous}  % never split these words across lines
+
+% Running header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small JOHORA AKTER POLIN}
+\fancyhead[R]{\small CURRICULUM VITAE}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyfoot[C]{\small Curriculum Vitae (Johora Akter Polin) -- \thepage}
+
+% Centered section headings
+\setcounter{secnumdepth}{0}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{9pt plus 2pt minus 1pt}{4pt}
+
+% ---------- Lists ----------
+\setlist{nosep}
+\setlist[itemize]{label=\textbullet, leftmargin=1.6em, labelsep=0.6em, topsep=1pt, itemsep=1pt, beginpenalty=10000}
+
+% numbered entries such as [P11], [A7], [S5]
+\newenvironment{numbered}[1][3.1em]
+  {\begin{itemize}[leftmargin=#1, labelwidth=\dimexpr#1-0.5em\relax,
+                   labelsep=0.5em, align=left, itemsep=3pt, topsep=2pt]}
+  {\end{itemize}}
+
+% labelled rows such as "Area:" and "Topics:"
+\newenvironment{labelled}[1][5.2em]
+  {\begin{description}[leftmargin=#1, labelwidth=\dimexpr#1-0.5em\relax,
+                       labelsep=0.5em, align=left, font=\normalfont,
+                       itemsep=2pt, topsep=1pt]}
+  {\end{description}}
+
+% ---------- Helper commands ----------
+\newcommand{\me}{\textbf{Johora Akter Polin}}
+\newcommand{\paper}[1]{~\mbox{[\href{#1}{Paper}]}}
+\newcommand{\subhead}[1]{\par\vspace{6pt}\textbf{\large #1}\par\nobreak\vspace{1pt}}
+% \org{bold organization}{dates}
+\newcommand{\org}[2]{\par\textbf{#1}\hfill\textbf{#2}\par\nobreak\interlinepenalty=10000}
+\newcommand{\myrole}{\underline{My role}:}
+\newcommand{\entrygap}{\par\vspace{6pt}}
+
+%% =============================================================
+\begin{document}
+
+% ---------- Name and contact ----------
+\begin{center}
+  {\fontsize{20}{24}\selectfont\bfseries Johora Akter Polin}\par\vspace{4pt}
+  {\small
+  \href{tel:+17573711873}{\faPhone\ +1 (757) 371-1873}%
+  \enspace\textbar\textbar\enspace
+  \href{mailto:japolin@wm.edu}{\faEnvelope\ japolin@wm.edu}%
+  \enspace\textbar\textbar\enspace
+  \href{https://roboworld314.github.io/japolin.org/}{\faGlobe\ Homepage}%
+  \enspace\textbar\textbar\enspace
+  \href{https://scholar.google.com/citations?user=50AFRskAAAAJ}{\scholaricon\ Google Scholar}%
+  \enspace\textbar\textbar\enspace
+  \href{https://www.linkedin.com/in/johora-akter-polin-577759232/}{\faLinkedin\ LinkedIn}\par}
+\end{center}
+\vspace{-4pt}
+
+% -------------------------------------------------------------
+\section{Research Interest}
+\begin{labelled}
+  \item[Area:] \textbf{Autonomous driving, edge and vehicle computing}
+    (especially reliable, efficient, and safety-aware perception and
+    decision-making for autonomous vehicles and agentic robots under occlusion,
+    adverse weather, vibration, and tight compute budgets)
+  \item[Topics:] \textbf{Robust multi-sensor perception} (\textit{e.g.},
+    camera-LiDAR fusion, blind-zone-aware and all-weather object detection),
+    \textbf{agentic AI and foundation models} (\textit{e.g.}, LLM/VLM reasoning
+    agents, multi-agent systems, reinforcement learning), \textbf{edge AI and
+    real-time perception} (\textit{e.g.}, latency- and resource-aware sensing on
+    embedded platforms), \textbf{cooperative, safety-critical autonomy}
+    (\textit{e.g.}, V2I-assisted collision mitigation, HD maps, event-aware
+    Black Box recording and learning from failures)
+\end{labelled}
+
+% -------------------------------------------------------------
+\section{Education}
+\org{Ph.D. student, William \& Mary, USA}{2024 -- Present}
+Major: Computer Science \textbar\ GPA: 3.95/4.00\par
+Advisor: Sidi Lu \textbar\ Research Area: Edge and Vehicle Computing for Autonomous Driving
+\entrygap
+\org{M.Sc., Daffodil International University, Bangladesh}{2021 -- 2023}
+Major: Computer Science and Engineering \textbar\ GPA: 4.00/4.00\par
+Advisor: Md.~Tarek Habib \textbar\ Research Area: Machine Learning and Deep Learning
+\entrygap
+\org{B.Sc., Daffodil International University, Bangladesh}{2015 -- 2020}
+Major: Computer Science and Engineering \textbar\ GPA: 3.90/4.00
+\entrygap
+\org{Certification Course, HEC Montr\'eal, Canada}{2020}
+Social Business (3 credits)
+
+% -------------------------------------------------------------
+\section{Full List of Publications}
+\subhead{Under Review}
+{\interlinepenalty=10000\raggedright
+\begin{numbered}
+  \item[{[U1]}] BlindZoneEye: See Clearly, React Safely, and Record Reliably in
+    Autonomous Driving\par\nobreak
+    \me, Yichen Luo, Yongtao Yao, Adwait Nadkarni, and Sidi Lu.\par\nobreak
+    Under review at an IEEE journal
+  \item[{[U2]}] SenseGuard: Sensor-to-Decision Adaptation and Learning for
+    Reliable Agentic Robots\par\nobreak
+    \me, Yichen Luo, Yongtao Yao, Adwait Nadkarni, and Sidi Lu.\par\nobreak
+    Under review at an international robotics conference
+  \item[{[U3]}] VibraBox: A Vibration-Adaptive Black Box for Replay and Learning
+    from Failures in \mbox{Mobile-Robot Autonomy}; \me, Yichen Luo, Yongtao Yao, and Sidi Lu.\par\nobreak
+    Under review at an international robotics conference
+\end{numbered}}
+
+\subhead{Publications}
+{\interlinepenalty=10000\raggedright
+\begin{numbered}
+  \item[{[P11]}] Log What Matters: Safety-Aware Adaptive Logging for CAVs in
+    Dynamic Conditions\paper{https://sidilu.org/paper/AdaptiveLogAsInput_MOST26.pdf}\par\nobreak
+    \me, Yichen Luo, FNU Sumaiya, Zheng Dong, and Sidi Lu.\par\nobreak
+    2026 IEEE 4th International Conference on Mobility, Operations, Services and
+    Technologies (MOST), Detroit, MI, USA, May 2026
+  \item[{[P10]}] TinyLite: Efficient Edge Intelligence for Real-Time Spam
+    Detection Under Device Constraints\paper{https://sidilu.org/paper/PISA_26_SpamDetection.pdf}\par\nobreak
+    Xuanlin Zhu, \me, and Sidi Lu.\par\nobreak
+    IEEE Workshop on Physical Intelligence: Systems and Applications (PISA), at
+    IEEE MOST, Detroit, MI, USA, May 2026
+  \item[{[P9]}] Context-Aware Perception: VLM-Augmented All-Weather Detection
+    for Autonomous Driving\paper{https://doi.org/10.1145/3769102.3774638}\par\nobreak
+    \me, Yichen Luo, and Sidi Lu.\par\nobreak
+    The Tenth ACM/IEEE Symposium on Edge Computing (SEC'25), Arlington, VA, USA, 2025
+  \item[{[P8]}] A Novel Approach to Analyzing the Impact of AI, ChatGPT, and
+    Chatbot on Education Using Machine Learning
+    Algorithms\paper{https://doi.org/10.11591/eei.v13i4.7158}\par\nobreak
+    Nahid Hasan, \me, Md.~Rayhan Ahmmed, Md.~Mamun Sakib, Md.~Farhan Jahin, and
+    Md.~Mahfuzur Rahman.\par\nobreak
+    Bulletin of Electrical Engineering and Informatics, vol.~13, no.~4,
+    pp.~2951--2958, 2024
+  \item[{[P7]}] Predicting the Effects of Microcredit on Women's Empowerment in
+    Rural Bangladesh: Using Machine Learning
+    Algorithms\paper{https://doi.org/10.11591/eei.v13i4.7169}\par\nobreak
+    \me, Md.~Fouad Hossain Sarker, MST Dilruba Khanom Dolon, Nahid Hasan,
+    Md.~Mahfuzur Rahman, and Zannatun Nayem Vasha.\par\nobreak
+    Bulletin of Electrical Engineering and Informatics, vol.~13, no.~4,
+    pp.~2699--2706, 2024
+  \item[{[P6]}] Tomato Pest Recognition Using Convolutional Neural Network in
+    Bangladesh\paper{https://doi.org/10.11591/eei.v13i1.6073}\par\nobreak
+    \me, Nahid Hasan, Md.~Tarek Habib, Atiqur Rahman, Zannatun Nayem Vasha, and
+    Bidyut Sharma.\par\nobreak
+    Bulletin of Electrical Engineering and Informatics, vol.~13, no.~1,
+    pp.~619--627, 2024
+  \item[{[P5]}] Bengali Slang Detection Using State-of-the-Art Supervised Models
+    from a Given Text\paper{https://doi.org/10.11591/eei.v12i4.4743}\par\nobreak
+    Md Abdul Hamid, Eteka Sultana Tumpa, \me, Jabir Al Nahian, Atiqur Rahman, and
+    Nurjahan Akther Mim.\par\nobreak
+    Bulletin of Electrical Engineering and Informatics, vol.~12, no.~4,
+    pp.~2381--2387, 2023
+  \item[{[P4]}] Predicting Sugarcane Yields using Supervised Learning: A
+    Comparative Study\paper{https://ieeexplore.ieee.org/abstract/document/10307590}\par\nobreak
+    Parvez Ahmed Papon, Md Mahfuzur Rahman, Shafin Ahmed, Shahriar Mamun,
+    Md Zahirul Islam Mehadi, and \me.\par\nobreak
+    14th International Conference on Computing Communication and Networking
+    Technologies (ICCCNT), 2023
+  \item[{[P3]}] Encryption Process of Blockchain-Based Online Course Curriculum
+    Education System\paper{https://ieeexplore.ieee.org/abstract/document/10131770}\par\nobreak
+    Md Rayhan Ahmmed, Md Mamun Sakib, Maruf Ur Rahman, Rabeya Bibi, Md Maruf
+    Hasan Talukder, and \me.\par\nobreak
+    11th International Symposium on Digital Forensics and Security (ISDFS), 2023
+  \item[{[P2]}] Depression Detection in Social Media Comments Data Using Machine
+    Learning Algorithms\paper{https://doi.org/10.11591/eei.v12i2.4182}\par\nobreak
+    Zannatun Nayem Vasha, Bidyut Sharma, Israt Jahan Esha, Jabir Al Nahian, and
+    \me.\par\nobreak
+    Bulletin of Electrical Engineering and Informatics, vol.~12, no.~2,
+    pp.~987--996, 2023
+  \item[{[P1]}] Utilizing Smartphone Usage Pattern for Gender Recognition
+    Applying Machine Learning
+    Algorithms\paper{https://ieeexplore.ieee.org/abstract/document/9297407}\par\nobreak
+    \me, Omayer Khan, and Ahmed Al Marouf.\par\nobreak
+    4th International Conference on Electronics, Communication and Aerospace
+    Technology (ICECA), 2020
+\end{numbered}}
+
+% -------------------------------------------------------------
+\section{Honors \& Awards}
+\begin{numbered}
+  \item[{[A7]}] Student Travel Grant, IEEE Mobility, Operations, Services and Technologies (MOST) (2026)
+  \item[{[A6]}] Student Travel Grant, ACM/IEEE Symposium on Edge Computing (SEC) (2025)
+  \item[{[A5]}] Recognized as Advisor, Girls Computer Programming Club (2022)
+  \item[{[A4]}] Core Technical Member, National Hackathon, CTO Forum Bangladesh (2021)
+  \item[{[A3]}] Judging Committee Member, Social Business Creation Competition, HEC Montr\'eal (2020--2022)
+  \item[{[A2]}] Scopus-Indexed Publication Recognition, Daffodil International University (2020)
+  \item[{[A1]}] Runner-up Team, Social Business Creation Global Final, HEC Montr\'eal (2019)
+\end{numbered}
+
+% -------------------------------------------------------------
+\section{Research Experience}
+\org{William \& Mary, Williamsburg, VA, USA}{Fall 2025 -- Present}
+\textit{Graduate Research Assistant} \textbar\ Department of Computer Science\par\nobreak
+Advisor: Sidi Lu\par\nobreak
+\myrole\ Research on perception, agentic AI, and safety for autonomous vehicles
+with academic and industry partners, validated in CARLA with ROS~2 and on
+physical robotic vehicles (Jetson Orin NX testbed, roadside unit, IEEE 802.11p V2I).
+\entrygap
+\org{Daffodil International University, Dhaka, Bangladesh}{2020 -- 2024}
+\textit{Machine Learning Research} \textbar\ Department of Computer Science and Engineering\par\nobreak
+\myrole\ Applied CNNs and supervised machine learning to agriculture,
+natural-language processing, social-impact, and security problems
+(publications [P1]--[P8]).
+
+% -------------------------------------------------------------
+\section{Research Projects}
+\begin{numbered}[2.2em]
+  \item[{[5]}] {\raggedright \textbf{CAAL-VLM: safety-aware adaptive logging for connected and
+    autonomous vehicles} ([P11])\par}\nobreak
+    \textit{Advisor: Sidi Lu (William \& Mary)}\par\nobreak
+    \myrole\ Project Leader
+    \begin{itemize}
+      \item Logged camera frames by value: SigLIP measures redundancy, Qwen-VL
+        flags safety-relevant events and semantic change, and a PPO policy keeps,
+        downsizes, or drops each frame.
+      \item Deduplicated LiDAR scans with BEV histograms and a dynamic
+        Chi-square threshold tuned by a DQN agent from KISS-ICP odometry
+        stability.
+      \item Added context-aware sensor selection: Qwen-VL extracts weather and
+        visibility, reliability scores rate each sensor, and GPT-4o decides which
+        sensor to trust.
+      \item Cut camera and LiDAR storage by 23\% and 27\% and mean latency from
+        16.6\,ms to 9.5\,ms, kept 96.4\% of objects (vs.\ 70.5\% for heuristic
+        logging), and raised rainy-weather mAP from 0.75 to 0.86.
+    \end{itemize}
+  \item[{[4]}] {\raggedright \textbf{Context-aware perception: VLM-augmented all-weather
+    detection for autonomous driving} ([P9])\par}\nobreak
+    \textit{Advisor: Sidi Lu (William \& Mary)}\par\nobreak
+    \myrole\ Project Leader
+    \begin{itemize}
+      \item Studied how camera-based object detectors lose accuracy in rain, fog,
+        and snow, when autonomous vehicles most need reliable perception.
+      \item Used vision-language models to extract weather and visibility context
+        from driving scenes and adapt object detection to it, improving
+        all-weather perception.
+    \end{itemize}
+
+  \item[{[3]}] {\raggedright \textbf{BlindZoneEye: blind-zone detection, V2I-assisted mitigation,
+    and event-aware recording for autonomous driving} ([U1])\par}\nobreak
+    \textit{Advisor: Sidi Lu (William \& Mary)}\par\nobreak
+    \myrole\ Project Leader
+    \begin{itemize}
+      \item Framed blind-zone safety at occluded intersections and crosswalks as a
+        decision-before-visibility problem: the vehicle must act while the
+        conflict region still looks empty to its cameras and LiDAR.
+      \item Designed a sector-level blind-zone risk score that fuses LiDAR
+        occupancy, raycasting line-of-sight reasoning, and YOLOv11 camera
+        semantics, reaching 92.3\% detection accuracy at 41\,ms (versus 72.3\%
+        for LiDAR-camera fusion).
+      \item Built V2I-assisted mitigation, in which a roadside unit fuses its own
+        sensing and broadcasts warnings while the vehicle replans with model
+        predictive control (HD maps as fallback), reducing collisions by 76.2\%
+        and near misses by 75.2\%.
+      \item Developed an event-aware Black Box that commits synchronized pre-,
+        during-, and post-event evidence, achieving 96.7\% event recall with
+        58.2\% less storage than continuous logging; validated in CARLA with
+        ROS~2 and on a scaled physical testbed (accuracy above 86.8\%).
+    \end{itemize}
+  \item[{[2]}] {\raggedright \textbf{SenseGuard: sensor-to-decision adaptation and learning for
+    reliable agentic robots} ([U2])\par}\nobreak
+    \textit{Advisor: Sidi Lu (William \& Mary)}\par\nobreak
+    \myrole\ Project Leader
+    \begin{itemize}
+      \item Showed that across 20 detectors, full-rate pipelines trail a
+        scene-current upper bound by 0.44 in present-world accuracy, as redundant
+        and vibration-corrupted frames queue up.
+      \item Combined SigLIP visual similarity, Qwen2.5-VL chain-of-thought scene
+        reasoning, and a PPO policy that gives each camera frame bypass, reduced,
+        or full fidelity with a safety override; reviewed borderline LiDAR scans
+        with BEV histograms and the VLM.
+      \item Added area-average and vibration-calibrated voxel-grid downsampling,
+        and a confidence monitor that keeps failure episodes for targeted
+        retraining.
+      \item Raised camera mAP@50 on the RovaX robotic vehicle from 52.8\% to
+        72.9\%, cut inference latency by 31\% and decision age from 136\,ms to
+        63\,ms, and reduced LiDAR trajectory error by 75\%.
+    \end{itemize}
+  \item[{[1]}] {\raggedright \textbf{VibraBox: a vibration-adaptive Black Box for replay and
+    learning from robot failures} ([U3])\par}\nobreak
+    \textit{Advisor: Sidi Lu (William \& Mary)}\par\nobreak
+    \myrole\ Project Leader
+    \begin{itemize}
+      \item Showed that a storage setting tuned on smooth floors breaks the
+        replay-error bound on bumpy outdoor terrain, so safe data reduction must
+        adapt to motion.
+      \item Built a ROS~2 Black Box with a bounded circular buffer and
+        trigger-to-commit persistence, combining BEV-histogram (Chi-square)
+        frame deduplication, voxel-grid downsampling, and lossless LZ4/ZSTD
+        compression in MCAP.
+      \item Designed a DQN controller that reads vibration, KISS-ICP
+        scan-matching stability, and write backlog to choose the threshold,
+        voxel size, and codec for every LiDAR scan.
+      \item Across 14 indoor and outdoor runs (32.34\,GB), used up to 46\% less
+        storage, cut rotational replay error by up to 71.4\% and latency by
+        51.7\%, and raised retrained-detector recall by up to 12.7\%.
+    \end{itemize}
+\end{numbered}
+
+% -------------------------------------------------------------
+\section{Professional Experience}
+\org{William \& Mary, Williamsburg, VA, USA}{Fall 2026}
+\textit{Assistant Instructor} \textbar\ COLL/CSCI 100: Physical Intelligence:
+Robots (\href{https://roboworld314.github.io/VC_Lab/}{course website})\par\nobreak
+Instructor: Sidi Lu\par\nobreak
+\myrole
+\begin{itemize}
+  \item Assisted in teaching a hands-on course in which students program
+    5G-connected robotic vehicles on a reconfigurable smart-city roadway with
+    programmable traffic lights.
+  \item Supervised project milestones in CARLA smart-city scenario design,
+    camera and LiDAR data collection with YOLO detection, safety-aware robot
+    responses to traffic signals and obstacles, and digital-twin HD mapping.
+  \item Delivered guest lectures on physical intelligence, autonomous vehicles,
+    and edge computing, with live demonstrations on robotic vehicle platforms.
+  \item Created and maintain the course website.
+\end{itemize}
+\entrygap
+\org{William \& Mary, Williamsburg, VA, USA}{Fall 2024 -- Spring 2025}
+\textit{Graduate Teaching Assistant} \textbar\ Department of Computer Science\par\nobreak
+\myrole\ Conducted programming lab sessions and advised students on coursework.
+\entrygap
+\org{Daffodil International University, Dhaka, Bangladesh}{July 2023 -- August 2024}
+\textit{Senior Lecturer} \textbar\ Department of Computer Science and Engineering\par\nobreak
+\myrole\ Taught theory and laboratory courses in Computer Science and
+Engineering, and collaborated with students on research projects.
+\entrygap
+\org{Daffodil International University, Dhaka, Bangladesh}{January 2021 -- June 2023}
+\textit{Lecturer} \textbar\ Department of Computer Science and Engineering\par\nobreak
+\myrole\ Conducted theory and lab sessions; evaluated, advised, and tracked students.
+\entrygap
+\org{Social Business Creation Competition, HEC Montr\'eal, Canada}{January 2021 -- September 2021}
+\textit{Judge \& Mentor}\par\nobreak
+\myrole\ Served on the judging committee evaluating student social-business
+proposals, and mentored participating teams on business-model development and scale-up.
+
+% -------------------------------------------------------------
+\section{Technical Skills}
+\begin{labelled}[10.4em]
+  \item[Agentic AI \& LLMs:] Qwen family (Qwen2.5-VL, Qwen2.5, Qwen3,
+    Qwen-Agent), Llama, GPT-4o (OpenAI API), SigLIP; VLM chain-of-thought
+    reasoning agents, multi-agent systems, and reinforcement-learning agents
+    (PPO, DQN); model serving with vLLM and Ollama
+  \item[Perception \& ML:] Hands-on experience with 25+ camera-based perception
+    models, including the YOLO family (v8--v11), RF-DETR, RT-DETR, DINO, and
+    Faster/Cascade R-CNN; camera-LiDAR fusion; CNNs
+  \item[LiDAR \& 3D:] 64- and 128-beam 360\textdegree{} LiDAR (vehicle and
+    roadside); BEV projection, voxel-grid filtering, farthest point sampling,
+    occupancy grids, raycasting; CenterPoint, PointPillars, SECOND; KISS-ICP
+    odometry and trajectory evaluation (ATE, ARE, RPE) against GNSS/INS ground
+    truth; lossless point-cloud compression (LZ4, ZSTD, G-PCC)
+  \item[Autonomy \& Robotics:] ROS~2 (rosbag2/MCAP logging), CARLA, HD maps
+    (OpenDRIVE), model predictive control, V2I communication (IEEE 802.11p,
+    DDS/RTPS)
+  \item[Platforms:] NVIDIA Jetson Orin NX/Nano; Yahboom ROSMASTER X3 and R2
+    robots; Robify RobiX-Nav and RobiS autonomous driving robots; roadside unit
+    (RSU)
+  \item[Programming:] Python, C, C\#, MATLAB; PyTorch
+  \item[Languages:] English (IELTS overall band score: 7.0), Bangla
+\end{labelled}
+
+% -------------------------------------------------------------
+\section{Services \& Activities}
+\begin{numbered}
+  \item[{[S5]}] Session Chair, 1st International Workshop on Edge Computing for
+    Connected and Autonomous Vehicles (EdgeCAV'25), at ACM/IEEE SEC'25, 2025
+  \item[{[S4]}] Reviewer, EdgeCAV'25 and EdgeCAV'26 workshops; ACM/IEEE Symposium
+    on Edge Computing (SEC'25, SEC'26)
+  \item[{[S3]}] Panelist, Student/Alumni Panel (autonomous driving research),
+    Computer Science Symposium for Graduate Studies, William \& Mary, November 2026
+  \item[{[S2]}] Volunteer, IEEE MOST'25 Conference; CS Symposium, William \& Mary, 2024
+  \item[{[S1]}] Organizer, National Girls Programming Contest; National Hackathon
+  \item[{[E3]}] Participant, ACM Capital Region Celebration of Women in Computing
+    (CAPWIC), 2025
+  \item[{[E2]}] Participant, Workshop on Developing Quality Research, 2023
+  \item[{[E1]}] Participant, Social Business Program, Canada
+\end{numbered}
+
+\end{document}

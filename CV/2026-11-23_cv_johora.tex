@@ -1,0 +1,398 @@
+%% =============================================================
+%%  Curriculum Vitae -- Johora Akter Polin
+%%  Compile with pdfLaTeX (Overleaf default); XeLaTeX/LuaLaTeX also work.
+%% =============================================================
+\documentclass[11pt,letterpaper]{article}
+
+% ---------- Fonts & encoding ----------
+\usepackage{iftex}
+\usepackage[T1]{fontenc}
+\usepackage{tgpagella}            % Palatino-style serif with true small caps
+\ifPDFTeX
+  \input{glyphtounicode}          % keeps PDF text searchable / ATS-friendly
+  \pdfgentounicode=1
+\fi
+\usepackage{microtype}
+\usepackage{fontawesome5}          % LinkedIn logo
+\ifPDFTeX
+  \newcommand{\scholaricon}{\faGraduationCap}   % pdfLaTeX fallback icon
+\else
+  \usepackage{academicons}         % Google Scholar logo (XeLaTeX/LuaLaTeX)
+  \newcommand{\scholaricon}{\aiGoogleScholar}
+\fi
+
+% ---------- Page layout ----------
+% Section labels sit in a left column; content sits to the right.
+\newlength{\cvlabelwidth}\setlength{\cvlabelwidth}{1.15in}
+\newlength{\cvlabelsep}\setlength{\cvlabelsep}{0.2in}
+\usepackage[letterpaper,left=2.05in,right=0.7in,top=0.6in,bottom=0.7in,footskip=0.35in]{geometry}
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}  % clickable links, black text, no boxes
+\hypersetup{pdftitle={Johora Akter Polin -- Curriculum Vitae},
+            pdfauthor={Johora Akter Polin}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}  % avoids lines running into the margin
+
+% Footer: page number centred on the full page width
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset[L]{\dimexpr\cvlabelwidth+\cvlabelsep\relax}
+\fancyfoot[C]{\small\thepage}
+
+% ---------- Section labels in the left column ----------
+\setcounter{secnumdepth}{0}
+\titleformat{\section}[leftmargin]
+  {\normalfont\large\scshape\filright}{}{0pt}{}
+\titlespacing*{\section}{\cvlabelwidth}{2.3ex plus 0.5ex minus 0.3ex}{\cvlabelsep}
+% allow a section to start near the page bottom (default keeps the last 20% free)
+\renewcommand{\bottomtitlespace}{3\baselineskip}
+
+% ---------- Lists ----------
+\setlist{nosep}
+\setlist[itemize]{label=\textbullet, leftmargin=1.1em, topsep=2pt, itemsep=1.5pt}
+\setlist[enumerate]{labelwidth=2.2em, labelsep=0.5em, leftmargin=2.7em,
+                    align=left, topsep=2pt, itemsep=3.5pt}
+
+% ---------- Helper commands ----------
+\newcommand{\me}{\textbf{Johora Akter Polin}}
+\newcommand{\paperlink}[1]{~\mbox{[\href{#1}{\textsc{paper}}]}}
+% bullet line that stays aligned when it is the first thing in a section
+\newcommand{\bulletrow}[1]{%
+  \hangindent=1.1em\hangafter=1\makebox[1.1em][l]{\textbullet}#1\par\vspace{1.5pt}}
+% \cventry{bold heading}{right text}{italic sub-heading}{right text}
+\newcommand{\cventry}[4]{%
+  \textbf{#1}\hfill #2\par\nobreak
+  \textit{#3}\hfill #4\par}
+\newcommand{\entrygap}{\par\vspace{5.5pt}}
+\newcommand{\pubgroup}[1]{\par\textbf{#1}\par\nobreak}
+\newcommand{\pubgap}{\par\vspace{6pt}}
+% publication entry: bold title, small citation line, description
+\newcommand{\paperitem}[4]{%
+  \item[{[#1]}] \textbf{#2.} {\small #3}\par
+  \vspace{1pt}#4}
+% list style for numbered publication entries ([U1], [C1], ...)
+\SetEnumitemKey{publist}{itemsep=3pt, topsep=2pt, leftmargin=2.4em,
+  labelwidth=2em, labelsep=0.4em, align=left}
+\newcommand{\labeledrow}[2]{%
+  \hangindent=1.2em\hangafter=1 \textbf{#1:} #2\par\vspace{2pt}}
+
+% ---------- Header ----------
+\newcommand{\cvheader}{%
+  \noindent\hspace*{-\dimexpr\cvlabelwidth+\cvlabelsep\relax}%
+  \begin{minipage}[b]{\dimexpr\textwidth+\cvlabelwidth+\cvlabelsep\relax}
+    \begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
+      {\fontsize{25}{30}\selectfont\scshape Johora Akter Polin} &
+      {\small\begin{tabular}[b]{@{}r@{}}
+        \href{tel:+17573711873}{\faPhone\ +1 (757) 371-1873}%
+        \enspace\textbar\textbar\enspace
+        \href{mailto:japolin@wm.edu}{\faEnvelope\ japolin@wm.edu}\\
+        \href{https://roboworld314.github.io/japolin.org/}{\faGlobe\ Homepage}%
+        \enspace\textbar\textbar\enspace
+        \href{https://scholar.google.com/citations?user=50AFRskAAAAJ}{\scholaricon\ Google Scholar}%
+        \enspace\textbar\textbar\enspace
+        \href{https://www.linkedin.com/in/johora-akter-polin-577759232/}{\faLinkedin\ LinkedIn}
+      \end{tabular}}
+    \end{tabular*}\par
+    \vspace{5pt}\hrule height 0.5pt
+  \end{minipage}\par
+  \vspace{2pt}}
+
+%% =============================================================
+\begin{document}
+
+\cvheader
+
+% -------------------------------------------------------------
+\section{Research Interests}
+My research builds reliable, efficient, and safety-aware intelligence for
+autonomous vehicles and agentic robots. I design perception and
+decision-making pipelines that turn camera and LiDAR streams into
+timely, trustworthy actions under occlusion, adverse weather, vibration, and
+tight compute budgets, and that learn from their failures.
+\begin{itemize}[topsep=4pt]
+  \item \textbf{Robust Multi-Sensor Perception:} camera-LiDAR fusion,
+        occlusion- and blind-zone-aware detection, and all-weather object
+        detection for autonomous driving.
+  \item \textbf{Agentic AI and Foundation Models:} LLM/VLM reasoning agents
+        and multi-agent systems (Qwen, Llama, GPT-4o) combined with
+        reinforcement learning, so robots decide at runtime what to perceive,
+        retain, and learn from.
+  \item \textbf{Edge AI and Real-Time Perception:} latency- and resource-aware
+        sensor processing on embedded platforms that keeps decisions anchored
+        to fresh sensor evidence.
+  \item \textbf{Cooperative and Safety-Critical Autonomy:} V2I-assisted
+        collision mitigation, HD-map-based planning, and event-aware Black Box
+        recording for failure diagnosis, replay, and data-centric continual learning
+        of perception models.
+\end{itemize}
+
+% -------------------------------------------------------------
+\section{Research Experience}
+\cventry{Graduate Research Assistant}{Fall 2025 -- Present}
+        {William \& Mary, Williamsburg, VA, USA}{}
+Research on perception, agentic AI, and safety for autonomous vehicles with
+academic and industry partners, validated in CARLA with ROS~2 and on physical
+robotic vehicles (Jetson Orin NX testbed, roadside unit, IEEE 802.11p V2I).
+\par\vspace{5pt}
+\pubgroup{Publications Under Review}
+\begin{itemize}[publist]
+  \paperitem{U1}{BlindZoneEye: See Clearly, React Safely, and Record Reliably
+    in Autonomous Driving}
+    {\me, Yichen Luo, Yongtao Yao, Adwait Nadkarni, and Sidi Lu.
+    Under review at an IEEE journal.}
+    {Vehicles must act before occluded road users become visible. Fused LiDAR
+    geometry, raycasting visibility reasoning, and YOLOv11 camera semantics
+    into a blind-zone risk score driving V2I- and HD-map-assisted planning and an event-aware Black Box (92.3\% detection
+    accuracy at 41\,ms; 76.2\% fewer collisions).}
+  \paperitem{U2}{SenseGuard: Sensor-to-Decision Adaptation and Learning for
+    Reliable Agentic Robots}
+    {\me, Yichen Luo, Yongtao Yao, Adwait Nadkarni, and Sidi Lu.
+    Under review at an international robotics conference.}
+    {Agentic robots act on stale inputs when redundant frames clog
+    pipelines. Combined SigLIP similarity, Qwen2.5-VL chain-of-thought
+    reasoning, and a PPO policy to filter camera and LiDAR frames and keep
+    failure episodes for retraining (up to +20 mAP@50, 31\% lower latency,
+    75\% lower LiDAR trajectory error).}
+  \paperitem{U3}{VibraBox: A Vibration-Adaptive Black Box for Replay and
+    Learning from Failures in Mobile-Robot Autonomy}
+    {\me, Yichen Luo, Yongtao Yao, and Sidi Lu.
+    Under review at an international robotics conference.}
+    {Robot failures are hard to replay, and terrain vibration changes how much
+    LiDAR data can safely be dropped. Built a LiDAR Black Box with
+    BEV-histogram (Chi-square) deduplication, voxel-grid downsampling, and
+    LZ4/ZSTD compression, tuned by a DQN controller from vibration and KISS-ICP
+    stability (up to 46\% less storage, 71.4\% lower rotational replay error,
+    +12.7\% recall after retraining).}
+\end{itemize}
+\pubgap
+\pubgroup{Conference Papers}
+\begin{itemize}[publist]
+  \paperitem{C1}{Log What Matters: Safety-Aware Adaptive Logging for CAVs in
+    Dynamic Conditions}
+    {\me, Yichen Luo, FNU Sumaiya, Zheng Dong, and Sidi Lu. \textit{2026 IEEE
+    4th International Conference on Mobility, Operations, Services and
+    Technologies (MOST)}, Detroit, MI, USA, May
+    2026.\paperlink{https://sidilu.org/paper/AdaptiveLogAsInput_MOST26.pdf}}
+    {Redundant frames waste compute and force vehicles to act on stale
+    perception. Proposed CAAL-VLM, adaptive camera and LiDAR logging
+    using SigLIP, Qwen-VL, and RL (PPO, DQN) policies, plus GPT-4o sensor
+    selection (27\% less LiDAR storage, 42\% lower latency, rainy mAP from
+    0.75 to 0.86).}
+\end{itemize}
+\pubgap
+\pubgroup{Workshop Papers}
+\begin{itemize}[publist]
+  \paperitem{W1}{Context-Aware Perception: VLM-Augmented All-Weather Detection
+    for Autonomous Driving}
+    {\me, Yichen Luo, and Sidi Lu. \textit{The Tenth ACM/IEEE Symposium on
+    Edge Computing (SEC'25)}, Arlington, VA, USA,
+    2025.\paperlink{https://doi.org/10.1145/3769102.3774638}}
+    {Camera detectors lose accuracy in rain, fog, and snow. Used
+    vision-language models to extract weather and visibility context from
+    driving scenes and adapt object detection for robust all-weather
+    autonomous driving.}
+  \paperitem{W2}{TinyLite: Efficient Edge Intelligence for Real-Time Spam
+    Detection Under Device Constraints}
+    {Xuanlin Zhu, \me, and Sidi Lu. \textit{IEEE Workshop on Physical
+    Intelligence: Systems and Applications (PISA), at IEEE MOST}, May
+    2026.\paperlink{https://sidilu.org/paper/PISA_26_SpamDetection.pdf}}
+    {Contributed to TinyLite, a compressed BERT-Tiny Transformer for on-device
+    spam detection that cuts FLOPs by 81.6\% with under 1.1 points of F1 loss.}
+\end{itemize}
+\entrygap
+\cventry{Machine Learning Research}{2020 -- 2024}
+        {Daffodil International University, Dhaka, Bangladesh}{}
+Applied CNNs and supervised machine learning to agriculture, natural-language
+processing, social-impact, and security problems.
+\par\vspace{5pt}
+\pubgroup{Conference Papers}
+\begin{itemize}[publist]
+  \paperitem{C2}{Encryption Process of Blockchain-Based Online Course
+    Curriculum Education System}
+    {Md Rayhan Ahmmed, Md Mamun Sakib, Maruf Ur Rahman, Rabeya Bibi,
+    Md Maruf Hasan Talukder, and \me. \textit{11th International Symposium on
+    Digital Forensics and Security (ISDFS)},
+    2023.\paperlink{https://ieeexplore.ieee.org/abstract/document/10131770}}
+    {}
+  \paperitem{C3}{Predicting Sugarcane Yields using Supervised Learning: A
+    Comparative Study}
+    {Parvez Ahmed Papon, Md Mahfuzur Rahman, Shafin Ahmed, Shahriar Mamun,
+    Md Zahirul Islam Mehadi, and \me. \textit{14th International Conference
+    on Computing Communication and Networking Technologies (ICCCNT)},
+    2023.\paperlink{https://ieeexplore.ieee.org/abstract/document/10307590}}
+    {}
+  \paperitem{C4}{Utilizing Smartphone Usage Pattern for Gender Recognition
+    Applying Machine Learning Algorithms}
+    {\me, Omayer Khan, and Ahmed Al Marouf. \textit{4th International
+    Conference on Electronics, Communication and Aerospace Technology
+    (ICECA)}, 2020.\paperlink{https://ieeexplore.ieee.org/abstract/document/9297407}}
+    {}
+\end{itemize}
+\pubgap
+\pubgroup{Journal Articles}
+\begin{itemize}[publist]
+  \paperitem{J1}{A Novel Approach to Analyzing the Impact of AI, ChatGPT, and
+    Chatbot on Education Using Machine Learning Algorithms}
+    {Nahid Hasan, \me, Md.~Rayhan Ahmmed, Md.~Mamun Sakib, Md.~Farhan Jahin,
+    and Md.~Mahfuzur Rahman.
+    \textit{Bulletin of Electrical Engineering and Informatics}, vol.~13, no.~4, pp.~2951--2958,
+    2024.\paperlink{https://doi.org/10.11591/eei.v13i4.7158}}
+    {}
+  \paperitem{J2}{Predicting the Effects of Microcredit on Women's Empowerment
+    in Rural Bangladesh: Using Machine Learning Algorithms}
+    {\me, Md.~Fouad Hossain Sarker, MST Dilruba Khanom Dolon, Nahid Hasan,
+    Md.~Mahfuzur Rahman, and Zannatun Nayem Vasha. \textit{Bulletin of
+    Electrical Engineering and Informatics}, vol.~13, no.~4, pp.~2699--2706,
+    2024.\paperlink{https://doi.org/10.11591/eei.v13i4.7169}}
+    {}
+  \paperitem{J3}{Tomato Pest Recognition Using Convolutional Neural Network in
+    Bangladesh}
+    {\me, Nahid Hasan, Md.~Tarek Habib, Atiqur Rahman, Zannatun Nayem Vasha,
+    and Bidyut Sharma. \textit{Bulletin of Electrical Engineering and
+    Informatics}, vol.~13, no.~1, pp.~619--627, 2024.\paperlink{https://doi.org/10.11591/eei.v13i1.6073}}
+    {}
+  \paperitem{J4}{Bengali Slang Detection Using State-of-the-Art Supervised
+    Models from a Given Text}
+    {Md Abdul Hamid, Eteka Sultana Tumpa, \me, Jabir Al Nahian, Atiqur
+    Rahman, and Nurjahan Akther Mim. \textit{Bulletin of Electrical
+    Engineering and Informatics}, vol.~12, no.~4, pp.~2381--2387,
+    2023.\paperlink{https://doi.org/10.11591/eei.v12i4.4743}}
+    {}
+  \paperitem{J5}{Depression Detection in Social Media Comments Data Using
+    Machine Learning Algorithms}
+    {Zannatun Nayem Vasha, Bidyut Sharma, Israt Jahan Esha, Jabir Al Nahian,
+    and \me. \textit{Bulletin of Electrical Engineering and Informatics}, vol.~12, no.~2, pp.~987--996,
+    2023.\paperlink{https://doi.org/10.11591/eei.v12i2.4182}}
+    {}
+\end{itemize}
+
+% -------------------------------------------------------------
+\section{Education}
+\cventry{William \& Mary}{Williamsburg, VA, USA}
+        {Ph.D. in Computer Science}{2024 -- 2029 (expected)}
+\begin{itemize}
+  \item Advisor: Dr.~Sidi Lu; GPA: 3.95/4.00
+  \item Research Area: Edge and Vehicle Computing for Autonomous Driving
+\end{itemize}
+\entrygap
+\cventry{Daffodil International University}{Dhaka, Bangladesh}
+        {M.Sc. in Computer Science and Engineering}{2021 -- 2023}
+\begin{itemize}
+  \item Advisor: Dr.~Md.~Tarek Habib; GPA: 4.00/4.00
+\end{itemize}
+\entrygap
+\cventry{Daffodil International University}{Dhaka, Bangladesh}
+        {B.Sc. in Computer Science and Engineering}{2015 -- 2020}
+\begin{itemize}
+  \item GPA: 3.90/4.00
+\end{itemize}
+\entrygap
+\cventry{HEC Montr\'eal}{Montr\'eal, Canada}
+        {Certification Course in Social Business (3 credits)}{2020}
+
+% -------------------------------------------------------------
+\section{Technical Skills}
+\labeledrow{Agentic AI \& Foundation Models}{Qwen family (Qwen2.5-VL,
+  Qwen2.5, Qwen3, Qwen-Agent), Llama, GPT-4o (OpenAI API), SigLIP;
+  VLM chain-of-thought reasoning agents, multi-agent systems, and
+  reinforcement-learning agents (PPO, DQN); model serving with vLLM and Ollama}
+\labeledrow{Programming}{Python, C, C\#, MATLAB; PyTorch}
+\labeledrow{Perception \& ML}{Hands-on experience with 25+ camera-based
+  perception models, including the YOLO family (v8--v11), RF-DETR, RT-DETR,
+  DINO, and Faster/Cascade R-CNN; camera-LiDAR fusion; CNNs}
+\labeledrow{LiDAR \& 3D Perception}{64- and 128-beam 360\textdegree{} LiDAR
+  (vehicle and roadside); point-cloud processing (BEV projection, voxel-grid
+  filtering, farthest point sampling, occupancy grids, raycasting); 3D
+  detection (CenterPoint, PointPillars, SECOND); LiDAR odometry with KISS-ICP
+  and trajectory evaluation (ATE, ARE, RPE) against GNSS/INS ground truth;
+  lossless point-cloud compression (LZ4, ZSTD, G-PCC)}
+\labeledrow{Autonomy \& Robotics}{ROS~2 (rosbag2/MCAP logging), CARLA, HD maps
+  (OpenDRIVE), model predictive control, V2I communication (IEEE 802.11p,
+  DDS/RTPS)}
+\labeledrow{Platforms}{NVIDIA Jetson Orin NX/Nano; Yahboom ROSMASTER X3 and R2
+  robots; Robify RobiX-Nav and RobiS autonomous driving robots; roadside unit
+  (RSU)}
+\labeledrow{Languages}{English (IELTS overall band score: 7.0), Bangla}
+
+% -------------------------------------------------------------
+\section{Teaching \& Mentoring}
+\cventry{Assistant Instructor \textnormal{(\href{https://roboworld314.github.io/VC_Lab/}{roboworld314.github.io/VC\_Lab})}}{Fall 2026}
+        {William \& Mary, Williamsburg, VA, USA}{}
+\begin{itemize}
+  \item Assisted Dr.~Sidi Lu in teaching \textit{COLL/CSCI 100: Physical
+        Intelligence: Robots}, a hands-on course in which students program
+        5G-connected robotic vehicles on a reconfigurable smart-city roadway
+        with programmable traffic lights.
+  \item Supervised project milestones spanning CARLA smart-city scenario
+        design, camera and LiDAR data collection with YOLO object detection,
+        safety-aware robot responses to traffic signals and obstacles, and
+        digital-twin HD mapping.
+  \item Delivered guest lectures on physical intelligence, autonomous vehicles,
+        and edge computing, with live demonstrations on robotic vehicle
+        platforms.
+  \item Created and maintain the course website.
+\end{itemize}
+\entrygap
+\cventry{Graduate Teaching Assistant}{Fall 2024 -- Spring 2025}
+        {William \& Mary, Williamsburg, VA, USA}{}
+\begin{itemize}
+  \item Conducted programming lab sessions and advised students on coursework.
+\end{itemize}
+\entrygap
+\cventry{Senior Lecturer}{July 2023 -- August 2024}
+        {Daffodil International University, Dhaka, Bangladesh}{}
+\begin{itemize}
+  \item Taught theory and laboratory courses in Computer Science and Engineering.
+  \item Collaborated with students on research projects.
+\end{itemize}
+\entrygap
+\cventry{Lecturer}{January 2021 -- June 2023}
+        {Daffodil International University, Dhaka, Bangladesh}{}
+\begin{itemize}
+  \item Conducted theory and lab sessions; evaluated, advised, and tracked students.
+\end{itemize}
+\entrygap
+\cventry{Judge \& Mentor}{January 2021 -- September 2021}
+        {Social Business Creation Competition, HEC Montr\'eal, Canada}{}
+\begin{itemize}
+  \item Served on the judging committee evaluating student social-business
+        proposals.
+  \item Mentored participating teams on business-model development and
+        scale-up.
+\end{itemize}
+
+% -------------------------------------------------------------
+\section{Awards \& Honors}
+\bulletrow{Student Travel Grant, IEEE MOST 2026}
+\bulletrow{Student Travel Grant, ACM/IEEE Symposium on Edge Computing (SEC) 2025}
+\bulletrow{Recognized as Advisor, Girls Computer Programming Club, 2022}
+\bulletrow{Core Technical Member, National Hackathon, CTO Forum Bangladesh, 2021}
+\bulletrow{Judging Committee Member, Social Business Creation Competition
+  (Business Model Innovation and Execution \& Scale-up rounds), 2020--2022}
+\bulletrow{Scopus-Indexed Publication Recognition, Daffodil International
+  University, 2020}
+\bulletrow{Runner-up Team, Social Business Creation Global Final, HEC
+  Montr\'eal, 2019}
+
+% -------------------------------------------------------------
+\section{Academic Service}
+\labeledrow{Session Chair}{1st International Workshop on Edge Computing for
+  Connected and Autonomous Vehicles (EdgeCAV'25), at SEC'25}
+\labeledrow{Reviewer}{EdgeCAV'25 and EdgeCAV'26 workshops; ACM/IEEE Symposium
+  on Edge Computing (SEC'25, SEC'26)}
+\labeledrow{Panelist}{Student/Alumni Panel (autonomous driving research),
+  Computer Science Symposium for Graduate Studies, William \& Mary,
+  November 2026}
+\labeledrow{Volunteer}{IEEE MOST'25 Conference; CS Symposium, 2024}
+\labeledrow{Organizer}{National Girls Programming Contest; National Hackathon}
+\labeledrow{Participant}{\href{https://capwic.org/conferences/2025/}{ACM
+  CAPWIC (Celebration of Women in Computing)}, 2025; Workshop
+  on Developing Quality Research, 2023; Social Business Program, Canada}
+
+\end{document}
