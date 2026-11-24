@@ -497,6 +497,7 @@ button { font: inherit; color: inherit; }
   margin: 0 0 24px;
 }
 
+.research-intro { max-width: none !important; text-align: justify; }
 .section-intro {
   font-size: 1.06rem;
   max-width: 44em;
@@ -745,8 +746,8 @@ button { font: inherit; color: inherit; }
 .themes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 60px;
+  gap: 14px;
+  margin-bottom: 52px;
 }
 .theme-card {
   --accent: var(--blue);
@@ -754,9 +755,9 @@ button { font: inherit; color: inherit; }
   --my: 0%;
   position: relative;
   overflow: hidden;
-  padding: 20px 22px 18px;
+  padding: 14px 18px 14px;
   border: 1px solid var(--mist);
-  border-radius: 14px;
+  border-radius: 12px;
   background:
     radial-gradient(380px circle at var(--mx) var(--my), color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
     var(--paper);
@@ -774,12 +775,12 @@ button { font: inherit; color: inherit; }
   border-color: color-mix(in srgb, var(--accent) 35%, var(--mist));
   box-shadow: 0 20px 40px -26px color-mix(in srgb, var(--accent) 70%, transparent);
 }
-.theme-top { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
-.theme-icon { width: 50px; height: 50px; border-radius: 13px; }
-.theme-icon svg { width: 36px; height: 36px; }
-.theme-card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.2rem; line-height: 1.3; margin: 0; }
-.theme-card p { color: var(--slate); margin: 0; }
-.theme-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px !important; }
+.theme-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.theme-icon { width: 40px; height: 40px; border-radius: 11px; }
+.theme-icon svg { width: 29px; height: 29px; }
+.theme-card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.08rem; line-height: 1.3; margin: 0; }
+.theme-card p { color: var(--slate); margin: 0; font-size: 0.94rem; line-height: 1.55; }
+.theme-links { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 10px !important; }
 .theme-see { font-size: 0.8rem; font-weight: 600; color: var(--slate); margin-right: 2px; }
 .theme-chip {
   display: inline-flex;
@@ -891,8 +892,11 @@ button { font: inherit; color: inherit; }
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   gap: 32px 56px;
   margin-top: 28px;
-  align-items: start;
+  align-items: stretch;
 }
+.panel-results { align-self: stretch; display: flex; flex-direction: column; }
+.panel-results .facts { margin-top: auto; }
+.panel-story { display: flex; flex-direction: column; }
 
 .panel-story h5 {
   font-size: 1rem;
@@ -900,7 +904,8 @@ button { font: inherit; color: inherit; }
   color: var(--blue-deep);
   margin: 0 0 6px;
 }
-.panel-story p { margin-bottom: 22px; }
+.panel-story p { margin-bottom: 22px; text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
+.steps li { text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
 
 /* the pipeline really is a sequence, so the steps are numbered */
 .steps {
@@ -1096,15 +1101,16 @@ button { font: inherit; color: inherit; }
 .thumb:hover span { color: var(--blue-deep); }
 
 /* Figure slider inside each published project: arrows to change, hover to zoom. */
-.fig-slider { margin-top: 26px; }
-.fs-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.fig-slider { margin-top: 18px; flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.fs-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
 .fs-head h5 { margin: 0; font-size: 1rem; font-weight: 600; color: var(--blue-deep); }
 .fs-count { font-size: 0.84rem; font-weight: 600; color: var(--slate); font-variant-numeric: tabular-nums; }
 .fs-frame {
   --zx: 50%;
   --zy: 50%;
   position: relative;
-  aspect-ratio: 16 / 10;
+  flex: 1;
+  min-height: 205px;
   border: 1px solid var(--mist);
   border-radius: 14px;
   background: #fff;
@@ -1127,9 +1133,13 @@ button { font: inherit; color: inherit; }
 }
 .fs-slide.is-active { opacity: 1; transform: none; }
 .fs-slide.is-leaving { opacity: 0; transform: translateX(-24px); }
+/* The whole figure always fits inside the frame; it is scaled, never cropped. */
 .fs-slide img {
-  max-width: 100%;
-  max-height: 100%;
+  position: absolute;
+  top: 12px;
+  left: 52px;
+  width: calc(100% - 104px);
+  height: calc(100% - 24px);
   object-fit: contain;
   transform-origin: var(--zx) var(--zy);
   transition: transform 0.25s ease;
@@ -1158,7 +1168,7 @@ button { font: inherit; color: inherit; }
 .fs-prev { left: 10px; }
 .fs-next { right: 10px; }
 .fs-frame.is-zooming .fs-arrow,
-.fs-frame.is-zooming .fs-hint { opacity: 0; pointer-events: none; }
+.fs-frame.is-zooming .fs-hint { margin-left: auto; font-size: 0.78rem; color: var(--slate); }
 .fs-hint {
   position: absolute;
   right: 10px;
@@ -1171,8 +1181,8 @@ button { font: inherit; color: inherit; }
   white-space: nowrap;
   transition: opacity 0.2s ease;
 }
-.fs-cap { margin: 10px 2px 0; font-size: 0.88rem; line-height: 1.5; color: var(--slate); min-height: 2.6em; }
-.fs-dots { display: flex; justify-content: center; gap: 7px; margin-top: 8px; }
+.fs-cap { margin: 8px 2px 0; font-size: 0.85rem; line-height: 1.45; color: var(--slate); min-height: 2.9em; }
+.fs-dots { display: flex; justify-content: center; gap: 7px; margin-top: 4px; }
 .fs-dots span { width: 7px; height: 7px; border-radius: 4px; background: var(--ring); cursor: pointer; transition: width 0.25s ease, background-color 0.25s ease; }
 .fs-dots span.is-on { width: 20px; background: var(--blue); }
 @media (prefers-reduced-motion: reduce) {
