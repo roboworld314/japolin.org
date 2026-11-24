@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Notes and chat messages are saved to a Google Sheet through this Apps Script web app URL (ends in /exec). Leave empty to fall back to email. -->
+  <meta name="notes-endpoint" content="">
   <title>Johora Akter Polin</title>
   <meta name="description" content="Johora Akter Polin is a Ph.D. student in Computer Science at William & Mary researching reliable perception, agentic AI, and safety for autonomous vehicles and robots.">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=84">
+  <link rel="stylesheet" href="assets/css/style.css?v=85">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1179,6 +1181,7 @@
             <input type="email" name="email" placeholder="Your email (optional)" aria-label="Your email, optional, for a reply">
             <button type="submit">Send note</button>
           </div>
+          <input class="fn-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <p class="fn-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -1218,8 +1221,8 @@
 
   <script src="assets/js/news.js?v=40"></script>
   <script src="assets/js/gallery.js?v=9"></script>
-  <script src="assets/js/main.js?v=67"></script>
+  <script src="assets/js/main.js?v=68"></script>
   <script src="assets/js/drive.js?v=14"></script>
-  <script src="assets/js/chat.js?v=42"></script>
+  <script src="assets/js/chat.js?v=43"></script>
 </body>
 </html>

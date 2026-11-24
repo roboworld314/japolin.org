@@ -516,6 +516,23 @@
       if (from && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(from)) { say('That email address looks incomplete.', 'err'); note.email.focus(); return; }
       var subject = 'Website note' + (from ? ' from ' + from : '');
       var body = msg + (from ? '\n\nReply to: ' + from : '') + '\n\nSent from the note box on the website.';
+      if (note.website && note.website.value) { note.reset(); say('Thanks! Your note was sent.', 'ok'); return; }
+      var sheetMeta = document.querySelector('meta[name="notes-endpoint"]');
+      var sheet = sheetMeta ? sheetMeta.content.trim() : '';
+      if (sheet) {
+        var sendBtn = note.querySelector('button');
+        sendBtn.disabled = true;
+        say('Sending...');
+        // The sheet script answers without CORS headers, so the reply is opaque; a network error is the only failure we can see.
+        fetch(sheet, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new URLSearchParams({ source: 'Note box', name: '', email: from, message: msg, page: location.href })
+        }).then(function () { note.reset(); say('Thanks! Your note was sent.', 'ok'); })
+          .catch(function () { say('The note could not be sent. Please email japolin@wm.edu instead.', 'err'); })
+          .then(function () { sendBtn.disabled = false; });
+        return;
+      }
       var key = note.getAttribute('data-key');
       if (!key) {
         window.location.href = 'mailto:japolin@wm.edu?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);

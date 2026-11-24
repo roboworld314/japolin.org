@@ -5,6 +5,8 @@
    stored), and it can pass a visitor's message to Johora by email.
 
    Delivering messages:
+   - If index.html has a notes-endpoint meta tag with a Google Apps Script
+     web app URL, messages are saved as rows in the linked Google Sheet.
    - With a Web3Forms access key below, messages are emailed straight to the
      address registered with that key. Get a free key at https://web3forms.com
      (enter japolin@wm.edu); the key is safe to keep in this public file.
@@ -313,6 +315,17 @@
   async function deliver() {
     const subject = `Website message from ${flow.name}`;
     const body = `${flow.message}\n\nFrom: ${flow.name}\nEmail: ${flow.email}\nSent from the chat on her website.`;
+    const sheetMeta = document.querySelector('meta[name="notes-endpoint"]');
+    const sheet = sheetMeta ? sheetMeta.content.trim() : '';
+    if (sheet) {
+      // Saved as a row in the Google Sheet; the reply is opaque (no CORS), so only network errors surface.
+      await fetch(sheet, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams({ source: 'Chat', name: flow.name, email: flow.email, message: flow.message, page: location.href }),
+      });
+      return 'sent';
+    }
     if (!WEB3FORMS_KEY) {
       const href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = href;

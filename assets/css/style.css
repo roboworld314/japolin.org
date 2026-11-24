@@ -2258,6 +2258,7 @@ button { font: inherit; color: inherit; }
 .footer-note button:hover { background: #eef4ff; transform: translateY(-1px); }
 .footer-note button:focus-visible { outline: 3px solid #9cc0ff; outline-offset: 2px; }
 .footer-note button:disabled { opacity: 0.6; cursor: default; transform: none; }
+.fn-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .fn-status { margin-top: 8px !important; min-height: 1.2em; font-size: 0.86rem; color: #c9d6ea; }
 .fn-status.is-ok { color: #9be3c4; }
 .fn-status.is-err { color: #ffc2c2; }
