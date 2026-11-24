@@ -404,6 +404,13 @@
     }, { rootMargin: '0px 0px -15% 0px' }).observe(pubList.querySelector('.pub-filters') || pubList);
   }
 
+  // Paper figures open full size in the figure viewer.
+  document.querySelectorAll('.pub-fig-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (lightbox) lightbox.open([{ src: btn.getAttribute('data-full'), alt: btn.querySelector('img').alt, caption: btn.getAttribute('data-cap') }], 0, btn);
+    });
+  });
+
   // "Show details" opens a summary, key results, and keywords under each paper.
   document.querySelectorAll('.pub-more').forEach(function (btn) {
     var card = btn.closest('.pub');
